@@ -1,12 +1,30 @@
 <template>
   <div class="home">
-    <h1>Home</h1>
-    <p>You must be authenticated to see this</p>
+    <div id="description">
+      <p>This is a sick application where you can find beers and stuff. </p>
+    </div>
+    <cards></cards>
   </div>
 </template>
 
 <script>
+
+
+import Cards from '../components/Cards.vue';
+
+
 export default {
-  name: "home"
-};
+  components: { Cards },
+  
+
+    Cards};
 </script>
+
+<style >
+  #description p {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin-top: 13%;
+  }
+</style>
