@@ -1,6 +1,7 @@
 <template>
   <div class="home">
     <div id="description">
+      <img src="../imgs/dance-beer.gif" alt="" id="image">
       <p>This is a sick application where you can find beers and stuff. </p>
     </div>
     <cards></cards>
@@ -21,6 +22,14 @@ export default {
 </script>
 
 <style >
+
+  #description {
+    display: flex;
+    justify-content: center;
+   
+  }
+
+  
   #description p {
     display: flex;
     justify-content: center;
