@@ -39,11 +39,15 @@ CREATE TABLE IF NOT EXISTS beers (
 CREATE TABLE IF NOT EXISTS reviews (
 	review_id serial,
 	user_id int not null,
+	beer_id int,
+	brewery_id int,
 	rating int not null,
 	review_body varchar(1000) not null,
 	
 	CONSTRAINT pk_reviews PRIMARY KEY (review_id),
-	CONSTRAINT fk_review_user FOREIGN KEY (user_id) REFERENCES users(user_id)
+	CONSTRAINT fk_review_user FOREIGN KEY (user_id) REFERENCES users(user_id),
+	CONSTRAINT fk_review_beer FOREIGN KEY (beer_id) REFERENCES beers(beer_id),
+	CONSTRAINT fk_review_brewery FOREIGN KEY (brewery_id) REFERENCES breweries(brewery_id)
 
 );
 
