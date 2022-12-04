@@ -17,10 +17,22 @@ public class JdbcBreweriesDao implements BreweriesDao{
         this.jdbcTemplate = jdbcTemplate;
     }
 
+    /*
+    Class Author: Kyle P-N.
+    Method Author: Zachary M.
+    Notes: Methods should be functional, all work with PGAdmin.
+         - Creates may need revisited for controller purposes
+         - Changed * to specific column names to account for some potential null issues.
+         - ATTENTION - line 72 during stand-up.
+         + need to include try/catch blocks and exception handling *DEADLINE* Monday
+     */
+
     @Override
     public List<Brewery> findAll() {
         List<Brewery> breweries = new ArrayList<>();
-        String sql = "select * from breweries;";
+        String sql = "SELECT brewery_name, brewery_address, time_open, time_closed, history, is_active\n" +
+                "FROM breweries\n" +
+                "ORDER BY brewery_name;";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while (results.next()){
@@ -32,8 +44,9 @@ public class JdbcBreweriesDao implements BreweriesDao{
 
     @Override
     public Brewery getBreweryById(int breweryId) {
-        String sql = "SELECT * FROM breweries WHERE brewery_id = ?;";
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+        String sql = "SELECT brewery_name, brewery_address, time_open, time_closed, history, is_active\n" +
+                "FROM breweries WHERE brewery_id = ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, breweryId);
         if(results.next()){
             return mapRowToBrewery(results);
         }else {
@@ -43,8 +56,9 @@ public class JdbcBreweriesDao implements BreweriesDao{
 
     @Override
     public Brewery getBreweryByName(String breweryName) {
-        String sql = "SELECT * FROM breweries WHERE brewery_name = ?;";
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+        String sql = "SELECT brewery_name, brewery_address, time_open, time_closed, history, is_active\n" +
+                "FROM breweries WHERE brewery_name = ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, breweryName);
         if(results.next()){
             return mapRowToBrewery(results);
         }else {
@@ -55,8 +69,7 @@ public class JdbcBreweriesDao implements BreweriesDao{
     @Override
     public int findBreweryIdByName(String breweryName) {
         String sql = "SELECT brewery_id FROM breweries WHERE brewery_name = ?;";
-        int breweryId = jdbcTemplate.queryForObject(sql,int.class, breweryName);
-        return breweryId;
+        return jdbcTemplate.queryForObject(sql,int.class, breweryName);
     }
 
     @Override

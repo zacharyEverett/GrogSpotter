@@ -5,17 +5,17 @@ import com.techelevator.model.app.Review;
 import java.util.List;
 
 public interface ReviewDao {
-    List<Review> getAllBeer();
+    List<Review> getAllBeerReviews();
 
-    List<Review> getAllBrewery();
+    List<Review> getAllBreweryReviews();
 
-    List<Review> getByUser(int userId);
+    List<Review> getReviewsByUserId(int userId);
 
-    List<Review> getByBeer(int beerId);
+    List<Review> getReviewsByBeerId(int beerId);
 
-    List<Review> getByBrewery(int breweryId);
+    List<Review> getReviewsByBreweryId(int breweryId);
 
-    boolean addBeerReview(int beerId);
+    boolean addBeerReview(int user_id,int beerId,int brewery_id,int rating,String review_body);
 
-    boolean addBreweryReview(int breweryId);
+    boolean addBreweryReview(int user_id,int beerId,int brewery_id,int rating,String review_body);
 }
