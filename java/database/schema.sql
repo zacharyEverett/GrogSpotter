@@ -12,7 +12,7 @@ CREATE TABLE users (
 
 CREATE TABLE IF NOT EXISTS breweries (
 	brewery_id serial,
-	brewery_name varchar(40) not null,
+	brewery_name varchar(40) not null unique,
 	brewery_address varchar(100) not null,
 	time_open time not null,
 	time_closed time not null,
@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS breweries (
 CREATE TABLE IF NOT EXISTS beers (
 	beer_id serial,
 	brewery_id int not null,
-	beer_name varchar(50) not null,
+	beer_name varchar(50) not null unique,
 	abv decimal not null,
 	beer_type varchar(50) not null,
 	beer_description varchar (500) not null,
