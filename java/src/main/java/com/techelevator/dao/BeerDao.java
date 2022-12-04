@@ -5,6 +5,9 @@ import com.techelevator.model.app.Beer;
 import java.util.List;
 
 public interface BeerDao {
+
+    Beer getById(int beerId);
+
     List<Beer> getAll();
 
     List<Beer> getByBreweryId(int brewery_id);
