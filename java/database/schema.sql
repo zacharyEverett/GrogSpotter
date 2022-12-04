@@ -12,7 +12,7 @@ CREATE TABLE users (
 
 CREATE TABLE IF NOT EXISTS breweries (
 	brewery_id serial,
-	brewery_name varchar(40) not null,
+	brewery_name varchar(40) not null unique,
 	brewery_address varchar(100) not null,
 	time_open time not null,
 	time_closed time not null,
@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS breweries (
 CREATE TABLE IF NOT EXISTS beers (
 	beer_id serial,
 	brewery_id int not null,
-	beer_name varchar(50) not null,
+	beer_name varchar(50) not null unique,
 	abv decimal not null,
 	beer_type varchar(50) not null,
 	beer_description varchar (500) not null,
@@ -39,11 +39,15 @@ CREATE TABLE IF NOT EXISTS beers (
 CREATE TABLE IF NOT EXISTS reviews (
 	review_id serial,
 	user_id int not null,
+	beer_id int,
+	brewery_id int,
 	rating int not null,
 	review_body varchar(1000) not null,
 	
 	CONSTRAINT pk_reviews PRIMARY KEY (review_id),
-	CONSTRAINT fk_review_user FOREIGN KEY (user_id) REFERENCES users(user_id)
+	CONSTRAINT fk_review_user FOREIGN KEY (user_id) REFERENCES users(user_id),
+	CONSTRAINT fk_review_beer FOREIGN KEY (beer_id) REFERENCES beers(beer_id),
+	CONSTRAINT fk_review_brewery FOREIGN KEY (brewery_id) REFERENCES breweries(brewery_id)
 
 );
 

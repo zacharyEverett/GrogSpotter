@@ -7,10 +7,12 @@ import java.util.List;
 public interface BeerDao {
     List<Beer> getAll();
 
-    List<Beer> getByBreweryId();
+    List<Beer> getByBreweryId(int brewery_id);
 
-    List<Beer> getByAbv();
+    List<Beer> getByAbv(double abv);
 
-    List<Beer> getByType();
+    List<Beer> getByType(String type);
+
+    boolean addBeer(int breweryId, String beerName, double abv, String type, String beerDescription);
 
 }

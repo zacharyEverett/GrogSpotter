@@ -2,12 +2,13 @@ package com.techelevator.model.app;
 
 public class Beer {
     private int beerId;
+    private int breweryId;
     private String beerName;
     private double abv;
     private String type;
     private String beerDescription;
 
-    public Beer (int beerId, String beerName, double abv, String beerDescription) {
+    public Beer (int beerId, int breweryId, String beerName, double abv, String beerDescription) {
         this.beerId = beerId;
         this.beerName = beerName;
         this.abv = abv;
@@ -21,6 +22,14 @@ public class Beer {
 
     public void setBeerId(int beerId) {
         this.beerId = beerId;
+    }
+
+    public int getBreweryId() {
+        return breweryId;
+    }
+
+    public void setBreweryId(int breweryId) {
+        this.breweryId = breweryId;
     }
 
     public String getBeerName() {
