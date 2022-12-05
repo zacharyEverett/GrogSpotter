@@ -29,7 +29,7 @@ public class BreweryController {
      * Author: Zach Everett
      */
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping
+    @GetMapping()
     public List<Brewery> getListOfAllBreweries() {
         try {
             return breweriesDao.findAll();
@@ -39,8 +39,6 @@ public class BreweryController {
         } catch (Exception f) {
             System.out.println(f.getMessage());
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
-        } finally {
-            return null;
         }
     }
 
@@ -59,8 +57,6 @@ public class BreweryController {
         } catch (Exception f) {
             System.out.println(f.getMessage());
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
-        } finally {
-            return null;
         }
     }
 

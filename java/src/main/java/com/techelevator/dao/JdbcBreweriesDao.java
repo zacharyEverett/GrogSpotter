@@ -1,8 +1,10 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.app.Brewery;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -30,7 +32,7 @@ public class JdbcBreweriesDao implements BreweriesDao{
     @Override
     public List<Brewery> findAll() {
         List<Brewery> breweries = new ArrayList<>();
-        String sql = "SELECT brewery_name, brewery_address, time_open, time_closed, history, is_active\n" +
+        String sql = "SELECT *\n" +
                 "FROM breweries\n" +
                 "ORDER BY brewery_name;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
@@ -43,7 +45,7 @@ public class JdbcBreweriesDao implements BreweriesDao{
 
     @Override
     public Brewery getBreweryById(int breweryId) {
-        String sql = "SELECT brewery_name, brewery_address, time_open, time_closed, history, is_active\n" +
+        String sql = "SELECT *\n" +
                 "FROM breweries WHERE brewery_id = ?;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, breweryId);
         if(results.next()){
@@ -55,7 +57,7 @@ public class JdbcBreweriesDao implements BreweriesDao{
 
     @Override
     public Brewery getBreweryByName(String breweryName) {
-        String sql = "SELECT brewery_name, brewery_address, time_open, time_closed, history, is_active\n" +
+        String sql = "SELECT *\n" +
                 "FROM breweries WHERE brewery_name = ?;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, breweryName);
         if(results.next()){
@@ -67,8 +69,15 @@ public class JdbcBreweriesDao implements BreweriesDao{
 
     @Override
     public int findBreweryIdByName(String breweryName) {
+        if (breweryName == null) throw new IllegalArgumentException("Brewery name cannot be null");
         String sql = "SELECT brewery_id FROM breweries WHERE brewery_name = ?;";
-        return jdbcTemplate.queryForObject(sql,int.class, breweryName);
+        int breweryId;
+        try {
+            breweryId = jdbcTemplate.queryForObject(sql, int.class, breweryName);
+        }catch (EmptyResultDataAccessException e) {
+            throw new UsernameNotFoundException("Brewery " + breweryName + " was not found.");
+        }
+        return breweryId;
     }
 
     @Override
