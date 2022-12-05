@@ -14,6 +14,12 @@ import java.util.List;
 @RequestMapping("/beers")
 @CrossOrigin
 public class BeerController {
+    /*
+    Author: Zachary M.
+    Notes: need input on endpoints to finish methods. Same problem we were having with column not
+    exiting when I run this in pgAdmin.
+    -will discuss in standup 12/6
+     */
 
     @Autowired
     JdbcTemplate jdbcTemplate;
@@ -26,6 +32,17 @@ public class BeerController {
         try{
             return beerDao.getAll();
         }catch(ResponseStatusException re){
+            re.getMessage();
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/{beerId}")
+    public Beer getBeerByBeerId(@PathVariable int beerId){
+        try{
+            return beerDao.getById(beerId);
+        }catch (ResponseStatusException re){
             re.getMessage();
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
