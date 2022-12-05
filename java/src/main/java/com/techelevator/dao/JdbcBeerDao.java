@@ -19,6 +19,17 @@ public class JdbcBeerDao implements BeerDao{
     }
 
     @Override
+    public Beer getById(int beerID) {
+        String sql = "SELECT beer_name, brewery_name, abv, beer_type, beer_description FROM beers JOIN breweries USING (brewery_id) WHERE beer_id = ? ORDER BY beer_name;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, beerID);
+        if (results.next()) {
+            return mapRowToBeer(results);
+        } else {
+            return null;
+        }
+    }
+
+    @Override
     public List<Beer> getAll() {
         List<Beer> beers = new ArrayList<>();
         String sql = "SELECT beer_name, brewery_name, abv, beer_type, beer_description " +
