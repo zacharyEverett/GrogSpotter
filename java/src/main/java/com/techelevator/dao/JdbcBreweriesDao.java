@@ -32,8 +32,8 @@ public class JdbcBreweriesDao implements BreweriesDao{
     @Override
     public List<Brewery> findAll() {
         List<Brewery> breweries = new ArrayList<>();
-        String sql = "SELECT *\n" +
-                "FROM breweries\n" +
+        String sql = "SELECT brewery_id, brewery_name, brewery_address \n"+
+                "FROM breweries \n" +
                 "ORDER BY brewery_name;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while (results.next()){
@@ -45,7 +45,7 @@ public class JdbcBreweriesDao implements BreweriesDao{
 
     @Override
     public Brewery getBreweryById(int breweryId) {
-        String sql = "SELECT *\n" +
+        String sql = "SELECT brewery_id, brewery_name, brewery_address, time_open, time_closed, history, is_active\n" +
                 "FROM breweries WHERE brewery_id = ?;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, breweryId);
         if(results.next()){
@@ -57,7 +57,7 @@ public class JdbcBreweriesDao implements BreweriesDao{
 
     @Override
     public Brewery getBreweryByName(String breweryName) {
-        String sql = "SELECT *\n" +
+        String sql = "SELECT brewery_id, brewery_name, brewery_address, time_open, time_closed, history, is_active\n" +
                 "FROM breweries WHERE brewery_name = ?;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, breweryName);
         if(results.next()){

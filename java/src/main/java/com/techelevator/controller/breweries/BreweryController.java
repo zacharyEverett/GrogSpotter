@@ -31,6 +31,7 @@ public class BreweryController {
     @ResponseStatus(HttpStatus.OK)
     @GetMapping()
     public List<Brewery> getListOfAllBreweries() {
+
         try {
             return breweriesDao.findAll();
         } catch (ResourceAccessException e) {
