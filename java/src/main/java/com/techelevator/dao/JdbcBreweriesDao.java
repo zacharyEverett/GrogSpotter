@@ -33,7 +33,6 @@ public class JdbcBreweriesDao implements BreweriesDao{
         String sql = "SELECT brewery_name, brewery_address, time_open, time_closed, history, is_active\n" +
                 "FROM breweries\n" +
                 "ORDER BY brewery_name;";
-
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while (results.next()){
             Brewery brewery = mapRowToBrewery(results);
