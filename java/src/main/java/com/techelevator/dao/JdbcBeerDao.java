@@ -47,7 +47,7 @@ public class JdbcBeerDao implements BeerDao{
         List<Beer> beers = new ArrayList<>();
         String sql = "SELECT beer_name, brewery_name, abv, beer_type, beer_description " +
                 "FROM beers JOIN breweries USING (brewery_id) WHERE brewery_id = ? ORDER BY beer_name;";
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, brewery_id);
         while (results.next()) {
             Beer beer = mapRowToBeer(results);
             beers.add(beer);
@@ -60,7 +60,7 @@ public class JdbcBeerDao implements BeerDao{
         List<Beer> beers = new ArrayList<>();
         String sql = "SELECT beer_name, brewery_name, abv, beer_type, beer_description " +
                 "FROM beers JOIN breweries USING (brewery_id) WHERE abv > ? ORDER BY beer_name;";
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, abv);
         while (results.next()) {
             Beer beer = mapRowToBeer(results);
             beers.add(beer);
@@ -73,7 +73,7 @@ public class JdbcBeerDao implements BeerDao{
         List<Beer> beers = new ArrayList<>();
         String sql = "SELECT beer_name, brewery_name, abv, beer_type, beer_description " +
                 "FROM beers JOIN breweries USING (brewery_id) WHERE type = ? ORDER BY beer_name;";
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, type);
         while (results.next()) {
             Beer beer = mapRowToBeer(results);
             beers.add(beer);
