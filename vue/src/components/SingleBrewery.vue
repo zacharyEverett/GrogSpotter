@@ -1,6 +1,6 @@
 <template>
   <div>
-      <h1> {{ brewery.breweryID }} </h1>
+      <h1> {{ brewery.breweryName }} </h1>
 
 
   </div>
@@ -25,8 +25,8 @@ export default {
         }
         
     },
-    computed(){
-        this.brewery = axios.get("/breweries/{this.$route.params.id}").data
+    created(){
+      this.brewery = axios.get("/breweries/{this.$route.params.id}").data
     }
 
 }
