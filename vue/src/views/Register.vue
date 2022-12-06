@@ -37,6 +37,7 @@
         Create Account
       </button>
     </form>
+    <router-link :to="{name: 'registerBrewery'}">Register As Brewery </router-link>
   </div>
 </template>
 
