@@ -43,16 +43,30 @@ public class BreweryController {
         }
     }
 
-    /**
-     * Gets a list of a single brewery by name for display, displays all necessary information.
-     * Author: Zach Everett
-     */
+//    /**
+//     * Gets a list of a single brewery by name for display, displays all necessary information.
+//     * Author: Zach Everett
+//     */
+//    @ResponseStatus(HttpStatus.OK)
+//    @GetMapping("/{name}")
+//    public Brewery getBreweryByName(@PathVariable String name) {
+//        try {
+//            return breweriesDao.getBreweryByName(name);
+//        } catch (ResourceAccessException e) {
+//            System.out.println(e.getMessage());
+//            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
+//        } catch (Exception f) {
+//            System.out.println(f.getMessage());
+//            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
+//        }
+//    }
+
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping("/{name}")
-    public Brewery getBreweryByName(@PathVariable String name) {
+    @GetMapping("/{id}")
+    public Brewery getBreweryByID(@PathVariable int id ) {
         try {
-            return breweriesDao.getBreweryByName(name);
-        } catch (ResourceAccessException e) {
+            return breweriesDao.getBreweryById(id);
+        }catch (ResourceAccessException e) {
             System.out.println(e.getMessage());
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
         } catch (Exception f) {

@@ -4,12 +4,12 @@ import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
-import RegisterBrewery from '@/views/RegisterBrewery'
-import BreweryView from '@/views/BreweryView'
-import BeerView from '@/views/BeerView'
+import RegisterBrewery from '../views/RegisterBrewery.vue'
 import BreweriesView from '@/views/BreweriesView'
 import ReviewView from '@/views/AddReviewView'
 import store from '../store/index'
+import BreweryView from '../views/BreweryView.vue'
+import BeerView from '../views/BeerView.vue'
 
 Vue.use(Router)
 
@@ -75,7 +75,7 @@ const router = new Router({
       }
     },
     {
-      path: "/breweries/{id}",
+      path: "/breweries/:id",
       name: "brewery",
       component: BreweryView,
       meta: {
@@ -83,7 +83,7 @@ const router = new Router({
       }
     },
     {
-      path: "/breweries/{id}/{beerID}",
+      path: "/breweries/:id/:beerID",
       name: "beerView",
       component: BeerView,
       meta: {
@@ -92,7 +92,7 @@ const router = new Router({
     },
     // BEER LOVERS ONLY
     { 
-      path: "/breweries/{id}/{beerID}/review",
+      path: "/breweries/:id/:beerID/review",
       name: "reviewView",
       component: ReviewView,
       meta: {
