@@ -15,7 +15,11 @@ import Cards from '../components/Cards.vue';
 
 
 export default {
+  created(){
+    this.$store.commit('SET_BREWERIES')
+  },
   components: { Cards },
+  
   
 
     Cards};

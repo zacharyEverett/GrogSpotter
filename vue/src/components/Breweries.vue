@@ -2,13 +2,13 @@
   <div id="breweriesList">
       Breweries Will Go Here
       <ul>
-        <li v-for="brewery in this.breweries" v-bind:key="brewery.id">{{ brewery.breweryName }}</li>
+        <li v-for="brewery in this.$store.state.breweries" v-bind:key="brewery.id">{{ brewery.breweryName }}</li>
       </ul>
   </div>
 </template>
 
 <script>
-import axios from 'axios'
+
 export default {
 data() {
   return {
@@ -16,15 +16,10 @@ data() {
   }
   },
   created(){
-    this.createList();
+    this.$store.commit('SET_BREWERIES')
   },
   methods:{
-    createList(){
-      axios.get("/breweries").then(returned => 
-      {returned.data.forEach(element => {
-        this.breweries.push(element);
-      });})
-    }
+    
   }
   
 }
