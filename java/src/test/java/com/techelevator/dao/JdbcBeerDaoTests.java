@@ -44,21 +44,21 @@ public class JdbcBeerDaoTests extends BaseDaoTests{
     }
 
     @Test
-    public void getByBreweryIdListLengthOne(int breweryId) {
+    public void getByBreweryIdListLengthOne() {
         List<Beer> beers = new ArrayList<>();
         beers = sut.getByBreweryId(1);
         int expected = 1;
         Assert.assertEquals(expected, beers.size());
     }
     @Test
-    public void getByBreweryIdListLengthGreaterThanOne(int breweryId){
+    public void getByBreweryIdListLengthGreaterThanOne(){
         List<Beer> beers = new ArrayList<>();
         beers = sut.getByBreweryId(2);
         int expected = 2;
         Assert.assertEquals(expected, beers.size());
     }
     @Test
-    public void getByBreweryIdListCheckWholeObject(int breweryId){
+    public void getByBreweryIdListCheckWholeObject(){
         List<Beer> beers = new ArrayList<>();
         beers = sut.getByBreweryId(2);
         Beer expected = BEER_2;
