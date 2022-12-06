@@ -1,19 +1,21 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.app.Brewery;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class JdbcBreweriesDao implements BreweriesDao{
+public class JdbcBreweryDao implements BreweriesDao{
 
     private final JdbcTemplate jdbcTemplate;
 
-    public JdbcBreweriesDao(JdbcTemplate jdbcTemplate) {
+    public JdbcBreweryDao(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 
@@ -67,8 +69,15 @@ public class JdbcBreweriesDao implements BreweriesDao{
 
     @Override
     public int findBreweryIdByName(String breweryName) {
+        if (breweryName == null) throw new IllegalArgumentException("Brewery name cannot be null");
         String sql = "SELECT brewery_id FROM breweries WHERE brewery_name = ?;";
-        return jdbcTemplate.queryForObject(sql,int.class, breweryName);
+        int breweryId;
+        try {
+            breweryId = jdbcTemplate.queryForObject(sql, int.class, breweryName);
+        }catch (EmptyResultDataAccessException e) {
+            throw new UsernameNotFoundException("Brewery " + breweryName + " was not found.");
+        }
+        return breweryId;
     }
 
     @Override
