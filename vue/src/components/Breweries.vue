@@ -1,15 +1,27 @@
 <template>
-  <div>
+  <div id="breweriesList">
       Breweries Will Go Here
       <ul>
-        <li ></li>
+        <li v-for="brewery in this.$store.state.breweries" v-bind:key="brewery.id">{{ brewery.breweryName }}</li>
       </ul>
   </div>
 </template>
 
 <script>
-export default {
 
+export default {
+data() {
+  return {
+    breweries: [],
+  }
+  },
+  created(){
+    this.$store.commit('SET_BREWERIES')
+  },
+  methods:{
+    
+  }
+  
 }
 </script>
 
