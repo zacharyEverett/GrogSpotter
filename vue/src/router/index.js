@@ -4,10 +4,9 @@ import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
-
 import BreweriesView from '@/views/BreweriesView'
+import ReviewView from '@/views/AddReviewView'
 import store from '../store/index'
-
 
 Vue.use(Router)
 
@@ -65,7 +64,33 @@ const router = new Router({
         requiresAuth: false
       }
     },
-   
+    {
+      path: "/breweries/{id}",
+      name: "brewery",
+      component: BreweryView,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: "/breweries/{id}/{beerID}",
+      name: "beerView",
+      component: BeerView,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    // BEER LOVERS ONLY
+    { 
+      path: "/breweries/{id}/{beerID}/review",
+      name: "reviewView",
+      component: ReviewView,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    // BREWERS ONLY
+    
   ]
 })
 
