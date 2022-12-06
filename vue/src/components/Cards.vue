@@ -1,7 +1,7 @@
 <template>
   <div class="container">
       <div id="discover">
-          Discover Breweries
+           <router-link :to="{name: 'breweries'}"> Discover Breweries</router-link>
       </div>
       <div id="yourBeers">
           Your Beers
