@@ -7,8 +7,8 @@ import Register from '../views/Register.vue'
 import BreweryView from '@/views/BreweryView'
 import BeerView from '@/views/BeerView'
 import BreweriesView from '@/views/BreweriesView'
+import ReviewView from '@/views/AddReviewView'
 import store from '../store/index'
-import Breweries from '../views/BreweriesView.vue'
 
 Vue.use(Router)
 
@@ -61,12 +61,11 @@ const router = new Router({
     {
       path: "/breweries",
       name: "breweries",
-      component: Breweries,
+      component: BreweriesView,
       meta: {
         requiresAuth: false
       }
     },
-<<<<<<< HEAD
     {
       path: "/breweries/{id}",
       name: "brewery",
@@ -83,22 +82,17 @@ const router = new Router({
         requiresAuth: false
       }
     },
-    {
-      path: "/breweries",
-      name: "breweriesView",
-      component: BreweriesView,
+    // BEER LOVERS ONLY
+    { 
+      path: "/breweries/{id}/{beerID}/review",
+      name: "reviewView",
+      component: ReviewView,
       meta: {
         requiresAuth: false
       }
-    }
-=======
-    // {
-    //   path: "/breweries/:id",
-    //   name: "brewery",
-    //   component: Placeholder
-    // }
-
->>>>>>> f4586dce039fd7cf2fce6d8b4aa8efd24add1759
+    },
+    // BREWERS ONLY
+    
   ]
 })
 
