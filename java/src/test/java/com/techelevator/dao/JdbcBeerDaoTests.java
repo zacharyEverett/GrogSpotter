@@ -31,7 +31,7 @@ public class JdbcBeerDaoTests extends BaseDaoTests{
     public void getByIdTestHappyPath() {
         Beer actual = sut.getById(1);
         Beer expected = BEER_1;
-        Assert.assertEquals(expected.getType(), actual.getType());
+        Assert.assertEquals(expected.getBeerName(), actual.getBeerName());
     }
 
     @Test
