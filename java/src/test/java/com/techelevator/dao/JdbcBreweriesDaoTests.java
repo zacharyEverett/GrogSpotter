@@ -16,12 +16,12 @@ import java.util.List;
 public class JdbcBreweriesDaoTests extends BaseDaoTests{
     protected static final Brewery BREWERY_1 = new Brewery(1, "Mindful", "3759 Library Rd, Pittsburgh, PA 15234", LocalTime.parse("11:00:00"), LocalTime.parse("00:00:00"), "Mindful brewery is a new hot spot in the Castle Shannon borough of Pittsburgh, crafting their own beers. They also have a renowned menu of pub food with a restaurant open to all ages", true);
     protected static final Brewery BREWERY_2 = new Brewery(2,"Kyle Beer Co", "111 Beer Lane, Beertown, PA 15228", LocalTime.parse("00:00:00"), LocalTime.parse("00:00:00"), "The south hills premier location for locally crafted beers", true);
-    private JdbcBreweriesDao sut;
+    private JdbcBreweryDao sut;
 
     @Before
     public void setup() {
         JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
-        sut = new JdbcBreweriesDao(jdbcTemplate);
+        sut = new JdbcBreweryDao(jdbcTemplate);
     }
     @Test
     public void findAllBreweriesTest(){

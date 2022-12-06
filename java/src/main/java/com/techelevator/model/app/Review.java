@@ -1,6 +1,9 @@
 package com.techelevator.model.app;
 
 public class Review {
+    private String beerName;
+    private String breweryName;
+    private String userName;
     private int reviewId;
     private int userId;
     private int beerId;
@@ -15,6 +18,30 @@ public class Review {
         this.reviewBody = reviewBody;
     }
     public Review(){}
+
+    public String getBeerName() {
+        return beerName;
+    }
+
+    public void setBeerName(String beerName) {
+        this.beerName = beerName;
+    }
+
+    public String getBreweryName() {
+        return breweryName;
+    }
+
+    public void setBreweryName(String breweryName) {
+        this.breweryName = breweryName;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 
     public int getReviewId() {
         return reviewId;
