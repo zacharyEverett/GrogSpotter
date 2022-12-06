@@ -1,7 +1,7 @@
 package com.techelevator.controller.breweries;
 
 
-import com.techelevator.dao.JdbcBreweriesDao;
+import com.techelevator.dao.JdbcBreweryDao;
 import com.techelevator.model.app.Brewery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,14 +22,14 @@ public class BreweryController {
     @Autowired
     JdbcTemplate jdbcTemplate;
     @Autowired
-    JdbcBreweriesDao breweriesDao;
+    JdbcBreweryDao breweriesDao;
 
     /**
      * Gets a list of all breweries for display for the user on the breweries page
      * Author: Zach Everett
      */
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping
+    @GetMapping()
     public List<Brewery> getListOfAllBreweries() {
 
         try {
