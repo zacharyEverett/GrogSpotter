@@ -15,8 +15,8 @@ public class JdbcBeerDaoTests extends BaseDaoTests{
     protected static final User USER_1 = new User(1, "user1", "user1", "ROLE_USER");
     protected static final User USER_2 = new User(2, "user2", "user2", "ROLE_USER");
     private static final User USER_3 = new User(3, "user3", "user3", "ROLE_USER");
-    private static final Beer BEER_1 = new Beer(1, 1, "88 rabbits", 8, "Adjunct Lager", "Named for the famous route 88 that Mindful resides on");
-    private static final Beer BEER_2 = new Beer(2, 2, "Kyles Blonde Lager", 12.1, "American Lager", "Flagship beer from the flagship brewery in Western PA");
+    protected static final Beer BEER_1 = new Beer(1, 1, "88 rabbits", 8, "Adjunct Lager", "Named for the famous route 88 that Mindful resides on");
+    protected static final Beer BEER_2 = new Beer(2, 2, "Kyles Blonde Lager", 12.1, "American Lager", "Flagship beer from the flagship brewery in Western PA");
     private static final Beer BEER_3 = new Beer(3, 2, "TomA Porter", 12.5, "Porter", "Dark and strong porter created by the infamous Tom Anderson");
 
     private JdbcBeerDao sut;
@@ -70,6 +70,10 @@ public class JdbcBeerDaoTests extends BaseDaoTests{
         beers = sut.getByAbv(5.0);
         int expected = 3;
         Assert.assertEquals(expected, beers.size());
+    }
+    @Test
+    public void testingTheTestClass() {
+        assertBeersMatch(BEER_1, BEER_1);
     }
 
     public void assertBeersMatch(Beer expected, Beer actual) {
