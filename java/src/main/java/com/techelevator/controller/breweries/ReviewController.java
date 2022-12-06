@@ -49,7 +49,7 @@ public class ReviewController {
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/user/{userId}")
-    public List<Review> getReviewByUserId(int userId){
+    public List<Review> getReviewByUserId(@PathVariable int userId){
         try{
             return reviewDao.getReviewsByUserId(userId);
         }catch(ResponseStatusException re){
@@ -60,7 +60,7 @@ public class ReviewController {
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/beer/{beerId}")
-    public List<Review> getReviewByBeerId(int beerId){
+    public List<Review> getReviewByBeerId(@PathVariable int beerId){
         try{
             return reviewDao.getReviewsByBeerId(beerId);
         }catch(ResponseStatusException re){
@@ -71,7 +71,7 @@ public class ReviewController {
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/brewery/{breweryId}")
-    public List<Review> getReviewByBreweryId(int breweryId){
+    public List<Review> getReviewByBreweryId(@PathVariable int breweryId){
         try{
             return reviewDao.getReviewsByBreweryId(breweryId);
         }catch(ResponseStatusException re){
