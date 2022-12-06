@@ -7,6 +7,8 @@ import Register from '../views/Register.vue'
 import BreweriesView from '@/views/BreweriesView'
 import ReviewView from '@/views/AddReviewView'
 import store from '../store/index'
+import BreweryView from '../views/BreweryView.vue'
+import BeerView from '../views/BeerView.vue'
 
 Vue.use(Router)
 
