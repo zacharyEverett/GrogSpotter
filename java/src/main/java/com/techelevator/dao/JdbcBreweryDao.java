@@ -11,11 +11,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class JdbcBreweriesDao implements BreweriesDao{
+public class JdbcBreweryDao implements BreweriesDao{
 
     private final JdbcTemplate jdbcTemplate;
 
-    public JdbcBreweriesDao(JdbcTemplate jdbcTemplate) {
+    public JdbcBreweryDao(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 
