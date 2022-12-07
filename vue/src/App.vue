@@ -22,8 +22,6 @@
 </template>
 
 
-
-
 <style scoped>
 #app {
   background-color: gray;

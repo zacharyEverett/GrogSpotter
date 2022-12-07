@@ -1,8 +1,14 @@
 <template>
   <div>
-      <h1 id="name"> {{ brewery.breweryName }} </h1>
+      <div id="info"><h1 id="name"> {{ brewery.breweryName }} </h1>
       <h3 id="address">{{ brewery.breweryAddress }}</h3>
       <p>{{ brewery.history }}</p>
+      </div>
+      <div id="beersList">
+          <div id="beer">
+
+          </div>
+      </div>
 
 
   </div>
