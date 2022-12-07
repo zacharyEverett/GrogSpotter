@@ -1,7 +1,9 @@
 package com.techelevator.controller.breweries;
 
 
+import com.techelevator.dao.JdbcBeerDao;
 import com.techelevator.dao.JdbcBreweryDao;
+import com.techelevator.model.app.Beer;
 import com.techelevator.model.app.Brewery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,6 +25,8 @@ public class BreweryController {
     JdbcTemplate jdbcTemplate;
     @Autowired
     JdbcBreweryDao breweriesDao;
+    @Autowired
+    JdbcBeerDao beerDao;
 
     /**
      * Gets a list of all breweries for display for the user on the breweries page
@@ -72,6 +76,17 @@ public class BreweryController {
         } catch (Exception f) {
             System.out.println(f.getMessage());
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/{breweryId}/beers")
+    public List<Beer> getBeerByBreweryId(@PathVariable int breweryId){
+        try{
+            return beerDao.getByBreweryId(breweryId);
+        }catch (ResponseStatusException re){
+            re.getMessage();
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
     }
 
