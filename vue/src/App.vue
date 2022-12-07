@@ -22,11 +22,13 @@
 </template>
 
 
-
-
 <style scoped>
 #app {
   background-color: gray;
+}
+#nav {
+  background-color: black;
+  color: white;
 }
 header {
   background-color: black;
