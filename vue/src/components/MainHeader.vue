@@ -1,9 +1,8 @@
 <template>
-  <div id="app">
     <div id="nav">
       <header>
         <div id="left">
-          <h1>Application Name</h1>
+          <h1>Beer Lovers Only</h1>
         </div>
 
         <div id="right">
@@ -22,19 +21,15 @@
         </div>
       </header>
     </div>
-    <router-view />
-  </div>
 </template>
 
+<script>
+export default {
+    name: "header"
+}
+</script>
 
-<style scoped>
-#app {
-  background-color: gray;
-}
-#nav {
-  background-color: black;
-  color: white;
-}
+<style>
 header {
   background-color: black;
   color: white;
