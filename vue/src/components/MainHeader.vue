@@ -1,32 +1,28 @@
 <template>
-    <div id="nav">
-      <header>
-        <div id="left">
-          <h1>Beer Lovers Only</h1>
-        </div>
+  <div id="nav">
+    <header>
+      <div id="left">
+        <h1>Beer Lovers Only</h1>
+      </div>
 
-        <div id="right">
-          <router-link v-bind:to="{ name: 'home' }">Home</router-link
-          >&nbsp;|&nbsp;
-          <router-link
-            v-bind:to="{ name: 'logout' }"
-            v-if="$store.state.token != ''"
-            >Logout</router-link
-          >
-          <router-link
-            v-bind:to="{ name: 'login' }"
-            v-else
-            >Login</router-link
-          >
-        </div>
-      </header>
-    </div>
+      <div id="right">
+        <router-link v-bind:to="{ name: 'home' }">Home</router-link
+        >&nbsp;|&nbsp;
+        <router-link
+          v-bind:to="{ name: 'logout' }"
+          v-if="$store.state.token != ''"
+          >Logout</router-link
+        >
+        <router-link v-bind:to="{ name: 'login' }" v-else>Login</router-link>
+      </div>
+    </header>
+  </div>
 </template>
 
 <script>
 export default {
-    name: "header"
-}
+  name: "header",
+};
 </script>
 
 <style>
