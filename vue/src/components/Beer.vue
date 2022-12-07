@@ -1,16 +1,26 @@
 <template>
   <div>
-      <h1>This is the beer page for a beer with the ID of: #  {{this.$route.params.beerID}} </h1>
-      <h2>It is currently lacking data. Thanks, a lot...Zach. You know which one.</h2>
+    <h1>{{ beer.beerName }}</h1>
+    <h2>Type: {{ beer.type }}, Abv: {{ beer.abv }}</h2>
+    <h3>{{ beer.beerDescription }}</h3>
   </div>
 </template>
 
 <script>
+import axios from "axios";
 export default {
-
-}
+  data() {
+    return {
+      beer: {},
+    };
+  },
+  created() {
+    axios.get("/beers/" + this.$route.params.beerID).then((response) => {
+      this.beer = response.data;
+    });
+  },
+};
 </script>
 
 <style>
-
 </style>
