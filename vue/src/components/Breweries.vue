@@ -2,7 +2,9 @@
   <div id="breweriesList">
       Breweries Will Go Here
       <ul>
-        <li v-for="brewery in this.$store.state.breweries" v-bind:key="brewery.id"> <router-link :to="{name: 'brewery', params: {id: brewery.breweryID}}"> {{ brewery.breweryName }} </router-link> </li>
+        <li v-for="brewery in this.$store.state.breweries" v-bind:key="brewery.id"> 
+          <router-link :to="{name: 'brewery', params: {id: brewery.breweryID}}"> {{ brewery.breweryName }} 
+            </router-link> </li>
       </ul>
   </div>
 </template>

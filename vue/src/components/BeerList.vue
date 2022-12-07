@@ -3,7 +3,7 @@
       <h2> Beers on tap: </h2>
       <ul id="beersList">
           <li v-for="beer in beers" :key="beer.beerId">
-              {{beer.beerName}}
+             <router-link :to="{name: 'beerView', params: {id: beer.breweryId, beerID: beer.beerId}}"> {{beer.beerName}} </router-link> 
           </li>
       </ul>
   </div>
