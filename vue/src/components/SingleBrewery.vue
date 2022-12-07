@@ -1,6 +1,8 @@
 <template>
   <div>
-      <h1> {{ brewery.breweryName }} </h1>
+      <h1 id="name"> {{ brewery.breweryName }} </h1>
+      <h3 id="address">{{ brewery.breweryAddress }}</h3>
+      <p>{{ brewery.history }}</p>
 
 
   </div>
@@ -13,20 +15,14 @@ export default {
     data(){
         return {
         brewery: {
-            breweryID: 0,
-            breweryName: "",
-            breweryAddress: "",
-            timeOpen: null,
-            timeClosed: null,
-            history: null,
-            beersList: null,
-            active: true
-          }  
+            
+          }, 
         }
         
     },
     created(){
-      this.brewery = axios.get("/breweries/{this.$route.params.id}").data
+      axios.get("breweries/"+this.$route.params.id).then(response =>
+      this.brewery = response.data)
     }
 
 }
