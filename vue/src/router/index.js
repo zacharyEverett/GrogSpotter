@@ -74,6 +74,7 @@ const router = new Router({
         requiresAuth: false
       }
     },
+    
     {
       path: "/breweries/:id",
       name: "brewery",
