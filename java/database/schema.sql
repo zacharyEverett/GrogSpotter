@@ -13,7 +13,10 @@ CREATE TABLE users (
 CREATE TABLE IF NOT EXISTS breweries (
 	brewery_id serial,
 	brewery_name varchar(40) not null unique,
-	brewery_address varchar(100) not null,
+	street_address varchar(100) not null,
+	city varchar(50) not null,
+	state_abv varchar(2) not null,
+	zip varchar(10) not null,
 	time_open time not null,
 	time_closed time not null,
 	history varchar(1000) not null,
@@ -39,6 +42,7 @@ CREATE TABLE IF NOT EXISTS beers (
 CREATE TABLE IF NOT EXISTS reviews (
 	review_id serial,
 	user_id int not null,
+	title varchar(100) not null,
 	beer_id int,
 	brewery_id int,
 	rating int not null,

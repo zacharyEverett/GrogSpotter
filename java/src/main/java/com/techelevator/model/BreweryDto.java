@@ -1,38 +1,29 @@
-package com.techelevator.model.app;
+package com.techelevator.model;
 
-import java.sql.Time;
+import javax.validation.constraints.NotEmpty;
 import java.time.LocalTime;
-import java.util.List;
 
-public class Brewery {
-
+public class BreweryDto {
+    @NotEmpty
     private int breweryID;
+    @NotEmpty
     private String breweryName;
+    @NotEmpty
     private String streetAddress;
+    @NotEmpty
     private String city;
-    private String stateAbv;
+    @NotEmpty
+    private String state_abv;
+    @NotEmpty
     private String zip;
+    @NotEmpty
     private LocalTime timeOpen;
+    @NotEmpty
     private LocalTime timeClosed;
+    @NotEmpty
     private String history;
+    @NotEmpty
     private boolean isActive = true;
-
-
-    public Brewery (int breweryID, String breweryName, String streetAddress, String city, String stateAbv, String zip, LocalTime timeOpen, LocalTime timeClosed, String history, boolean isActive){
-        this.breweryID = breweryID;
-        this.breweryName = breweryName;
-        this.streetAddress = streetAddress;
-        this.city = city;
-        this.stateAbv = stateAbv;
-        this.zip = zip;
-        this.timeOpen = timeOpen;
-        this.timeClosed = timeClosed;
-        this.history = history;
-        this.isActive = isActive;
-    }
-    public Brewery(){}
-
-    private List<Beer> beersList;
 
     public int getBreweryID() {
         return breweryID;
@@ -54,8 +45,8 @@ public class Brewery {
         return streetAddress;
     }
 
-    public void setStreetAddress(String streetAddress) {
-        this.streetAddress = streetAddress;
+    public void setBreweryAddress(String breweryAddress) {
+        this.streetAddress = breweryAddress;
     }
 
     public String getCity() {
@@ -66,12 +57,12 @@ public class Brewery {
         this.city = city;
     }
 
-    public String getStateAbv() {
-        return stateAbv;
+    public String getState_abv() {
+        return state_abv;
     }
 
-    public void setStateAbv(String stateAbv) {
-        this.stateAbv = stateAbv;
+    public void setState_abv(String state_abv) {
+        this.state_abv = state_abv;
     }
 
     public String getZip() {
@@ -112,13 +103,5 @@ public class Brewery {
 
     public void setActive(boolean active) {
         isActive = active;
-    }
-
-    public List<Beer> getBeersList() {
-        return beersList;
-    }
-
-    public void setBeersList(List<Beer> beersList) {
-        this.beersList = beersList;
     }
 }
