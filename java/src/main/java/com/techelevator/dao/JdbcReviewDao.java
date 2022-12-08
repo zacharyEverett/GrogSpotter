@@ -106,19 +106,17 @@ Notes: all list methods operate functionally within PGAdmin.
         return reviews;
     }
 
-    //revisit after controllers are built -----> lines 100-111
     @Override
-    public boolean addBeerReview(int user_id,int beerId,int brewery_id,int rating,String review_body) {
-        String sql = "INSERT INTO reviews (user_id,beer_id,brewery_id,rating,review_body)\n" +
-                "VALUES (?,?,?,?,?);";
-        return jdbcTemplate.update(sql, user_id, beerId, brewery_id, rating, review_body)==1;
-    }
-
-    @Override
-    public boolean addBreweryReview(int user_id,int beerId,int brewery_id,int rating,String review_body) {
-        String sql = "INSERT INTO reviews (user_id,beer_id,brewery_id,rating,review_body)\n" +
-                "VALUES (?,?,?,?,?);";
-        return jdbcTemplate.update(sql, user_id,beerId,brewery_id,rating,review_body)==1;
+    public Review getReviewByReviewId(int reviewId){
+        Review review = new Review();
+        String sql = "SELECT review_id, user_id, beer_id, brewery_id, rating, review_body FROM reviews\n" +
+                "WHERE review_id = ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, reviewId);
+        if(results.next()){
+            return mapRowToReview(results);
+        }else{
+            return null;
+        }
     }
 
     private Review mapRowToReview(SqlRowSet rs){
