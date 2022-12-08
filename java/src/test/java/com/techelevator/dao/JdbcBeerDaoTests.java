@@ -31,7 +31,13 @@ public class JdbcBeerDaoTests extends BaseDaoTests{
     public void getByIdTestHappyPath() {
         Beer actual = sut.getById(1);
         Beer expected = BEER_1;
-        Assert.assertEquals(expected.getBeerName(), actual.getBeerName());
+        assertBeersMatch(actual, expected);
+//        Assert.assertEquals(expected.getAbv(), actual.getAbv(), .1);
+//        Assert.assertEquals(expected.getBeerId(), actual.getBeerId());
+//        Assert.assertEquals(expected.getBeerName(), actual.getBeerName());
+//        Assert.assertEquals(expected.getBreweryId(), actual.getBreweryId());
+//        Assert.assertEquals(expected.getBeerDescription(), actual.getBeerDescription());
+
     }
 
     @Test
@@ -80,7 +86,7 @@ public class JdbcBeerDaoTests extends BaseDaoTests{
         Assert.assertEquals(expected.getBeerId(), actual.getBeerId());
         Assert.assertEquals(expected.getBreweryId(), actual.getBreweryId());
         Assert.assertEquals(expected.getBeerName(), actual.getBeerName());
-        Assert.assertEquals(expected.getAbv(), actual.getAbv());
+        Assert.assertEquals(expected.getAbv(), actual.getAbv(), .1);
         Assert.assertEquals(expected.getType(), actual.getType());
         Assert.assertEquals(expected.getBeerDescription(), actual.getBeerDescription());
     }

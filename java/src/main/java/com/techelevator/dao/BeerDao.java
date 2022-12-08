@@ -1,5 +1,6 @@
 package com.techelevator.dao;
 
+import com.techelevator.model.BeerDto;
 import com.techelevator.model.app.Beer;
 
 import java.util.List;
@@ -16,6 +17,6 @@ public interface BeerDao {
 
     List<Beer> getByType(String type);
 
-    boolean addBeer(int breweryId, String beerName, double abv, String type, String beerDescription);
+    Beer addBeer(BeerDto beer);
 
 }

@@ -1,6 +1,7 @@
 package com.techelevator.dao;
 
 
+import com.techelevator.model.BeerDto;
 import com.techelevator.model.User;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -82,9 +83,14 @@ public class JdbcBeerDao implements BeerDao{
     }
 
     @Override
-    public boolean addBeer(int breweryId, String beerName, double abv, String type, String beerDescription) {
-        String sql = "INSERT into beers (brewery_id, beer_name, abv, beer_type, beer_description) VALUES (?, ?, ?, ?, ?);";
-        return jdbcTemplate.update(sql, breweryId, beerName, abv, type, beerDescription) == 1;
+    public Beer addBeer(BeerDto beer) {
+        Integer beerId = 0;
+        Beer beer1 = new Beer();
+        String sql = "INSERT into beers (brewery_id, beer_name, abv, beer_type, beer_description RETURNING beer_id) VALUES (?, ?, ?, ?, ?);";
+        beerId = jdbcTemplate.queryForObject(sql, Integer.class, beer.getBreweryId(), beer.getBeerName(), beer.getAbv(), beer.getType(), beer.getBeerDescription());
+        beer1 = getById(beerId);
+        return beer1;
+//        return jdbcTemplate.update(sql, breweryId, beerName, abv, type, beerDescription) == 1;
     }
 
     private Beer mapRowToBeer(SqlRowSet rs) {
