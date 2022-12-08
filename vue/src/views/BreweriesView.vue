@@ -1,7 +1,6 @@
 <template>
   <div>
     <breweries></breweries>
-    
   </div>
 </template>
 

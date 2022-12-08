@@ -14,6 +14,11 @@
             v-if="$store.state.token != ''"
             >Logout</router-link
           >
+          <router-link
+            v-bind:to="{ name: 'login' }"
+            v-else
+            >Login</router-link
+          >
         </div>
       </header>
     </div>
@@ -22,11 +27,13 @@
 </template>
 
 
-
-
 <style scoped>
 #app {
   background-color: gray;
+}
+#nav {
+  background-color: black;
+  color: white;
 }
 header {
   background-color: black;
