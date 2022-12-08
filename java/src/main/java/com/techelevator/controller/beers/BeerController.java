@@ -13,7 +13,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/beers")
 @CrossOrigin
-public class BeerController {
+public class    BeerController {
     /*
     Author: Zachary M.
     Notes: need input on endpoints to finish methods. Same problem we were having with column not

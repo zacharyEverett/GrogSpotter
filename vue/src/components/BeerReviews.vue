@@ -10,15 +10,17 @@
 </template>
 
 <script>
-import axios from 'axios'
+import BackendServices from '../services/BackendServices'
+
 export default {
 data(){
     return {
         reviews: []
     }
 },
+
 created(){
-    axios.get('/reviews/beer/' + this.$route.params.beerID).then(response => {
+    BackendServices.getBeerReviews(this.$route.params.beerID).then(response => {
         response.data.forEach(element => {
             this.reviews.push(element)
         });

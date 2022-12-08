@@ -22,7 +22,8 @@
 so a div that goes through a v-for from the beers array
 - zach
 <script>
-import axios from "axios";
+import BackendServices from '../services/BackendServices';
+
 export default {
   data() {
     return {
@@ -30,8 +31,7 @@ export default {
     };
   },
   created() {
-    axios
-      .get("/breweries/" + this.$route.params.id + "/beers")
+    BackendServices.getBeerList(this.$route.params.id)
       .then((returned) => {
         returned.data.forEach((element) => {
           this.beers.push(element);
