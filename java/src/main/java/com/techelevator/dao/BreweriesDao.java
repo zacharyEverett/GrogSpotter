@@ -1,5 +1,6 @@
 package com.techelevator.dao;
 
+import com.techelevator.model.BreweryDto;
 import com.techelevator.model.app.Beer;
 import com.techelevator.model.app.Brewery;
 
@@ -14,5 +15,5 @@ public interface BreweriesDao {
 
     int findBreweryIdByName(String breweryName);
 
-    boolean create(String breweryName, String breweryAddress);
+    Brewery addBrewery(BreweryDto brewery);
 }

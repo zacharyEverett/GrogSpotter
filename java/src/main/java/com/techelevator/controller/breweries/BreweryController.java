@@ -3,6 +3,7 @@ package com.techelevator.controller.breweries;
 
 import com.techelevator.dao.JdbcBeerDao;
 import com.techelevator.dao.JdbcBreweryDao;
+import com.techelevator.model.BreweryDto;
 import com.techelevator.model.app.Beer;
 import com.techelevator.model.app.Brewery;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -88,6 +89,12 @@ public class BreweryController {
             re.getMessage();
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
+    }
+    @PostMapping("/")
+    public Brewery addBrewery(@RequestBody BreweryDto brewery){
+        Brewery newBrewery = new Brewery();
+        newBrewery = breweriesDao.addBrewery(brewery);
+        return newBrewery;
     }
 
     //waiting on Danny for rest of methods.

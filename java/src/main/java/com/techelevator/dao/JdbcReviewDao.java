@@ -106,7 +106,7 @@ Notes: all list methods operate functionally within PGAdmin.
         return reviews;
     }
 
-    //revisit after controllers are built -----> lines 100-111
+    //revisit after controllers are built -----> lines 100-111 ---NEED TO MATCH UP JAVA OBJECTS WITH SQL TABLES
     @Override
     public boolean addBeerReview(int user_id,int beerId,int brewery_id,int rating,String review_body) {
         String sql = "INSERT INTO reviews (user_id,beer_id,brewery_id,rating,review_body)\n" +
