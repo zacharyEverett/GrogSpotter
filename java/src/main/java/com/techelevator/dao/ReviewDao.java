@@ -1,6 +1,8 @@
 package com.techelevator.dao;
 
 
+import com.techelevator.model.dto.BeerReviewDto;
+import com.techelevator.model.dto.BreweryReviewDto;
 import com.techelevator.model.app.Review;
 
 import java.util.List;
@@ -18,4 +20,7 @@ public interface ReviewDao {
 
     Review getReviewByReviewId(int reviewId);
 
+    Review addBreweryReview(BreweryReviewDto reviewDto);
+
+    Review addBeerReview(BeerReviewDto reviewDto);
 }

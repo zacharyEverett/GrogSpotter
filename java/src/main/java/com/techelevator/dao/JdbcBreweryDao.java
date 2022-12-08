@@ -1,6 +1,6 @@
 package com.techelevator.dao;
 
-import com.techelevator.model.BreweryDto;
+import com.techelevator.model.dto.BreweryDto;
 import com.techelevator.model.app.Brewery;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;

@@ -1,4 +1,4 @@
-package com.techelevator.controller.breweries;
+package com.techelevator.controller.reviews;
 
 import com.techelevator.dao.JdbcReviewDao;
 import com.techelevator.model.app.Review;

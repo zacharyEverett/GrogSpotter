@@ -1,5 +1,7 @@
 package com.techelevator.dao;
 
+import com.techelevator.model.dto.BeerReviewDto;
+import com.techelevator.model.dto.BreweryReviewDto;
 import com.techelevator.model.app.Review;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -117,6 +119,30 @@ Notes: all list methods operate functionally within PGAdmin.
         }else{
             return null;
         }
+    }
+
+    @Override
+    public Review addBreweryReview(BreweryReviewDto reviewDto){
+        Review reviewToAdd;
+        Integer reviewId = 0;
+        String sql = "INSERT INTO reviews (user_id,title,brewery_id,rating,review_body)" +
+                "VALUES (?,?,?,?,?) RETURNING review_id;";
+        reviewId = jdbcTemplate.queryForObject(sql, Integer.class, reviewDto.getUserId(),reviewDto.getTitle(),
+                reviewDto.getBreweryId(),reviewDto.getRating(),reviewDto.getReviewBody());
+        reviewToAdd = getReviewByReviewId(reviewId);
+        return reviewToAdd;
+    }
+
+    @Override
+    public Review addBeerReview(BeerReviewDto reviewDto) {
+        Review reviewToAdd;
+        Integer reviewId = 0;
+        String sql = "INSERT INTO reviews (user_id,title,beer_id,rating,review_body)" +
+                "VALUES (?,?,?,?,?) RETURNING review_id;";
+        reviewId = jdbcTemplate.queryForObject(sql, Integer.class, reviewDto.getUserId(),reviewDto.getTitle(),
+                reviewDto.getBeerId(),reviewDto.getRating(),reviewDto.getReviewBody());
+        reviewToAdd = getReviewByReviewId(reviewId);
+        return reviewToAdd;
     }
 
     private Review mapRowToReview(SqlRowSet rs){
