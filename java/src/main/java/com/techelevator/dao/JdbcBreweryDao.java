@@ -99,6 +99,7 @@ public class JdbcBreweryDao implements BreweriesDao{
         brewery.setCity(rs.getString("city"));
         brewery.setStateAbv(rs.getString("state_abv"));
         brewery.setZip(rs.getString("zip"));
+        brewery.setHistory(rs.getString("history"));
         return brewery;
     }
 }

@@ -18,7 +18,7 @@ data(){
     }
 },
 created(){
-    axios.get('/reviews/beer/' + this.$route.params.beerID).then(response => {
+    axios.get('/reviews/breweries' + this.$route.params.breweryID).then(response => {
         response.data.forEach(element => {
             this.reviews.push(element)
         });

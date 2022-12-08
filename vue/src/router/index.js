@@ -100,6 +100,15 @@ const router = new Router({
         requiresAuth: false
       }
     },
+    { 
+      path: "/breweries/:id/review",
+      name: "reviewView",
+      component: ReviewView,
+      meta: {
+        requiresAuth: false
+      }
+    },
+
     // BREWERS ONLY
     
   ]

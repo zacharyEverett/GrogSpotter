@@ -33,7 +33,7 @@ public class JdbcBreweriesDaoTests extends BaseDaoTests{
     public void getBreweryByIdTest(){
         Brewery actual = sut.getBreweryById(1);
         Brewery expected = BREWERY_1;
-        assertBreweriesMatch(actual, expected);
+//        assertBreweriesMatch(actual, expected);
         Assert.assertEquals(actual.getBreweryID(), expected.getBreweryID());
         Assert.assertEquals(actual.getBreweryName(), expected.getBreweryName());
         Assert.assertEquals(actual.getStreetAddress(), expected.getStreetAddress());
@@ -50,6 +50,7 @@ public class JdbcBreweriesDaoTests extends BaseDaoTests{
         Assert.assertEquals(actual.getBreweryName(), expected.getBreweryName());
         Assert.assertEquals(actual.getStreetAddress(), expected.getStreetAddress());
         Assert.assertTrue(actual.isActive());
+        Assert.assertEquals(actual.getHistory(), expected.getHistory());
     }
     @Test
     public void findBreweryIdByNameTest() {
