@@ -1,6 +1,6 @@
 package com.techelevator.dao;
 
-import com.techelevator.model.BeerDto;
+import com.techelevator.model.dto.BeerDto;
 import com.techelevator.model.app.Beer;
 
 import java.util.List;

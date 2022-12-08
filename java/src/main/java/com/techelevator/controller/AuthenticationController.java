@@ -3,6 +3,9 @@ package com.techelevator.controller;
 import javax.validation.Valid;
 
 import com.techelevator.model.*;
+import com.techelevator.model.dto.LoginDto;
+import com.techelevator.model.dto.LoginResponseDto;
+import com.techelevator.model.dto.RegisterUserDto;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
