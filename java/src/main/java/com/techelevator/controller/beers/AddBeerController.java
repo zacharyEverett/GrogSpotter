@@ -1,8 +1,8 @@
-package com.techelevator.controller.breweries;
+package com.techelevator.controller.beers;
 
 import com.techelevator.dao.JdbcBeerDao;
 import com.techelevator.dao.JdbcBreweryDao;
-import com.techelevator.model.BeerDto;
+import com.techelevator.model.dto.BeerDto;
 import com.techelevator.model.app.Beer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;

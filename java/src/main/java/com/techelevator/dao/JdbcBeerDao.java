@@ -1,8 +1,7 @@
 package com.techelevator.dao;
 
 
-import com.techelevator.model.BeerDto;
-import com.techelevator.model.User;
+import com.techelevator.model.dto.BeerDto;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
@@ -10,7 +9,6 @@ import com.techelevator.model.app.Beer;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 @Component
 public class JdbcBeerDao implements BeerDao{
