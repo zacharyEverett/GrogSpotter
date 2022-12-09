@@ -10,6 +10,8 @@ import ReviewView from '@/views/AddReviewView'
 import store from '../store/index'
 import BreweryView from '../views/BreweryView.vue'
 import BeerView from '../views/BeerView.vue'
+import AddBreweryView from '../views/AddBreweryView'
+import AddBeerView from '../views/AddBeerView'
 
 Vue.use(Router)
 
@@ -110,7 +112,22 @@ const router = new Router({
     },
 
     // BREWERS ONLY
-    
+    {
+      path: "/addBrewery",
+      name: "addBrewery",
+      component: AddBreweryView,
+      meta: {
+        requiresAuth: false //WILL END UP BEING TRUE - FALSE FOR TESTING/BUILDING
+      }
+    },
+    {
+      path:"/addBeer",
+      name: "addBeer",
+      component: AddBeerView,
+      meta: {
+        requiresAuth: false //WILL END UP BEING TRUE - FALSE FOR TESTING/BUILDING
+      }
+    }
   ]
 })
 

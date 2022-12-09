@@ -2,7 +2,8 @@
   <div>
     <div id="info">
       <h1 id="name">{{ brewery.breweryName }}</h1>
-      <h3 id="address">{{ brewery.breweryAddress }}</h3>
+      <h3 id="address">{{ brewery.streetAddress }}</h3>
+      <h4>{{brewery.city}}, {{brewery.stateAbv}} {{brewery.zip}}</h4>
       <p>{{ brewery.history }}</p>
     </div>
     <div id="beersList">

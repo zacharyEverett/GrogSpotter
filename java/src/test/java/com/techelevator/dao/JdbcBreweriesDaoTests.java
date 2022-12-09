@@ -37,6 +37,9 @@ public class JdbcBreweriesDaoTests extends BaseDaoTests{
         Assert.assertEquals(actual.getBreweryID(), expected.getBreweryID());
         Assert.assertEquals(actual.getBreweryName(), expected.getBreweryName());
         Assert.assertEquals(actual.getStreetAddress(), expected.getStreetAddress());
+        Assert.assertEquals(actual.getCity(), expected.getCity());
+        Assert.assertEquals(actual.getStateAbv(), expected.getStateAbv());
+        Assert.assertEquals(actual.getZip(), expected.getZip());
         Assert.assertTrue(actual.isActive());
         Assert.assertEquals(actual.getHistory(), expected.getHistory());
 //        Assert.assertEquals(actual.getHistory(), expected.getHistory()); -------HISTORY NOT MATCHING - EXPECTING NULL?

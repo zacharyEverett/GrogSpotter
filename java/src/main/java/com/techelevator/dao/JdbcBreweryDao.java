@@ -33,7 +33,7 @@ public class JdbcBreweryDao implements BreweriesDao{
     @Override
     public List<Brewery> findAll() {
         List<Brewery> breweries = new ArrayList<>();
-        String sql = "SELECT brewery_id, brewery_name, street_address, city, state_abv, zip \n"+
+        String sql = "SELECT brewery_id, brewery_name, street_address, city, state_abv, zip, history \n"+
                 "FROM breweries \n" +
                 "ORDER BY brewery_name;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
@@ -85,7 +85,7 @@ public class JdbcBreweryDao implements BreweriesDao{
     public Brewery addBrewery(BreweryDto brewery) {
         Brewery brewery1 = new Brewery();
         Integer breweryId = 0;
-        String sql = "INSERT INTO breweries (brewery_name, street_address, city, state_abv, zip, time_open, time_closed, history RETURNING brewery_id) VALUES (?, ?, ?, ?, ?);";
+        String sql = "INSERT INTO breweries (brewery_name, street_address, city, state_abv, zip, time_open, time_closed, history RETURNING brewery_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
         breweryId = jdbcTemplate.queryForObject(sql, Integer.class, brewery.getBreweryName(), brewery.getStreetAddress(), brewery.getCity(), brewery.getState_abv(), brewery.getZip(), brewery.getTimeOpen(), brewery.getTimeClosed(), brewery.getHistory(), brewery.isActive());
         brewery1 = getBreweryById(breweryId);
         return brewery1;
