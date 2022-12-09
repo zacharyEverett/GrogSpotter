@@ -1,6 +1,7 @@
 <template>
   
   <div id="reviews">
+      <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet'>
         <button v-on:click="show = !show">Leave a Review</button>
           <form v-if="show == true">
           <div>
@@ -54,5 +55,9 @@ created(){
 <style>
 .review {
     border:1px solid black;
+}
+
+h3 {
+    font-family: Lobster;
 }
 </style>
