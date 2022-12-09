@@ -12,6 +12,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.security.Principal;
 
 @RestController
 @RequestMapping("/breweries/{id}")
@@ -29,6 +30,7 @@ public class AddReviewController {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/addReview/brewery")
     public Review addBreweryReview(@RequestBody @Valid BreweryReviewDto reviewDto){
+        Review createdBreweryReview = new Review();
         return reviewDao.addBreweryReview(reviewDto);
     }
 

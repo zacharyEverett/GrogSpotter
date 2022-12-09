@@ -30,4 +30,11 @@ export default {
 </script>
 
 <style>
+#info{
+  border-style: inset;
+  border-width: 10px;
+  border-color: black;
+  border-radius: 25px;
+  text-align: center;
+}
 </style>
