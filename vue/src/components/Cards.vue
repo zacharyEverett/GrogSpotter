@@ -12,7 +12,16 @@
 </template>
 
 <script>
-export default {};
+const secrets = require('@/../randompicturesofbeer/justanotherbeer.mp3')
+export default {
+  created(){
+    let secret = new Audio(secrets);
+    secret.play();
+  }
+  
+  };
+
+
 </script>
 
 <style>
