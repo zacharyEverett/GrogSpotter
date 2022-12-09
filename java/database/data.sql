@@ -15,7 +15,7 @@ insert into beers (brewery_id, beer_name, abv, beer_type, beer_description)
 values
 ((select brewery_id from breweries where brewery_name = 'Kyle Beer Co'), 'Kyles Blonde Lager', '12.1', 'American Lager', 'Flagship beer from the flagship brewery in Western PA'),
 ((select brewery_id from breweries where brewery_name = 'Kyle Beer Co'), 'TomA Porter', '12.5', 'Porter', 'Dark and strong porter created by the infamous Tom Anderson');
-select * from reviews;
+
 
 
 
@@ -30,14 +30,8 @@ values
 ((select user_id from users where username = 'user'), 'Great food, great beer', 1, 5, 'Great establishment!'),
 ((select user_id from users where username = 'user'), 'Beer lovers come here', 2, 4, 'Great beer, food just OK'),
 ((select user_id from users where username = 'admin'), 'Get the TomA Porter!', 1, 5, 'Great selection of beer, not just all IPAs like some places');
-
+commit;
 ---------------------Filter by brewery, characteristisc etc.-------------------------
-select * from users
-join breweries using (brewery_id)
-where brewery_name = 'Kyle Beer Co'
-order by abv desc;
 
-select * from reviews where beer_id = 1;
-rollback;
 SELECT beer_name, brewery_name, abv, beer_type, beer_description FROM beers JOIN breweries USING (brewery_id) WHERE beer_id = 1;
 
