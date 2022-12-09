@@ -90,12 +90,12 @@ public class BreweryController {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
     }
-    @PostMapping("/")
-    public Brewery addBrewery(@RequestBody BreweryDto brewery){
-        Brewery newBrewery = new Brewery();
-        newBrewery = breweriesDao.addBrewery(brewery);
-        return newBrewery;
-    }
+//    @PostMapping()
+//    public Brewery addBrewery(@RequestBody BreweryDto brewery){
+//        Brewery newBrewery = new Brewery();
+//        newBrewery = breweriesDao.addBrewery(brewery);
+//        return newBrewery;
+//    }
 
     //waiting on Danny for rest of methods.
 

@@ -4,7 +4,7 @@ import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
-import RegisterBrewery from '../views/RegisterBrewery.vue'
+// import RegisterBrewery from '../views/RegisterBrewery.vue'
 import BreweriesView from '@/views/BreweriesView'
 import ReviewView from '@/views/AddReviewView'
 import store from '../store/index'
@@ -60,14 +60,14 @@ const router = new Router({
         requiresAuth: false
       },
     },
-    {
-      path: "/registerBrewery",
-      name: "registerBrewery",
-      component: RegisterBrewery,
-      meta: {
-        requiresAuth: false
-      }
-    },
+    // {
+    //   path: "/registerBrewery",
+    //   name: "registerBrewery",
+    //   component: AddBreweryView,
+    //   meta: {
+    //     requiresAuth: false
+    //   }
+    // },
     {
       path: "/breweries",
       name: "breweries",
@@ -113,8 +113,8 @@ const router = new Router({
 
     // BREWERS ONLY
     {
-      path: "/addBrewery",
-      name: "addBrewery",
+      path: "/registerBrewery",
+      name: "registerBrewery",
       component: AddBreweryView,
       meta: {
         requiresAuth: false //WILL END UP BEING TRUE - FALSE FOR TESTING/BUILDING

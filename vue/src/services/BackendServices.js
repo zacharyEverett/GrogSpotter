@@ -24,7 +24,7 @@ export default {
         return axios.get(`/breweries/${id}`)
     },
     addBrewery(brewery) {
-        return axios.post('/breweries', brewery)
+        return axios.post('/registerBrewery', brewery)
     },
 
     // Reviews    
