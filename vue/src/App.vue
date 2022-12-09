@@ -59,6 +59,11 @@
 
 
 <style scoped>
+
+#nav {
+  height: 5%;
+}
+
 #left {
   display: flex;
   justify-content: start;

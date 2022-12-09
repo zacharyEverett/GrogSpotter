@@ -5,14 +5,14 @@ public class Beer {
     private int breweryId;
     private String beerName;
     private double abv;
-    private String type;
+    private String beerType;
     private String beerDescription;
 
-    public Beer (int beerId, int breweryId, String beerName, double abv, String type, String beerDescription) {
+    public Beer (int beerId, int breweryId, String beerName, double abv, String beerType, String beerDescription) {
         this.beerId = beerId;
         this.beerName = beerName;
         this.abv = abv;
-        this.type = type;
+        this.beerType = beerType;
         this.beerDescription = beerDescription;
     }
     public Beer (){}
@@ -49,12 +49,12 @@ public class Beer {
         this.abv = abv;
     }
 
-    public String getType() {
-        return type;
+    public String getBeerType() {
+        return beerType;
     }
 
-    public void setType(String description) {
-        this.type = type;
+    public void setBeerType(String beerType) {
+        this.beerType = beerType;
     }
 
     public String getBeerDescription() {

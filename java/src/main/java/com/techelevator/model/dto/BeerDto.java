@@ -12,7 +12,7 @@ public class BeerDto {
     @NotEmpty
     private double abv;
     @NotEmpty
-    private String type;
+    private String beerType;
     @NotEmpty
     private String beerDescription;
 
@@ -48,12 +48,12 @@ public class BeerDto {
         this.abv = abv;
     }
 
-    public String getType() {
-        return type;
+    public String getBeerType() {
+        return beerType;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setBeerType(String beerType) {
+        this.beerType = beerType;
     }
 
     public String getBeerDescription() {
