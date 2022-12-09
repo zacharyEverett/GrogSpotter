@@ -37,6 +37,7 @@ CREATE TABLE IF NOT EXISTS beers (
 CREATE TABLE IF NOT EXISTS reviews (
 	review_id serial,
 	user_id int not null,
+	title varchar(100) not null,
 	beer_id int,
 	brewery_id int,
 	rating int not null,
