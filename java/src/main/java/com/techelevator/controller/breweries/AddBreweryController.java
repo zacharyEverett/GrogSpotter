@@ -20,7 +20,7 @@ public class AddBreweryController {
     @Autowired
     JdbcBeerDao beerDao;
 
-    @PostMapping("/")
+    @PostMapping()
     public Brewery addBrewery(@RequestBody BreweryDto brewery){
         Brewery newBrewery = new Brewery();
         newBrewery = breweriesDao.addBrewery(brewery);

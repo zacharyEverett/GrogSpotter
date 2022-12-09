@@ -13,7 +13,7 @@ public class BreweryDto {
     @NotEmpty
     private String city;
     @NotEmpty
-    private String state_abv;
+    private String stateAbv;
     @NotEmpty
     private String zip;
     @NotEmpty
@@ -57,12 +57,12 @@ public class BreweryDto {
         this.city = city;
     }
 
-    public String getState_abv() {
-        return state_abv;
+    public String getStateAbv() {
+        return stateAbv;
     }
 
-    public void setState_abv(String state_abv) {
-        this.state_abv = state_abv;
+    public void setStateAbv(String stateAbv) {
+        this.stateAbv = stateAbv;
     }
 
     public String getZip() {

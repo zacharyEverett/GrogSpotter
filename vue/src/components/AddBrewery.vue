@@ -6,10 +6,12 @@
             <label for="brewery-Name"/>
             <input type="text" id="brewery_name" placeholder="Brewery Name" 
             onfocus="this.placeholder = ''"
-            onblur="this.placeholder = 'Brewery Name'"/>
+            onblur="this.placeholder = 'Brewery Name'"
+            v-model="newBrewery.breweryName"/>
             </div>
             <div>
-            <select name="select-state" id="select-state" aria-placeholder="Select State">
+            <select name="select-state" id="select-state" aria-placeholder="Select State"
+            v-model="newBrewery.stateAbv">
                 <option value="PA">Pennsylvania</option>
             </select>
             </div>
@@ -17,23 +19,41 @@
             <label for="street-address"/>
             <input type="text" id="street-address" placeholder="Street Address"
             onfocus="this.placeholder = ''"
-            onblur="this.placeholder = 'Street Address'"/>
+            onblur="this.placeholder = 'Street Address'"
+            v-model="newBrewery.streetAddress"/>
             </div>
             <div>
             <label for="city"/>
             <input type="text" id="city" placeholder="City"
             onfocus="this.placeholder = ''"
-            onblur="this.placeholder = 'City'"/>
+            onblur="this.placeholder = 'City'"
+            v-model="newBrewery.city"/>
             </div><div>
             <label for="zip"/>
             <input type="text" id="zip" placeholder="Zip"
             onfocus="this.placeholder = ''"
-            onblur="this.placeholder = 'Zip'"/>
+            onblur="this.placeholder = 'Zip'"
+            v-model="newBrewery.zip"/>
+            </div>
+            <div>
+                <label for="time-open"/>
+                <input type="time" id="time=open" placeholder="11:00"
+                onfocus="this.placeholder = ''"
+                onblur="this.placeholder = '11:00'"
+                v-model="newBrewery.timeOpen"/>
+            </div>
+            <div>
+                <label for="time-closed"/>
+                <input type="time" id="time=closed" placeholder="23:00"
+                onfocus="this.placeholder = ''"
+                onblur="this.placeholder = '23:00'"
+                v-model="newBrewery.timeClosed"/>
             </div>
             <div>
             <textarea name="brewery-history" id="brewery-history" rows="8" cols="50" placeholder="Brewery History" 
             onfocus="this.placeholder = ''"
-            onblur="this.placeholder = 'Brewery History'"></textarea>
+            onblur="this.placeholder = 'Brewery History'"
+            v-model="newBrewery.history"></textarea>
             </div>
             <button type="submit">Submit</button>
       </form>
@@ -41,6 +61,7 @@
 </template>
 
 <script>
+import BackendServices from '../services/BackendServices'
 export default {
 data(){
         return{
@@ -48,7 +69,7 @@ data(){
                 breweryName: '',
                 streetAddress: '',
                 city: '',
-                state:'',
+                stateAbv:'',
                 zip:'',
                 timeOpen:'',
                 timeClosed:'',
@@ -56,8 +77,16 @@ data(){
             }
         }
     },
-
-
+methods: {
+    addNewBrewery() {
+      BackendServices.addBrewery(this.newBrewery)
+      this.resetForm();
+    },
+    resetForm() {
+      this.newBrewery = {};
+    //   this.showForm = false;
+    },
+},
 }
 </script>
 

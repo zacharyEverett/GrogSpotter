@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <div class="route">
-    <router-link :to="{ name: 'addBrewery' }">
+    <router-link :to="{ name: 'registerBrewery' }">
       <h4 class="button-78">Add a Brewery</h4>
     </router-link>
     <router-link :to="{ name: 'addBeer' }">
