@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>{{ beer.beerName }}</h1>
-    <h2>Type: {{ beer.type }} Abv: {{ beer.abv }}</h2>
+    <h2>Type: {{ beer.beerType }}  |  Abv: {{ beer.abv }}</h2>
     <h3>{{ beer.beerDescription }}</h3>
   </div>
 </template>

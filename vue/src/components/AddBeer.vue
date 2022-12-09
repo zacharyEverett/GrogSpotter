@@ -22,7 +22,7 @@
                 <input type="text" id="abv" placeholder="ABV"
                 onfocus="this.placeholder = ''"
                 onblur="this.placeholder = 'ABV'"
-                v-model="newBeer.beerAbv"/>
+                v-model="newBeer.abv"/>
             </div>
             <div>
                 <label for="beer-type"></label>
@@ -52,7 +52,7 @@ export default {
             newBeer:{
                 breweryId: '',
                 beerName: '',
-                beerAbv: '',
+                abv: '',
                 beerType: '',
                 beerDescription:'',
             }
@@ -63,10 +63,18 @@ export default {
 methods: {
     addNewBeer() {
       BackendServices.addBeer(this.newBeer)
-    //   this.resetForm();
+     
+      this.resetForm();
     },
     resetForm() {
       this.newReview = {};
+      this.newBeer = {
+                breweryId: '',
+                beerName: '',
+                abv: '',
+                beerType: '',
+                beerDescription:'',
+                }
     //   this.showForm = false;
     },
 },
