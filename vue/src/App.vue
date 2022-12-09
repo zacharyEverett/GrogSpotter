@@ -22,6 +22,21 @@
               <div class="foam-15"></div>
             </div>
             <div id="liquid">
+              <div id="right">
+                <div class="nav">
+                  <router-link v-bind:to="{ name: 'home' }">
+                    <div class="homes"><h3>Home</h3></div>
+                  </router-link>
+                  <router-link
+                    v-bind:to="{ name: 'logout' }"
+                    v-if="$store.state.token != ''"
+                    ><div class="log"><h3>Logout</h3></div></router-link
+                  >
+                  <router-link v-bind:to="{ name: 'login' }" v-else>
+                    <div class="log"><h3>Login</h3></div></router-link
+                  >
+                </div>
+              </div>
               <div class="bubble bubble1"></div>
               <div class="bubble bubble2"></div>
               <div class="bubble bubble3"></div>
@@ -37,20 +52,6 @@
             <h1>GrogSpotter</h1>
           </div>
         </div>
-        <div id="right">
-          <div class="nav">
-          <router-link v-bind:to="{ name: 'home' }">
-            <div><h3>Home</h3></div> 
-            </router-link>
-          <router-link
-            v-bind:to="{ name: 'logout' }"
-            v-if="$store.state.token != ''"
-            ><div><h3>Logout</h3></div></router-link
-          >
-          <router-link v-bind:to="{ name: 'login' }" v-else>
-            <div><h3>Login</h3></div></router-link>
-            </div>
-        </div>
       </header>
     </div>
     <router-view />
@@ -59,6 +60,10 @@
 
 
 <style scoped>
+#app{
+  background-color: rgb(160, 53, 53);
+}
+
 #left {
   display: flex;
   justify-content: start;
@@ -95,6 +100,15 @@
   height: 200px;
 }
 
+.homes{
+  left: 1150px;
+}
+
+.log{
+  left: 1150px;
+  top: 100px;
+}
+
 #liquid {
   background-color: #f2c025;
   border: 10px solid #f2c025;
@@ -102,6 +116,7 @@
   height: 170px;
   overflow: hidden;
   width: 2500px;
+  display: flex;
 }
 
 #liquid:after {
