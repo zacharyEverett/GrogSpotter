@@ -8,12 +8,14 @@ public class Review {
     private int userId;
     private int beerId;
     private int breweryId;
+    private String title;
     private int rating;
     private String reviewBody;
 
-    public Review(int reviewId, int userId, int rating, String reviewBody) {
+    public Review(int reviewId, int userId, String title, int rating, String reviewBody) {
         this.reviewId = reviewId;
         this.userId = userId;
+        this.title = title;
         this.rating = rating;
         this.reviewBody = reviewBody;
     }
@@ -73,6 +75,14 @@ public class Review {
 
     public void setBreweryId(int breweryId) {
         this.breweryId = breweryId;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public int getRating() {

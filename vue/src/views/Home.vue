@@ -1,5 +1,7 @@
 <template>
   <div class="home">
+    <router-link :to="{name: 'addBrewery'}">Add a Brewery   </router-link>
+      <router-link :to="{name: 'addBeer'}">Add a Beer </router-link>
     <div id="description">
       <img src="../imgs/dance-beer.gif" alt="" id="image">
       <p>This is a sick application where you can find beers and stuff. </p>

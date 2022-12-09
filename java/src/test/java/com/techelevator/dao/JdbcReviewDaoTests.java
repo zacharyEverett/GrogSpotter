@@ -15,9 +15,9 @@ import java.util.List;
 public class JdbcReviewDaoTests extends BaseDaoTests{
     private JdbcReviewDao sut;
 
-    protected static final Review REVIEW_1 = new Review(1, 1, 5, "It is the greatest beer in all the VERLD!");
-    protected static final Review REVIEW_2 = new Review(1, 2, 4, "Slimy, yet satisfying!");
-    protected static final Review REVIEW_3 = new Review(2, 1, 5, "5 out of 5!");
+    protected static final Review REVIEW_1 = new Review(1, 1, "DRINK THIS ONE!", 5, "It is the greatest beer in all the VERLD!");
+    protected static final Review REVIEW_2 = new Review(2, 2, "Refreshing", 4, "Slimy, yet satisfying!");
+    protected static final Review REVIEW_3 = new Review(3, 1, "One of my new favorites!", 5, "5 out of 5!");
 
 
     @Before
@@ -29,6 +29,10 @@ public class JdbcReviewDaoTests extends BaseDaoTests{
     public void getAllBeerReviewsTest() {
         List<Review> actual = sut.getAllBeerReviews();
         Assert.assertEquals(4, actual.size());
+        Review testReview = actual.get(2);
+        Assert.assertEquals(testReview.getBeerId(), REVIEW_1.getBeerId());
+        Assert.assertEquals(testReview.getReviewBody(), REVIEW_1.getReviewBody());
+        Assert.assertEquals(testReview.getTitle(), REVIEW_1.getTitle());
     }
     @Test
     public void getAllBreweryReviewsTest() {
@@ -58,6 +62,18 @@ public class JdbcReviewDaoTests extends BaseDaoTests{
     public void testingAssertBreweryMethod() {
         assertBreweryReviewsMatch(REVIEW_1, REVIEW_1);
     }
+//    @Test
+//    public void getBeerReviewByIdTest() {
+//        Review actual = sut.getBeerReviewByReviewId(1);
+//        Review expected = REVIEW_1;
+//        Assert.assertEquals(actual.getReviewId(), expected.getReviewId());
+//    }
+//    @Test
+//    public void getBreweryReviewByIdTest() {
+//        Review actual = sut.getBreweryReviewByReviewId(1);
+//        Review expected = REVIEW_1;
+//        Assert.assertEquals(actual.getBeerId(), expected.getBeerId());
+//    }
 
     public void assertBeerReviewsMatch(Review expected, Review actual) {
         Assert.assertEquals(expected.getReviewId(), actual.getReviewId());
