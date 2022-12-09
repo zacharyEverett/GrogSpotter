@@ -73,7 +73,6 @@ public class BreweryController {
         }
     }
 
-
     //waiting on Danny for rest of methods.
 
 
