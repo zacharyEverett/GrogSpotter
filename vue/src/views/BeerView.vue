@@ -1,7 +1,9 @@
 <template>
   <div>
+    <nav>
       <router-link :to="{name: 'brewery'}">Back to Brewery </router-link>
       <router-link :to="{name: 'reviewView'}">Leave A Review </router-link>
+    </nav>
       <beer></beer>
       <beer-reviews></beer-reviews>
   </div>

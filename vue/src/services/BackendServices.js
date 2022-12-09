@@ -42,5 +42,12 @@ export default {
     },
     getReviewsByUser(userID) {
         return axios.get(`/reviews/user/${userID}`)
+    },
+
+    addBreweryReview(review) {
+        return axios.post('/addReview/brewery', review)
+    },
+    addBeerReview(review) {
+        return axios.post('/addReview/beer', review)
     }
 }
