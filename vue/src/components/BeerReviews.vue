@@ -1,5 +1,7 @@
 <template>
+    
   <div id="reviews">
+      <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet'>
       <h1>Reviews: </h1>
       <div class="review" v-for="review in reviews" :key="review.reviewId">
           <h3> Review Title  </h3>
@@ -32,5 +34,9 @@ created(){
 <style>
 .review {
     border:1px solid black;
+}
+
+h3 {
+    font-family: Lobster;
 }
 </style>
