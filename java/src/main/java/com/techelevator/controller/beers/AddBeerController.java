@@ -19,7 +19,7 @@ public class AddBeerController {
     @Autowired
     JdbcBeerDao beerDao;
 
-    @PostMapping("/")
+    @PostMapping()
     public Beer addBeer(@RequestBody BeerDto beer){
         Beer newBeer = new Beer();
         newBeer = beerDao.addBeer(beer);

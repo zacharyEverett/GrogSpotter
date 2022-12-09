@@ -8,11 +8,11 @@ public class Beer {
     private String beerType;
     private String beerDescription;
 
-    public Beer (int beerId, int breweryId, String beerName, double abv, String type, String beerDescription) {
+    public Beer (int beerId, int breweryId, String beerName, double abv, String beerType, String beerDescription) {
         this.beerId = beerId;
         this.beerName = beerName;
         this.abv = abv;
-        this.beerType = type;
+        this.beerType = beerType;
         this.beerDescription = beerDescription;
     }
     public Beer (){}
