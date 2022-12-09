@@ -36,7 +36,7 @@ public class JdbcBeerDaoTests extends BaseDaoTests{
         Assert.assertEquals(expected.getBeerId(), actual.getBeerId());
         Assert.assertEquals(expected.getBeerName(), actual.getBeerName());
 
-        Assert.assertEquals(expected.getType(), actual.getType());
+        Assert.assertEquals(expected.getBeerType(), actual.getBeerType());
 ////        Assert.assertEquals(expected.getBeerDescription(), actual.getBeerDescription());
 
     }
@@ -88,7 +88,7 @@ public class JdbcBeerDaoTests extends BaseDaoTests{
         Assert.assertEquals(expected.getBreweryId(), actual.getBreweryId());
         Assert.assertEquals(expected.getBeerName(), actual.getBeerName());
         Assert.assertEquals(expected.getAbv(), actual.getAbv(), .1);
-        Assert.assertEquals(expected.getType(), actual.getType());
+        Assert.assertEquals(expected.getBeerType(), actual.getBeerType());
         Assert.assertEquals(expected.getBeerDescription(), actual.getBeerDescription());
     }
 }
