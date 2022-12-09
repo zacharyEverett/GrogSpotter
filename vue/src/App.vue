@@ -30,19 +30,26 @@
             </div>
           </div>
           <div id="left">
-            <img class="logo" src="..\randompicturesofbeer\output-onlinepngtools.png"/>
+            <img
+              class="logo"
+              src="..\randompicturesofbeer\output-onlinepngtools.png"
+            />
             <h1>GrogSpotter</h1>
           </div>
         </div>
         <div id="right">
-          <router-link v-bind:to="{ name: 'home' }">Home</router-link
-          >&nbsp;|&nbsp;
+          <div class="nav">
+          <router-link v-bind:to="{ name: 'home' }">
+            <div><h3>Home</h3></div> 
+            </router-link>
           <router-link
             v-bind:to="{ name: 'logout' }"
             v-if="$store.state.token != ''"
-            >Logout</router-link
+            ><div><h3>Logout</h3></div></router-link
           >
-          <router-link v-bind:to="{ name: 'login' }" v-else>Login</router-link>
+          <router-link v-bind:to="{ name: 'login' }" v-else>
+            <div><h3>Login</h3></div></router-link>
+            </div>
         </div>
       </header>
     </div>
@@ -52,41 +59,17 @@
 
 
 <style scoped>
-/* #app {
-  background-color: gray;
-}
-#nav {
-  background-color: black;
-  color: white;
-}
-header {
-  background-color: black;
-  color: white;
-  width: 100%;
-  height: 10%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
 #left {
   display: flex;
-  justify-content: flex-start;
-  align-items: flex-end;
+  justify-content: start;
 }
 
 #right {
   display: flex;
   justify-content: flex-end;
-  align-items: flex-end;
-} */
-
-#left{
-  display: flex;
-  justify-content: start;
 }
 
-.logo{
+.logo {
   width: 120px;
   height: 160px;
   margin-left: 70px;
@@ -102,16 +85,15 @@ header {
   top: 20px;
 }
 
-#container div { position: absolute; }
-
+#container div {
+  position: absolute;
+}
 
 #top {
   border-top: 0;
   border-radius: 0 0 30px 30px;
   height: 200px;
-
 }
-
 
 #liquid {
   background-color: #f2c025;
@@ -125,7 +107,7 @@ header {
 #liquid:after {
   background-color: rgba(255, 255, 255, 0.25);
   bottom: -10px;
-  content: '';
+  content: "";
   height: 200px;
   left: -40px;
   position: absolute;
@@ -146,17 +128,19 @@ header {
 }
 
 @-webkit-keyframes bubble {
-  0% { bottom: 0; }
+  0% {
+    bottom: 0;
+  }
 
-   50% {
-     background-color: rgba(255, 255, 255, 0.2);
-      bottom: 80px;
-   }
+  50% {
+    background-color: rgba(255, 255, 255, 0.2);
+    bottom: 80px;
+  }
 
-   100% {
-     background-color: rgba(255, 255, 255, 0);
-      bottom: 160px;
-   }
+  100% {
+    background-color: rgba(255, 255, 255, 0);
+    bottom: 160px;
+  }
 }
 
 .bubble1 {
@@ -197,11 +181,21 @@ header {
   height: 180px;
 }
 
-.foam-1, .foam-2, .foam-3, .foam-4, 
-.foam-5, .foam-6, .foam-7, .foam-8, 
-.foam-9, .foam-10, .foam-11, .foam-12,
-.foam-13, .foam-14, .foam-15
- {
+.foam-1,
+.foam-2,
+.foam-3,
+.foam-4,
+.foam-5,
+.foam-6,
+.foam-7,
+.foam-8,
+.foam-9,
+.foam-10,
+.foam-11,
+.foam-12,
+.foam-13,
+.foam-14,
+.foam-15 {
   float: left;
   position: absolute;
   z-index: 999;
@@ -216,23 +210,23 @@ header {
 }
 .foam-2 {
   top: -35px;
-  left: 20px; 
+  left: 20px;
 }
 .foam-3 {
   top: -25px;
-  left: 50px; 
+  left: 50px;
 }
 .foam-4 {
   top: -35px;
-  left: 80px; 
+  left: 80px;
 }
 .foam-5 {
   top: -30px;
-  left: 110px; 
+  left: 110px;
 }
 .foam-6 {
   top: -20px;
-  left: 140px; 
+  left: 140px;
 }
 .foam-7 {
   top: -30px;
@@ -245,23 +239,23 @@ header {
 }
 .foam-9 {
   top: -35px;
-  left: 170px; 
+  left: 170px;
 }
 .foam-10 {
   top: -25px;
-  left: 210px; 
+  left: 210px;
 }
 .foam-11 {
   top: -35px;
-  left: 250px; 
+  left: 250px;
 }
 .foam-12 {
   top: -30px;
-  left: 270px; 
+  left: 270px;
 }
 .foam-13 {
   top: -20px;
-  left: 300px; 
+  left: 300px;
 }
 .foam-14 {
   top: -30px;
@@ -274,19 +268,19 @@ header {
 }
 
 h1 {
-  color:rgb(95, 0, 0);
+  color: rgb(95, 0, 0);
   font-weight: 800;
   z-index: 10000;
   position: absolute;
   margin-left: 2em;
-  font-family: 'Prompt', sans-serif;
+  font-family: "Prompt", sans-serif;
   font-size: 6em;
   padding-top: 30px;
   text-shadow: 1px 1px 2px red, 0 0 1em rgb(255, 0, 0), 0 0 0.2em rgb(95, 35, 0);
 }
 
 h2 {
-  font-family: 'Prompt', sans-serif;
+  font-family: "Prompt", sans-serif;
   font-size: 2em;
   color: #0e83cd;
   padding-top: 10px;
@@ -301,7 +295,7 @@ h2 {
   display: -ms-flexbox;
   display: -webkit-flex;
   display: flex;
-  
+
   -webkit-flex-flow: row wrap;
   justify-content: space-around;
 }
