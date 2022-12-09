@@ -1,7 +1,7 @@
 <template>
   <div>
       <h1>Add a Brewery</h1>
-      <form id="add-brewery">
+      <form id="add-brewery" v-on:submit.prevent="addNewBrewery">
           <div>
             <label for="brewery-Name"/>
             <input type="text" id="brewery_name" placeholder="Brewery Name" 
@@ -42,6 +42,21 @@
 
 <script>
 export default {
+data(){
+        return{
+            newBrewery:{
+                breweryName: '',
+                streetAddress: '',
+                city: '',
+                state:'',
+                zip:'',
+                timeOpen:'',
+                timeClosed:'',
+                history:'',
+            }
+        }
+    },
+
 
 }
 </script>
