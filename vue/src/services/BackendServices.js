@@ -48,6 +48,6 @@ export default {
         return axios.post('/addReview/brewery', review)
     },
     addBeerReview(review) {
-        return axios.post('/addReview/beer', review)
+        return axios.post('/breweries/:id/:beerID', review)
     }
 }
