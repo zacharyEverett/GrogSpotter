@@ -4,7 +4,7 @@ import javax.validation.constraints.NotEmpty;
 
 public class BreweryReviewDto {
     @NotEmpty
-    private int userId;
+    private String username;
     @NotEmpty
     private String title;
     @NotEmpty
@@ -14,12 +14,12 @@ public class BreweryReviewDto {
     @NotEmpty
     private String reviewBody;
 
-    public int getUserId() {
-        return userId;
+    public String getUserName() {
+        return username;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setUserName(int userId) {
+        this.username = username;
     }
 
     public String getTitle() {

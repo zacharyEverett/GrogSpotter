@@ -111,7 +111,7 @@ Notes: all list methods operate functionally within PGAdmin.
     @Override
     public Review getBeerReviewByReviewId(int reviewId){
         Review review = new Review();
-        String sql = "SELECT review_id, user_id, beer_id, title, rating, review_body FROM reviews\n" +
+        String sql = "SELECT review_id, username, beer_id, title, rating, review_body FROM reviews\n" +
                 "WHERE review_id = ?;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, reviewId);
         if(results.next()){
@@ -123,7 +123,7 @@ Notes: all list methods operate functionally within PGAdmin.
     @Override
     public Review getBreweryReviewByReviewId(int reviewId){
         Review review = new Review();
-        String sql = "SELECT review_id, user_id, brewery_id, title, rating, review_body FROM reviews\n" +
+        String sql = "SELECT review_id, username, brewery_id, title, rating, review_body FROM reviews\n" +
                 "WHERE review_id = ?;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, reviewId);
         if(results.next()){
@@ -137,9 +137,9 @@ Notes: all list methods operate functionally within PGAdmin.
     public Review addBreweryReview(BreweryReviewDto reviewDto){
         Review reviewToAdd;
         Integer reviewId = 0;
-        String sql = "INSERT INTO reviews (user_id,title,brewery_id,rating,review_body)" +
+        String sql = "INSERT INTO reviews (username,title,brewery_id,rating,review_body)" +
                 "VALUES (?,?,?,?,?) RETURNING review_id;";
-        reviewId = jdbcTemplate.queryForObject(sql, Integer.class, reviewDto.getUserId(),reviewDto.getTitle(),
+        reviewId = jdbcTemplate.queryForObject(sql, Integer.class, reviewDto.getUserName(),reviewDto.getTitle(),
                 reviewDto.getBreweryId(),reviewDto.getRating(),reviewDto.getReviewBody());
         reviewToAdd = getBreweryReviewByReviewId(reviewId);
         return reviewToAdd;
@@ -149,9 +149,9 @@ Notes: all list methods operate functionally within PGAdmin.
     public Review addBeerReview(BeerReviewDto reviewDto) {
         Review reviewToAdd;
         Integer reviewId = 0;
-        String sql = "INSERT INTO reviews (user_id,title,beer_id,rating,review_body)" +
+        String sql = "INSERT INTO reviews (username,title,beer_id,rating,review_body)" +
                 "VALUES (?,?,?,?,?) RETURNING review_id;";
-        reviewId = jdbcTemplate.queryForObject(sql, Integer.class, reviewDto.getUserId(),reviewDto.getTitle(),
+        reviewId = jdbcTemplate.queryForObject(sql, Integer.class, reviewDto.getUserName(),reviewDto.getTitle(),
                 reviewDto.getBeerId(),reviewDto.getRating(),reviewDto.getReviewBody());
         reviewToAdd = getBeerReviewByReviewId(reviewId);
         return reviewToAdd;
@@ -163,7 +163,7 @@ Notes: all list methods operate functionally within PGAdmin.
         review.setBreweryName(rs.getString("brewery_name"));
         review.setUserName(rs.getString("username"));
         review.setReviewId(rs.getInt("review_id"));
-        review.setUserId(rs.getInt("user_id"));
+        review.setUserName(rs.getString("username"));
         review.setTitle(rs.getString("title"));
         review.setRating(rs.getInt("rating"));
         review.setReviewBody(rs.getString("review_body"));
@@ -175,7 +175,6 @@ Notes: all list methods operate functionally within PGAdmin.
         review.setBreweryName(rs.getString("brewery_name"));
         review.setUserName(rs.getString("username"));
         review.setReviewId(rs.getInt("review_id"));
-        review.setUserId(rs.getInt("user_id"));
         review.setTitle(rs.getString("title"));
         review.setRating(rs.getInt("rating"));
         review.setReviewBody(rs.getString("review_body"));

@@ -3,18 +3,18 @@ package com.techelevator.model.app;
 public class Review {
     private String beerName;
     private String breweryName;
-    private String userName;
+//    private String userName;
     private int reviewId;
-    private int userId;
+    private String username;
     private int beerId;
     private int breweryId;
     private String title;
     private int rating;
     private String reviewBody;
 
-    public Review(int reviewId, int userId, String title, int rating, String reviewBody) {
+    public Review(int reviewId, String username, String title, int rating, String reviewBody) {
         this.reviewId = reviewId;
-        this.userId = userId;
+        this.username = username;
         this.title = title;
         this.rating = rating;
         this.reviewBody = reviewBody;
@@ -38,11 +38,11 @@ public class Review {
     }
 
     public String getUserName() {
-        return userName;
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUserName(String username) {
+        this.username = username;
     }
 
     public int getReviewId() {
@@ -53,13 +53,13 @@ public class Review {
         this.reviewId = reviewId;
     }
 
-    public int getUserId() {
-        return userId;
-    }
+//    public String getUserName() {
+//        return username;
+//    }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
+//    public void setUserName(String username) {
+//        this.username = username;
+//    }
 
     public int getBeerId() {
         return beerId;
