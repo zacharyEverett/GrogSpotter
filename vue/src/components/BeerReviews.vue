@@ -25,6 +25,8 @@
       <div class="review" v-for="review in reviews" :key="review.reviewId">
           <h3> {{review.title}} </h3>
           <h4>Rating: {{ review.rating }}/5</h4>
+          <img class="hop" v-for="rating in review.rating" :key="rating" src="@/../randompicturesofbeer\HopsIcon-removebg-preview.png" alt="hops icon">
+          <img class="hop" v-for="thing in antiReviews" :key="thing" src="@/../randompicturesofbeer/LightGhost.png" alt="ghost hop"/>
           <p> {{ review.reviewBody }} </p>
       </div>
   </div>
@@ -38,7 +40,8 @@ data(){
     
     return {
         show: false,
-        reviews: []
+        reviews: [],
+        antiReviews: [],
     }
 },
 
@@ -46,18 +49,41 @@ created(){
     BackendServices.getBeerReviews(this.$route.params.beerID).then(response => {
         response.data.forEach(element => {
             this.reviews.push(element)
-        });
+            this.antiReviews.push(element)
+            this.antiReviews.forEach(thing => {
+                thing.review = 5 - thing.review;
+            })
+        })
     })
+},
+
+computed: {
+    numOfGhost(review) {
+        return (5 - review.rating);
+    },
+    makeArray() {
+        let count = 0;
+        for (let i = 5; i > this.reviews.rating; i--) {
+            count++;
+        }
+        return count;
+    }
 }
 }
 </script>
 
 <style>
 .review {
-    border:1px solid black;
+    border:8px solid black;
+    background-color: rgb(207, 10, 10);
+    margin: 20px;
 }
 
 h3 {
     font-family: Lobster;
+}
+
+.hop {
+    width: 50px;
 }
 </style>
