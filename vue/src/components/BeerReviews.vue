@@ -4,7 +4,7 @@
       <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet'>
         <button v-on:click="show = !show">Leave a Review</button>
           <form v-if="show == true">
-          <div>
+          <div class="review">
             <label for="review-title"/>
             <input type="text" id="review-title" placeholder="Review Title"/>
             <select name="rating" id="rating">
@@ -73,6 +73,9 @@ computed: {
 </script>
 
 <style>
+h1,h2,h3,h4,p{
+    color:antiquewhite;
+}
 .review {
     border:8px solid black;
     background-color: rgb(207, 10, 10);
@@ -81,6 +84,11 @@ computed: {
 
 h3 {
     font-family: Lobster;
+}
+form{
+    display: flex;
+    border-style: inset;
+    border-width: 10px;
 }
 
 .hop {

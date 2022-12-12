@@ -39,10 +39,13 @@
       
       >
       </select>
-      <router-link :to="{ name: 'login' }">Have an account?</router-link>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">
+      <div class="buttons-register">
+      <router-link :to="{ name: 'login' }">
+        <div class="button-87">Have an account?</div></router-link>
+      <button class="button-87" type="submit">
         Create Account
       </button>
+      </div>
     </form>
     <router-link :to="{name: 'registerBrewery'}">Register As Brewery </router-link>
   </div>
@@ -98,4 +101,81 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+
+input, select{
+  border-radius: 10px;
+  height: 35px;
+}
+
+h1{
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  color: rgb(252, 216, 216);
+  font-size: 48px;
+  text-align: center;
+  text-shadow: 1px 1px 2px red, 0 0 1em blue, 0 0 0.2em blue;
+}
+
+.buttons-register{
+  display: flex;
+  flex-direction: column;
+}
+
+label{
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  color: rgb(252, 216, 216);
+  font-size: 30px;
+  text-align: center;
+  text-shadow: 1px 1px 2px red, 0 0 1em blue, 0 0 0.2em blue;
+}
+
+form{
+  border-style: ridge;
+  border-width: 10px;
+  border-radius: 10px;
+  width: 300px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background-image: url("https://cdn.pixabay.com/photo/2018/02/15/14/37/paper-3155438_1280.jpg");
+}
+
+/*  Button CSS */
+.button-87 {
+  margin: auto;
+  padding: 15px 30px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  width: 250px;
+  color: white;
+  border-radius: 10px;
+  display: block;
+  border: 0px;
+  font-weight: 700;
+  box-shadow: 0px 0px 14px -7px #f09819;
+  background-image: linear-gradient(
+    45deg,
+    #ff512f 0%,
+    #f09819 51%,
+    #ff512f 100%
+  );
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-87:hover {
+  background-position: right center;
+  /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}
+
+.button-87:active {
+  transform: scale(0.95);
+}
+</style>
