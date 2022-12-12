@@ -15,4 +15,6 @@ public interface BreweriesDao {
     int findBreweryIdByName(String breweryName);
 
     Brewery addBrewery(BreweryDto brewery);
+
+    Brewery updateBrewery(BreweryDto brewery);
 }

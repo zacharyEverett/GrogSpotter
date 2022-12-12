@@ -85,10 +85,23 @@ public class JdbcBreweryDao implements BreweriesDao{
     public Brewery addBrewery(BreweryDto brewery) {
         Integer breweryId = 0;
         Brewery brewery1 = new Brewery();
-        String sql = "INSERT INTO breweries (brewery_name, street_address, city, state_abv, zip, time_open, time_closed, history) VALUES (?, ?, ?, ?, ?, ?, ?, ?)  RETURNING brewery_id;";
-        breweryId = jdbcTemplate.queryForObject(sql, Integer.class, brewery.getBreweryName(), brewery.getStreetAddress(), brewery.getCity(), brewery.getStateAbv(), brewery.getZip(), brewery.getTimeOpen(), brewery.getTimeClosed(), brewery.getHistory());
+        String sql = "INSERT INTO breweries (brewery_name, street_address, city, state_abv, zip, time_open, time_closed, history, brewer_id) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  RETURNING brewery_id;";
+        breweryId = jdbcTemplate.queryForObject(sql, Integer.class, brewery.getBreweryName(), brewery.getStreetAddress(), brewery.getCity(), brewery.getStateAbv(), brewery.getZip(), brewery.getTimeOpen(), brewery.getTimeClosed(), brewery.getHistory(), brewery.getBrewer_id());
         brewery1 = getBreweryById(breweryId);
         return brewery1;
+    }
+
+    @Override
+    public Brewery updateBrewery(BreweryDto brewery){
+        String sql = "UPDATE breweries SET brewery_name = ?, street_address = ?, city = ?, stave_abv = ?" +
+                "zip = ?, time_open = ?, time_closed = ?, history = ? WHERE brewery_id = ?;";
+        Brewery updatedBrewery = new Brewery();
+        int breweryId = 0;
+        breweryId = jdbcTemplate.update(sql, brewery.getBreweryName(),brewery.getStreetAddress(),brewery.getCity(),
+                brewery.getStateAbv(),brewery.getZip(),brewery.getTimeOpen(),brewery.getTimeClosed(),brewery.getHistory(), brewery.getBreweryID());
+        updatedBrewery = getBreweryById(breweryId);
+        return updatedBrewery;
     }
 
     private Brewery mapRowToBrewery(SqlRowSet rs) {

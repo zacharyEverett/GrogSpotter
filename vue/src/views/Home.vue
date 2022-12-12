@@ -13,9 +13,11 @@
       >
         <h4 class="button-78">Add a Beer</h4>
       </router-link>
+      <div>
       <router-link :to="{ name: 'search' }">
         <h4 class="button-78">Search</h4>
       </router-link>
+      </div>
     </div>
     <div id="description"></div>
     <cards></cards>
