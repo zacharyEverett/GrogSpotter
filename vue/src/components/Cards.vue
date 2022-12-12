@@ -27,7 +27,9 @@ export default {
 <style>
 .container{
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
+  flex-direction: column;
+  flex-basis: 5%;
 }
 
 /* CSS */

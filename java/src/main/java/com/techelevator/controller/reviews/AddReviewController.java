@@ -29,6 +29,7 @@ public class AddReviewController {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping()
     public Review addBreweryReview(@RequestBody @Valid BreweryReviewDto reviewDto){
+        Review createdBreweryReview = new Review();
         return reviewDao.addBreweryReview(reviewDto);
     }
 
