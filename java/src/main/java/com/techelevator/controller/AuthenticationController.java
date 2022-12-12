@@ -2,10 +2,12 @@ package com.techelevator.controller;
 
 import javax.validation.Valid;
 
+import com.techelevator.dao.JdbcUserDao;
 import com.techelevator.model.*;
 import com.techelevator.model.dto.LoginDto;
 import com.techelevator.model.dto.LoginResponseDto;
 import com.techelevator.model.dto.RegisterUserDto;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +23,8 @@ import com.techelevator.dao.UserDao;
 import com.techelevator.security.jwt.JWTFilter;
 import com.techelevator.security.jwt.TokenProvider;
 
+import java.security.Principal;
+
 @RestController
 @CrossOrigin
 public class AuthenticationController {
@@ -28,6 +32,8 @@ public class AuthenticationController {
     private final TokenProvider tokenProvider;
     private final AuthenticationManagerBuilder authenticationManagerBuilder;
     private UserDao userDao;
+    @Autowired
+    private JdbcUserDao jdbc;
 
     public AuthenticationController(TokenProvider tokenProvider, AuthenticationManagerBuilder authenticationManagerBuilder, UserDao userDao) {
         this.tokenProvider = tokenProvider;
@@ -61,6 +67,17 @@ public class AuthenticationController {
         } catch (UsernameNotFoundException e) {
             userDao.create(newUser.getUsername(),newUser.getPassword(), newUser.getRole());
         }
+    }
+
+    /**
+     * Endpoint that gets called by the front end to assess the type of the user from the database.
+     * Returns true if the user is of type brewer
+     *
+     * Author: Zach E
+     */
+    @GetMapping("/verify")
+    public boolean getUserType(Principal user){
+        return jdbc.getUserType(user.getName()).equals("ROLE_BREWER");
     }
 
 }
