@@ -4,7 +4,7 @@
       <form action="submit">
         <label for="search">Type in a city to discover breweries: </label>
         <input type="text" name="search" v-model="searchTerm" />
-        <button type="submit" @click.prevent="search()">Find the Grog!</button>
+        <button class="button-87" type="submit" @click.prevent="search()">Find the Grog!</button>
       </form>
     </div>
 
