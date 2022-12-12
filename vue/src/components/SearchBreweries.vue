@@ -52,4 +52,16 @@ export default {
 .results {
   border: 1px solid black;
 }
+.brewery{
+  background-image: url("https://cdn.pixabay.com/photo/2018/02/15/14/37/paper-3155438_1280.jpg");
+  text-align: center;
+  border-style: inset;
+  resize: horizontal;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  color: rgb(252, 216, 216);
+  font-size: 24px;
+  text-align: center;
+  text-shadow: 1px 1px 2px red, 0 0 1em blue, 0 0 0.2em blue;
+}
+
 </style>
