@@ -61,7 +61,7 @@
 
 <style scoped>
 #app{
-  background-color: rgb(160, 53, 53);
+  background-image: url("https://www.thegalleymarietta.com/wp-content/uploads/2021/04/Beer-Dinner-Web-Banner-Image-2-1024x642.jpg");
 }
 
 #left {
@@ -323,4 +323,5 @@ h2 {
   background-color: #fff;
   padding: 20px;
 }
+
 </style>

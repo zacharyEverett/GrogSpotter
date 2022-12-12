@@ -1,17 +1,14 @@
 <template>
   <div class="home">
     <div class="route">
-    <router-link :to="{ name: 'registerBrewery' }">
-      <h4 class="button-78">Add a Brewery</h4>
-    </router-link>
-    <router-link :to="{ name: 'addBeer' }">
-      <h4 class="button-78">Add a Beer</h4>
-    </router-link>
+      <router-link :to="{ name: 'registerBrewery' }">
+        <h2 class="button-78">Add a Brewery</h2>
+      </router-link>
+      <router-link :to="{ name: 'addBeer' }">
+        <h2 class="button-78">Add a Beer</h2>
+      </router-link>
+      <cards></cards>
     </div>
-    <div id="description">
-      <p>This is a sick application where you can find beers and stuff.</p>
-    </div>
-    <cards></cards>
   </div>
 </template>
 
@@ -28,10 +25,11 @@ export default {
 };
 </script>
 
-<style >
-.route{
+<style>
+.route {
   display: flex;
   justify-content: space-around;
+  flex-direction: column;
 }
 
 #description {
@@ -172,4 +170,5 @@ export default {
   cursor: default;
   opacity: 0.24;
 }
+
 </style>

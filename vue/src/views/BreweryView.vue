@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="body">
     <div class="navButtons">
       <router-link :to="{ name: 'breweries' }">
         <h4 class="button-87">Back to Brewery List</h4></router-link
@@ -24,11 +24,17 @@ export default {
 </script>
 
 <style>
+.body {
+  background-image: url('https://www.befreewithlee.com/wp-content/uploads/2020/07/gerrie-van-der-walt-2uSnxq3M4GE-unsplash-1-scaled.jpg');
+  background-size: 100%;
+  position: relative;
+  background-attachment: fixed;
+}
 .navButtons {
   display: flex;
   justify-content: space-around;
 }
-/* CSS */
+/*  Button CSS */
 .button-87 {
   margin: 10px;
   padding: 15px 30px;
