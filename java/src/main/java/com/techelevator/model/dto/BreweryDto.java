@@ -24,6 +24,12 @@ public class BreweryDto {
     private String history;
     @NotEmpty
     private boolean isActive = true;
+    @NotEmpty
+    private int brewer_id;
+
+    public int getBrewer_id() {
+        return brewer_id;
+    }
 
     public int getBreweryID() {
         return breweryID;

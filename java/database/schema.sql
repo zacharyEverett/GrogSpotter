@@ -21,6 +21,7 @@ CREATE TABLE IF NOT EXISTS breweries (
 	time_closed time not null,
 	history varchar(1000) not null,
 	is_active boolean not null default true,
+	brewer_id int not null,
 	
 	CONSTRAINT pk_breweries PRIMARY KEY (brewery_id)
 	

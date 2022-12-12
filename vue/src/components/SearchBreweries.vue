@@ -4,7 +4,7 @@
       <form action="submit">
         <label for="search">Type in a city to discover breweries: </label>
         <input type="text" name="search" v-model="searchTerm" />
-        <button type="submit" @click.prevent="search()">Find the Grog!</button>
+        <button class="button-87" type="submit" @click.prevent="search()">Find the Grog!</button>
       </form>
     </div>
 
@@ -13,7 +13,7 @@
         <h2>{{ brewery.name }}</h2>
         <h3>{{ brewery.street }}</h3>
         <h3>{{ brewery.city }}, {{ brewery.state }}</h3>
-        <a :href="brewery.website_url"> {{ brewery.website_url }} </a>
+        <a :href="brewery.website_url" target="_blank" > {{ brewery.website_url }} </a>
       </div>
     </div>
   </div>
@@ -53,7 +53,7 @@ export default {
   border: 1px solid black;
 }
 .brewery{
-  background-image: url("https://cdn.pixabay.com/photo/2018/02/15/14/37/paper-3155438_1280.jpg");
+  background-color: rgb(138, 37, 24);
   text-align: center;
   border-style: inset;
   resize: horizontal;

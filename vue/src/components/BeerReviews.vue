@@ -1,7 +1,7 @@
 <template>
   
   <div id="reviews">
-        <button v-on:click="show = !show">Leave a Review</button>
+        <button class="button-87" v-on:click="show = !show">Leave a Review</button>
           <form v-if="show == true" v-on:submit="addBeerReview">
           <div>
               <div>
@@ -45,7 +45,7 @@
           <h3> {{review.title}} </h3>
           <h4>Rating: {{ review.rating }}/5</h4>
           <img class="hop" v-for="rating in review.rating" :key="rating" src="@/../randompicturesofbeer\HopsIcon-removebg-preview.png" alt="hops icon">
-          <img class="hop" v-for="thing in antiReviews" :key="thing" src="@/../randompicturesofbeer/LightGhost.png" alt="ghost hop"/>
+          <img class="hop" v-for="thing in (5-review.rating)" :key="thing" src="@/../randompicturesofbeer/LightGhost.png" alt="ghost hop"/>
           <p> {{ review.reviewBody }} </p>
       </div>
   </div>
@@ -87,25 +87,8 @@ created(){
     BackendServices.getBeerReviews(this.$route.params.beerID).then(response => {
         response.data.forEach(element => {
             this.reviews.push(element)
-            this.antiReviews.push(element)
-            this.antiReviews.forEach(thing => {
-                thing.review = 5 - thing.review;
-            })
         })
     })
-},
-
-computed: {
-    numOfGhost(review) {
-        return (5 - review.rating);
-    },
-    makeArray() {
-        let count = 0;
-        for (let i = 5; i > this.reviews.rating; i--) {
-            count++;
-        }
-        return count;
-    }
 }
 }
 </script>
@@ -116,7 +99,7 @@ h1,h2,h3,h4,p{
 }
 .review {
     border:8px solid black;
-    background-color: rgb(207, 10, 10);
+    background-color: rgb(184, 37, 37);
     margin: 20px;
 }
 input[disabled]{

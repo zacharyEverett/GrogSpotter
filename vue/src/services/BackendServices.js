@@ -48,12 +48,15 @@ export default {
     },
 
     addBreweryReview(review) {
-        return axios.post(`/breweries/${review.breweryId}`, review)
+        return axios.post('/addReview/brewery', review)
     },
     addBeerReview(review) {
         return axios.post('/addReview/beer', review)
     },
     findBreweries(city){
         return axios.get(`/search/${city}`)
+    },
+    findBreweriesByBrewerId(id){
+        return axios.get(`/breweries/manage/${id}`)
     }
 }
