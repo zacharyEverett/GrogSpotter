@@ -34,20 +34,20 @@ export default {
     getAllBeerReviews() {
         return axios.get('/reviews/beers')
     },
-    getBreweryReviews(breweryID) {
-        return axios.get(`/reviews/brewery/${breweryID}`)
+    getBreweryReviews(breweryId) {
+        return axios.get('/reviews/brewery/' + breweryId)
     },
     getAllBreweryReviews() {
-        return axios.get('/reviews/breweries')
+        return axios.get('/reviews/brewery')
     },
     getReviewsByUser(userID) {
         return axios.get(`/reviews/user/${userID}`)
     },
 
     addBreweryReview(review) {
-        return axios.post('/breweries/:id', review)
+        return axios.post(`/breweries/${review.breweryId}`, review)
     },
     addBeerReview(review) {
-        return axios.post('/breweries/:id/:beerID', review)
+        return axios.post(`/breweries/id/${review.beerId}`, review)
     }
 }

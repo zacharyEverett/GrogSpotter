@@ -38,11 +38,11 @@ where brewery_name = 'Kyle Beer Co'
 order by abv desc;
 
 select * from reviews where beer_id = 1;
-rollback;
+
 SELECT beer_name, brewery_name, abv, beer_type, beer_description FROM beers JOIN breweries USING (brewery_id) WHERE beer_id = 1;
 SELECT review_id, username, beer_id, title, rating, review_body FROM reviews where review_id = 1
 
 
 
-select * from beers;
+select * from users;
 SELECT beer_id, brewery_id, beer_name, brewery_name, abv, beer_type, beer_description FROM beers JOIN breweries USING (brewery_id) WHERE beer_id = 1 ORDER BY beer_name;

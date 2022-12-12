@@ -29,11 +29,11 @@ Notes: all list methods operate functionally within PGAdmin.
     @Override
     public List<Review> getAllBeerReviews() {
         List<Review> reviews = new ArrayList<>();
-        String sql = "SELECT beer_name, brewery_name, username, review_id, u.user_id, rating, review_body FROM reviews AS r\n" +
+        String sql = "SELECT beer_name, brewery_name, r.username, review_id, u.user_id, rating, review_body FROM reviews AS r\n" +
                 "JOIN beers AS b ON b.beer_id = r.beer_id\n" +
                 "JOIN breweries AS br ON br.brewery_id = b.brewery_id\n" +
-                "JOIN users AS u ON u.user_id = r.user_id\n" +
-                "ORDER BY rating DESC, username;";
+                "JOIN users AS u ON u.username = r.username\n" +
+                "ORDER BY rating DESC, r.username;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while(results.next()){
             Review review = mapRowToReview(results);
@@ -46,10 +46,10 @@ Notes: all list methods operate functionally within PGAdmin.
     @Override
     public List<Review> getAllBreweryReviews() {
         List<Review> reviews = new ArrayList<>();
-        String sql = "SELECT brewery_name, username, review_id, u.user_id, title, rating, review_body FROM reviews AS r\n" +
+        String sql = "SELECT brewery_name, r.username, review_id, u.user_id, title, rating, review_body FROM reviews AS r\n" +
                 "JOIN breweries AS br ON br.brewery_id = r.brewery_id\n" +
-                "JOIN users AS u on u.user_id = r.user_id\n" +
-                "ORDER BY rating DESC, username;";
+                "JOIN users AS u on u.username = r.username\n" +
+                "ORDER BY rating DESC, r.username;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while(results.next()){
             Review review = mapRowToReviewBrewery(results);
@@ -59,15 +59,15 @@ Notes: all list methods operate functionally within PGAdmin.
     }
 
     @Override
-    public List<Review> getReviewsByUserId(int userId) {
+    public List<Review> getReviewsByUsername(String username) {
         List<Review> reviews = new ArrayList<>();
-        String sql = "SELECT beer_name, brewery_name, username, review_id, u.user_id, title, rating, review_body FROM reviews AS r \n" +
-                "JOIN users AS u ON u.user_id = r.user_id\n" +
+        String sql = "SELECT beer_name, brewery_name, r.username, review_id, title, rating, review_body FROM reviews AS r \n" +
+                "JOIN users AS u ON u.username = r.username\n" +
                 "LEFT JOIN beers AS b ON b.beer_id = r.beer_id\n" +
                 "LEFT JOIN breweries AS br ON br.brewery_id = r.brewery_id\n" +
-                "WHERE u.user_id = ?\n" +
-                "ORDER BY rating DESC, username;";
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
+                "WHERE u.username = ?\n" +
+                "ORDER BY rating DESC, u.username;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, username);
         while(results.next()){
             Review review = mapRowToReview(results);
             reviews.add(review);
@@ -78,12 +78,12 @@ Notes: all list methods operate functionally within PGAdmin.
     @Override
     public List<Review> getReviewsByBeerId(int beerId) {
         List<Review> reviews = new ArrayList<>();
-        String sql = "SELECT beer_name, brewery_name, username, review_id, r.user_id, title, rating, review_body FROM reviews AS r\n" +
+        String sql = "SELECT beer_name, brewery_name, r.username, review_id, title, rating, review_body FROM reviews AS r\n" +
                 "LEFT JOIN beers AS b ON b.beer_id = r.beer_id\n" +
                 "LEFT JOIN breweries AS br ON br.brewery_id = b.brewery_id\n" +
-                "LEFT JOIN users AS u ON u.user_id = r.user_id\n" +
+                "LEFT JOIN users AS u ON u.username = r.username\n" +
                 "WHERE r.beer_id = ?\n" +
-                "ORDER BY rating DESC, username;";
+                "ORDER BY rating DESC, r.username;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, beerId);
         while(results.next()){
             Review review = mapRowToReview(results);
@@ -95,11 +95,11 @@ Notes: all list methods operate functionally within PGAdmin.
     @Override
     public List<Review> getReviewsByBreweryId(int breweryId) {
         List<Review> reviews = new ArrayList<>();
-        String sql = "SELECT brewery_name, username, review_id, r.user_id, title, rating, review_body FROM reviews AS r\n" +
+        String sql = "SELECT brewery_name, r.username, review_id, u.user_id, title, rating, review_body FROM reviews AS r\n" +
                 "JOIN breweries AS b ON b.brewery_id = r.brewery_id\n" +
-                "JOIN users AS u ON u.user_id = r.user_id\n" +
+                "JOIN users AS u ON u.username = r.username\n" +
                 "WHERE b.brewery_id = ?\n" +
-                "ORDER BY rating DESC, username;";
+                "ORDER BY rating DESC, r.username;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, breweryId);
         while(results.next()){
             Review review = mapRowToReviewBrewery(results);
@@ -139,7 +139,7 @@ Notes: all list methods operate functionally within PGAdmin.
         Integer reviewId = 0;
         String sql = "INSERT INTO reviews (username,title,brewery_id,rating,review_body)" +
                 "VALUES (?,?,?,?,?) RETURNING review_id;";
-        reviewId = jdbcTemplate.queryForObject(sql, Integer.class, reviewDto.getUserName(),reviewDto.getTitle(),
+        reviewId = jdbcTemplate.queryForObject(sql, Integer.class, reviewDto.getUsername(),reviewDto.getTitle(),
                 reviewDto.getBreweryId(),reviewDto.getRating(),reviewDto.getReviewBody());
         reviewToAdd = getBreweryReviewByReviewId(reviewId);
         return reviewToAdd;
@@ -151,7 +151,7 @@ Notes: all list methods operate functionally within PGAdmin.
         Integer reviewId = 0;
         String sql = "INSERT INTO reviews (username,title,beer_id,rating,review_body)" +
                 "VALUES (?,?,?,?,?) RETURNING review_id;";
-        reviewId = jdbcTemplate.queryForObject(sql, Integer.class, reviewDto.getUserName(),reviewDto.getTitle(),
+        reviewId = jdbcTemplate.queryForObject(sql, Integer.class, reviewDto.getUsername(),reviewDto.getTitle(),
                 reviewDto.getBeerId(),reviewDto.getRating(),reviewDto.getReviewBody());
         reviewToAdd = getBeerReviewByReviewId(reviewId);
         return reviewToAdd;
@@ -161,9 +161,9 @@ Notes: all list methods operate functionally within PGAdmin.
         Review review = new Review();
         review.setBeerName(rs.getString("beer_name"));
         review.setBreweryName(rs.getString("brewery_name"));
-        review.setUserName(rs.getString("username"));
+        review.setUsername(rs.getString("username"));
         review.setReviewId(rs.getInt("review_id"));
-        review.setUserName(rs.getString("username"));
+        review.setUsername(rs.getString("username"));
         review.setTitle(rs.getString("title"));
         review.setRating(rs.getInt("rating"));
         review.setReviewBody(rs.getString("review_body"));
@@ -173,7 +173,7 @@ Notes: all list methods operate functionally within PGAdmin.
     private Review mapRowToReviewBrewery(SqlRowSet rs){
         Review review = new Review();
         review.setBreweryName(rs.getString("brewery_name"));
-        review.setUserName(rs.getString("username"));
+        review.setUsername(rs.getString("username"));
         review.setReviewId(rs.getInt("review_id"));
         review.setTitle(rs.getString("title"));
         review.setRating(rs.getInt("rating"));

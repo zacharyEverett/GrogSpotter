@@ -7,17 +7,18 @@ public class BeerReviewDto {
     private String username;
     @NotEmpty
     private String title;
-    @NotEmpty
+
     private int beerId;
-    @NotEmpty
+
     private int rating;
     @NotEmpty
     private String reviewBody;
 
-    public String getUserName() {
+    public String getUsername() {
         return username;
     }
 
+    public void setUsername(String username) {this.username = username;}
 
     public String getTitle() {
         return title;

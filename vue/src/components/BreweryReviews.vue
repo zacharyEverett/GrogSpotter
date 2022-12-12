@@ -1,14 +1,14 @@
 <template>
   <div id="reviews">
       <button v-on:click="show = !show">Leave a Review</button>
-          <form v-if="show == true">
+          <form v-if="show == true" v-on:submit.prevent="addBreweryReview">
           <div>
               <div>
             <label for="username"/>
             <input type="text" name="userId" placeholder="Username"
             onfocus="placeholder=''"
             onblur="placeholder='Username'"
-            v-model="newReview.userId"/>
+            v-model="newReview.username"/>
             </div>
             <div>
                 <label for="selectBrewery"/>
@@ -74,8 +74,8 @@ data(){
 // }
 methods: {
     addBreweryReview() {
-        BackendServices.addBreweryReview(this.newReview);
-        this.resetForm();
+        BackendServices.addBreweryReview(this.newReview).then(() =>
+        this.resetForm());
     },
     resetForm() {
         this.newReview = {};
@@ -83,7 +83,7 @@ methods: {
     }
 },
 created(){
-    BackendServices.getBreweryReviews(this.$route.params.id).then(response => {
+    BackendServices.getBreweryReviews(this.$route.params.breweryId).then(response => {
         response.data.forEach(element => {
             this.reviews.push(element)
         });

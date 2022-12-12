@@ -2,14 +2,14 @@
   
   <div id="reviews">
         <button v-on:click="show = !show">Leave a Review</button>
-          <form v-if="show == true">
+          <form v-if="show == true" v-on:submit="addBeerReview">
           <div>
               <div>
             <label for="username"/>
             <input type="text" name="userId" placeholder="Username"
             onfocus="placeholder=''"
             onblur="placeholder='Username'"
-            v-model="newReview.userId"/>
+            v-model="newReview.username"/>
             </div>
             <div>
                 <label for="selectBeer"/>
@@ -70,8 +70,8 @@ data(){
 },
 methods: {
     addBeerReview() {
-        BackendServices.addBeerReview(this.newReview);
-        this.resetForm();
+        BackendServices.addBeerReview(this.newReview).then(() =>
+        this.resetForm());
     },
     resetForm() {
         this.newReview = {};
