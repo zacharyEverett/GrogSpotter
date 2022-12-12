@@ -31,6 +31,13 @@ export default {
 </script>
 
 <style>
+li {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 24pt;
+  font-weight: bold;
+  text-decoration: none;
+}
+  
 
 #breweriesList{
   font-size: 46px;

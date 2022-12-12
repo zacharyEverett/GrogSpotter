@@ -15,9 +15,9 @@ import java.util.List;
 public class JdbcReviewDaoTests extends BaseDaoTests{
     private JdbcReviewDao sut;
 
-    protected static final Review REVIEW_1 = new Review(1, 1, "DRINK THIS ONE!", 5, "It is the greatest beer in all the VERLD!");
-    protected static final Review REVIEW_2 = new Review(2, 2, "Refreshing", 4, "Slimy, yet satisfying!");
-    protected static final Review REVIEW_3 = new Review(3, 1, "One of my new favorites!", 5, "5 out of 5!");
+    protected static final Review REVIEW_1 = new Review(1, "user", "DRINK THIS ONE!", 5, "It is the greatest beer in all the VERLD!");
+    protected static final Review REVIEW_2 = new Review(2, "admin", "Refreshing", 4, "Slimy, yet satisfying!");
+    protected static final Review REVIEW_3 = new Review(3, "user", "One of my new favorites!", 5, "5 out of 5!");
 
 
     @Before
@@ -41,7 +41,7 @@ public class JdbcReviewDaoTests extends BaseDaoTests{
     }
     @Test
     public void getReviewsByUserIdTest() {
-        List<Review> actual = sut.getReviewsByUserId(1);
+        List<Review> actual = sut.getReviewsByUsername("kyle");
         Assert.assertEquals(4, actual.size());
     }
     @Test
@@ -77,13 +77,13 @@ public class JdbcReviewDaoTests extends BaseDaoTests{
 
     public void assertBeerReviewsMatch(Review expected, Review actual) {
         Assert.assertEquals(expected.getReviewId(), actual.getReviewId());
-        Assert.assertEquals(expected.getUserId(), actual.getUserId());
+        Assert.assertEquals(expected.getUsername(), actual.getUsername());
         Assert.assertEquals(expected.getBeerId(), actual.getBeerId());
         Assert.assertEquals(expected.getReviewBody(), actual.getReviewBody());
     }
     public void assertBreweryReviewsMatch(Review expected, Review actual) {
         Assert.assertEquals(expected.getReviewId(), actual.getReviewId());
-        Assert.assertEquals(expected.getUserId(), actual.getUserId());
+        Assert.assertEquals(expected.getUsername(), actual.getUsername());
         Assert.assertEquals(expected.getBreweryId(), actual.getBreweryId());
         Assert.assertEquals(expected.getReviewBody(), actual.getReviewBody());
     }

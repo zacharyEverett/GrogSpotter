@@ -27,14 +27,14 @@ public class AddReviewController {
     JdbcReviewDao reviewDao;
 
     @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping("/addReview/brewery")
+    @PostMapping()
     public Review addBreweryReview(@RequestBody @Valid BreweryReviewDto reviewDto){
         Review createdBreweryReview = new Review();
         return reviewDao.addBreweryReview(reviewDto);
     }
 
     @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping("/addReview/beer")
+    @PostMapping("/{beerID}")
     public Review addBeerReview(@RequestBody @Valid BeerReviewDto reviewDto){
         return reviewDao.addBeerReview(reviewDto);
     }

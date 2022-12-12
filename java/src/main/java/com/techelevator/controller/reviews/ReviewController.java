@@ -50,9 +50,9 @@ public class ReviewController {
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/user/{userId}")
-    public List<Review> getReviewByUserId(@PathVariable int userId){
+    public List<Review> getReviewByUserId(@PathVariable String username){
         try{
-            return reviewDao.getReviewsByUserId(userId);
+            return reviewDao.getReviewsByUsername(username);
         }catch(ResponseStatusException re){
             re.getMessage();
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
