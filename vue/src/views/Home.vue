@@ -1,23 +1,28 @@
 <template>
   <div class="home">
     <div class="route">
-      <router-link :to="{ name: 'registerBrewery' }">
-        <h2 class="button-78">Add a Brewery</h2>
-      </router-link>
-      <router-link :to="{ name: 'addBeer' }">
-        <h2 class="button-78">Add a Beer</h2>
-      </router-link>
-      <cards></cards>
+    <router-link :to="{ name: 'registerBrewery' }" v-if="this.$store.state.isBrewer == true">
+      <h4 class="button-78">Add a Brewery</h4>
+    </router-link>
+    <router-link :to="{ name: 'addBeer' }" v-if="this.$store.state.isBrewer == true">
+      <h4 class="button-78">Add a Beer</h4>
+    </router-link>
     </div>
+    <div id="description">
+      
+    </div>
+    <cards></cards>
   </div>
 </template>
 
 <script>
 import Cards from "../components/Cards.vue";
 
+
 export default {
   created() {
     this.$store.commit("SET_BREWERIES");
+    this.$store.commit('SET_TYPE');
   },
   components: { Cards },
 
@@ -35,6 +40,7 @@ export default {
 #description {
   display: flex;
   justify-content: center;
+  height: 300px;
 }
 
 .home {

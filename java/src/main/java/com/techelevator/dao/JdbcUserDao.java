@@ -82,6 +82,13 @@ public class JdbcUserDao implements UserDao {
         return jdbcTemplate.update(insertUserSql, username, password_hash, ssRole) == 1;
     }
 
+
+    public String getUserType(String username){
+        String sql = "select role from users where username = ?";
+        SqlRowSet result = jdbcTemplate.queryForRowSet(sql, username);
+        return result.getString("role");
+    }
+
     private User mapRowToUser(SqlRowSet rs) {
         User user = new User();
         user.setId(rs.getInt("user_id"));
