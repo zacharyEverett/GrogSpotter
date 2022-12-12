@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("/breweries/{id}")
+@RequestMapping()
 @CrossOrigin
 public class AddReviewController {
     @Autowired
