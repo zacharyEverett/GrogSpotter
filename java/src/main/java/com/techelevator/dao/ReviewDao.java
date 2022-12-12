@@ -12,7 +12,7 @@ public interface ReviewDao {
 
     List<Review> getAllBreweryReviews();
 
-    List<Review> getReviewsByUserId(int userId);
+    List<Review> getReviewsByUsername(String username);
 
     List<Review> getReviewsByBeerId(int beerId);
 

@@ -1,13 +1,30 @@
 <template>
   
   <div id="reviews">
-      <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet'>
         <button v-on:click="show = !show">Leave a Review</button>
-          <form v-if="show == true">
-          <div class="review">
+          <form v-if="show == true" v-on:submit="addBeerReview">
+          <div>
+              <div>
+            <label for="username"/>
+            <input type="text" name="userId" placeholder="Username"
+            onfocus="placeholder=''"
+            onblur="placeholder='Username'"
+            v-model="newReview.username"/>
+            </div>
+            <div>
+                <label for="selectBeer"/>
+                <input type="number" placeholder="Beer Id" disabled
+                onfocus="placeholder=''"
+                onblur="placeholder='Beer Id'"
+                v-model="newReview.beerId"/>
+            </div>
             <label for="review-title"/>
-            <input type="text" id="review-title" placeholder="Review Title"/>
-            <select name="rating" id="rating">
+            <input type="text" id="review-title" placeholder="Review Title"
+            onfocus="placeholder=''"
+            onblur="placeholder='Review Title'"
+            v-model="newReview.title"/>
+            <select name="rating" id="rating" v-model="newReview.rating" placeholder="Rating">
+                <option value="" disabled selected hidden>Choose a Rating</option>
                 <option value=1>1 = Least Satisfied</option>
                 <option value=2>2</option>
                 <option value=3>3</option>
@@ -16,7 +33,9 @@
             </select>
             </div>
             <div>
-            <textarea name="review-body" id="review-body" rows="8" cols="50"></textarea>
+            <textarea name="review-body" id="review-body" rows="8" cols="50" placeholder="Type Review Here"
+            onfocus="placeholder=''"
+            onblur="placeholder='Type Review Here'" v-model="newReview.reviewBody"></textarea>
             </div>
             <button type="submit">Submit</button>
       </form>
@@ -36,12 +55,31 @@
 import BackendServices from '../services/BackendServices'
 
 export default {
+    
 data(){
     
     return {
         show: false,
         reviews: [],
         antiReviews: [],
+        newReview: {
+            username:'',
+            title:'',
+            beerId:this.$route.params.beerID,
+            rating:'',
+            reviewBody:'',
+        }
+    }
+},
+methods: {
+    addBeerReview() {
+        BackendServices.addBeerReview(this.newReview).then(() =>
+        this.resetForm());
+    },
+    resetForm() {
+        this.newReview = {};
+        this.show = false;
+        
     }
 },
 
@@ -81,9 +119,8 @@ h1,h2,h3,h4,p{
     background-color: rgb(207, 10, 10);
     margin: 20px;
 }
-
-h3 {
-    font-family: Lobster;
+input[disabled]{
+    background-color: rgb(180, 180, 180);
 }
 form{
     display: flex;
