@@ -18,6 +18,7 @@ if(currentToken != null) {
 
 export default new Vuex.Store({
   state: {
+    isBrewer: false,
     breweries: [],
     token: currentToken || '',
     user: currentUser || {},
@@ -47,6 +48,11 @@ export default new Vuex.Store({
           toPush.push(element);
         });})
         state.breweries = toPush;
+    },
+    SET_TYPE(state){
+      if (state.user.authorities[0].name == 'ROLE_BREWER') {
+        state.isBrewer = true;
+      } else state.isBrewer = false;
     }
   }
 })
