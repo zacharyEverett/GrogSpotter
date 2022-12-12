@@ -31,18 +31,6 @@ values
 
 COMMIT;
 ---------------------Filter by brewery, characteristisc etc.-------------------------
-select review_id, username, title, beer_id, beer_name, rating, review_body from reviews
-join beers using (beer_id);
-join breweries using (brewery_id)
-where brewery_name = 'Kyle Beer Co'
-order by abv desc;
-
-select * from reviews where beer_id = 1;
-
-SELECT beer_name, brewery_name, abv, beer_type, beer_description FROM beers JOIN breweries USING (brewery_id) WHERE beer_id = 1;
-SELECT review_id, username, beer_id, title, rating, review_body FROM reviews where review_id = 1
 
 
 
-select * from users;
-SELECT beer_id, brewery_id, beer_name, brewery_name, abv, beer_type, beer_description FROM beers JOIN breweries USING (brewery_id) WHERE beer_id = 1 ORDER BY beer_name;
