@@ -31,15 +31,13 @@ export default {
 </script>
 
 <style>
-<<<<<<< HEAD
 li {
   font-family: 'Courier New', Courier, monospace;
   font-size: 24pt;
   font-weight: bold;
   text-decoration: none;
-
+}
   
-=======
 
 #breweriesList{
   font-size: 46px;
@@ -52,6 +50,5 @@ li {
   flex-direction: column;
   padding: 20px;
   background-image: url("https://cdn.pixabay.com/photo/2018/02/15/14/37/paper-3155438_1280.jpg");
->>>>>>> 2378f5ca03074f2bac10ad21f4ecd9721f3f0efc
 }
 </style>

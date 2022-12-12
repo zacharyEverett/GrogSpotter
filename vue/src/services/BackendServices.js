@@ -51,13 +51,9 @@ export default {
         return axios.post(`/breweries/${review.breweryId}`, review)
     },
     addBeerReview(review) {
-<<<<<<< HEAD
-        return axios.post(`/breweries/id/${review.beerId}`, review)
-=======
         return axios.post('/addReview/beer', review)
     },
     findBreweries(city){
         return axios.get(`/search/${city}`)
->>>>>>> 2378f5ca03074f2bac10ad21f4ecd9721f3f0efc
     }
 }
