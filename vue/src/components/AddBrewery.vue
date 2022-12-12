@@ -109,6 +109,7 @@ export default {
         timeOpen: "",
         timeClosed: "",
         history: "",
+        brewer_id: this.$store.state.user.id
       },
     };
   },

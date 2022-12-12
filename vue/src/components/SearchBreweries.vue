@@ -13,7 +13,7 @@
         <h2>{{ brewery.name }}</h2>
         <h3>{{ brewery.street }}</h3>
         <h3>{{ brewery.city }}, {{ brewery.state }}</h3>
-        <a :href="brewery.website_url"> {{ brewery.website_url }} </a>
+        <a :href="brewery.website_url" target="_blank" > {{ brewery.website_url }} </a>
       </div>
     </div>
   </div>
