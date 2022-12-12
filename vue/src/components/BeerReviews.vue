@@ -1,7 +1,7 @@
 <template>
   
   <div id="reviews">
-        <button v-on:click="show = !show">Leave a Review</button>
+        <button class="button-87" v-on:click="show = !show">Leave a Review</button>
           <form v-if="show == true" v-on:submit="addBeerReview">
           <div>
               <div>

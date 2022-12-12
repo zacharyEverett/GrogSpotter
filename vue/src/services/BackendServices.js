@@ -55,5 +55,8 @@ export default {
     },
     findBreweries(city){
         return axios.get(`/search/${city}`)
+    },
+    findBreweriesByBrewerId(id){
+        return axios.get(`/breweries/manage/${id}`)
     }
 }

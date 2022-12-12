@@ -73,6 +73,17 @@ public class BreweryController {
         }
     }
 
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/manage/{brewerId}")
+    public List<Brewery> getBreweryByBrewerId(@PathVariable int brewerId){
+        try{
+            return breweriesDao.findBreweryByBrewerId(brewerId);
+        }catch (ResponseStatusException re){
+            re.getMessage();
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
+    }
+
     //waiting on Danny for rest of methods.
 
 

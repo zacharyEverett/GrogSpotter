@@ -14,6 +14,8 @@ public interface BreweriesDao {
 
     int findBreweryIdByName(String breweryName);
 
+    List<Brewery> findBreweryByBrewerId(int brewerId);
+
     Brewery addBrewery(BreweryDto brewery);
 
     Brewery updateBrewery(BreweryDto brewery);
