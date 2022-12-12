@@ -1,5 +1,8 @@
 import axios from "axios";
 
+
+
+
 export default {
     
     // Beer Controller
@@ -49,5 +52,8 @@ export default {
     },
     addBeerReview(review) {
         return axios.post('/addReview/beer', review)
+    },
+    findBreweries(city){
+        return axios.get(`/search/${city}`)
     }
 }

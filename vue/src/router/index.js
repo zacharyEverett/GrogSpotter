@@ -12,7 +12,7 @@ import BreweryView from '../views/BreweryView.vue'
 import BeerView from '../views/BeerView.vue'
 import AddBreweryView from '../views/AddBreweryView'
 import AddBeerView from '../views/AddBeerView'
-
+import BreweriesBySearch from '../views/BreweriesBySearch'
 Vue.use(Router)
 
 /**
@@ -126,6 +126,14 @@ const router = new Router({
       component: AddBeerView,
       meta: {
         requiresAuth: false //WILL END UP BEING TRUE - FALSE FOR TESTING/BUILDING
+      }
+    },
+    {
+      path:"/unverifiedBreweries",
+      name:"search",
+      component: BreweriesBySearch,
+      meta: {
+        requiresAuth: false
       }
     }
   ]
