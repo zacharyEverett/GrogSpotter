@@ -22,7 +22,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 div{
   text-align: center;
 }
