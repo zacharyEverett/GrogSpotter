@@ -30,10 +30,11 @@ export default {
 };
 </script>
 
-<style >
-.route{
+<style>
+.route {
   display: flex;
   justify-content: space-around;
+  flex-direction: column;
 }
 
 #description {
@@ -175,4 +176,5 @@ export default {
   cursor: default;
   opacity: 0.24;
 }
+
 </style>
