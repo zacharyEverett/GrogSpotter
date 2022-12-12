@@ -130,4 +130,10 @@ export default {
 template {
   background-image: url("https://bloximages.newyork1.vip.townnews.com/hickoryrecord.com/content/tncms/assets/v3/editorial/a/b5/ab51d6b9-6e46-584e-8b88-4a9bfc33dd1e/621e747be417d.image.jpg?resize=749%2C500");
 }
+textarea{
+    width: 294px;
+}
+form>div{
+    width: 294px;
+}
 </style>

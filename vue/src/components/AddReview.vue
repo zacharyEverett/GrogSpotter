@@ -1,9 +1,9 @@
 <template>
   <div id="addReview">
-        <form v-on:submit="addReview">
+        <form v-on:submit.prevent="addReview">
           <div>
             <label for="username"/>
-            <input type="text" v-model="user.username"/>
+            <input type="text" v-model="newReview.username"/>
             <label for="userId"/>
             <input type="number" id="userId" placeholder="User Id"
             onfocus="this.placeholder = ''"
@@ -30,13 +30,13 @@
 </template>
 
 <script>
-import BackendServices from '../services/BackendServices'
+import BackendServices from '@/services/BackendServices'
 export default {
   
   data(){
   return {
     newReview: {
-      userId: '',
+      username: '',
       title: '',
       rating: '',
       reviewBody: '',
@@ -47,7 +47,7 @@ export default {
   methods: {
   addReview() {
     BackendServices.addBeerReview(this.newReview)
-    this.resetForm();
+    //this.resetForm();
   },
   resetForm() {
       this.newReview = {};

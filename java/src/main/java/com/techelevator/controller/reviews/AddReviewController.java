@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("/breweries/{id}")
+@RequestMapping()
 @CrossOrigin
 public class AddReviewController {
     @Autowired
@@ -27,14 +27,14 @@ public class AddReviewController {
     JdbcReviewDao reviewDao;
 
     @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping()
+    @PostMapping("/addReview/brewery")
     public Review addBreweryReview(@RequestBody @Valid BreweryReviewDto reviewDto){
         Review createdBreweryReview = new Review();
         return reviewDao.addBreweryReview(reviewDto);
     }
 
     @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping("/{beerID}")
+    @PostMapping("/addReview/beer")
     public Review addBeerReview(@RequestBody @Valid BeerReviewDto reviewDto){
         return reviewDao.addBeerReview(reviewDto);
     }

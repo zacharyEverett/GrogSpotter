@@ -1,6 +1,6 @@
 <template>
   <div id="reviews">
-      <button v-on:click="show = !show">Leave a Review</button>
+      <button class="button-87" v-on:click="show = !show">Leave a Review</button>
           <form v-if="show == true" v-on:submit.prevent="addBreweryReview">
           <div>
               <div>
@@ -99,5 +99,8 @@ created(){
 }
 input[disabled]{
     background-color: rgb(180, 180, 180);
+}
+textarea{
+    width:295px;
 }
 </style>
