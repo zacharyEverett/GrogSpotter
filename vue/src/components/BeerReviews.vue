@@ -1,6 +1,6 @@
 <template>
   <div id="reviews">
-    <button class="button-87" v-on:click="show = !show">Leave a Review</button>
+    <button class="button-87" v-show="this.newReview.username" v-on:click="show = !show">Leave a Review</button>
     <form v-if="show == true" v-on:submit="addBeerReview">
       <div>
         <label for="review-title" />
