@@ -56,6 +56,12 @@ CREATE TABLE IF NOT EXISTS reviews (
 
 );
 
+CREATE TABLE IF NOT EXISTS user_beers (
+        user_id int, 
+        beer_id int
+        CONSTRAINT pk_user_beer primary key (user_id, beer_id),
+        CONSTRAINT fk_user_beer_user foreign key (user_id) references users(user_id),
+        CONSTRAINT fk_user_beer_beer foreign key (beer_id) references beers(beer_id)
 commit;
 ----------------------working template above this line---------------------------------
 
