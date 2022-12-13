@@ -38,7 +38,7 @@ export default {
         return axios.get('/reviews/beers')
     },
     getBreweryReviews(breweryId) {
-        return axios.get('/reviews/brewery/' + breweryId)
+        return axios.get(`/reviews/brewery/${breweryId}`)
     },
     getAllBreweryReviews() {
         return axios.get('/reviews/brewery')
