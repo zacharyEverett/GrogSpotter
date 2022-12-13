@@ -33,7 +33,7 @@ Notes: all list methods operate functionally within PGAdmin.
                 "JOIN beers AS b ON b.beer_id = r.beer_id\n" +
                 "JOIN breweries AS br ON br.brewery_id = b.brewery_id\n" +
                 "JOIN users AS u ON u.username = r.username\n" +
-                "ORDER BY rating DESC, r.username;";
+                "ORDER BY review_id DESC;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while(results.next()){
             Review review = mapRowToReview(results);
@@ -49,7 +49,7 @@ Notes: all list methods operate functionally within PGAdmin.
         String sql = "SELECT brewery_name, r.username, review_id, u.user_id, title, rating, review_body FROM reviews AS r\n" +
                 "JOIN breweries AS br ON br.brewery_id = r.brewery_id\n" +
                 "JOIN users AS u on u.username = r.username\n" +
-                "ORDER BY rating DESC, r.username;";
+                "ORDER BY review_id DESC;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while(results.next()){
             Review review = mapRowToReviewBrewery(results);
@@ -66,7 +66,7 @@ Notes: all list methods operate functionally within PGAdmin.
                 "LEFT JOIN beers AS b ON b.beer_id = r.beer_id\n" +
                 "LEFT JOIN breweries AS br ON br.brewery_id = r.brewery_id\n" +
                 "WHERE u.username = ?\n" +
-                "ORDER BY rating DESC, u.username;";
+                "ORDER BY review_id DESC;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, username);
         while(results.next()){
             Review review = mapRowToReview(results);
@@ -83,7 +83,7 @@ Notes: all list methods operate functionally within PGAdmin.
                 "LEFT JOIN breweries AS br ON br.brewery_id = b.brewery_id\n" +
                 "LEFT JOIN users AS u ON u.username = r.username\n" +
                 "WHERE r.beer_id = ?\n" +
-                "ORDER BY rating DESC, r.username;";
+                "ORDER BY review_id DESC;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, beerId);
         while(results.next()){
             Review review = mapRowToReview(results);
@@ -99,7 +99,7 @@ Notes: all list methods operate functionally within PGAdmin.
                 "JOIN breweries AS b ON b.brewery_id = r.brewery_id\n" +
                 "JOIN users AS u ON u.username = r.username\n" +
                 "WHERE b.brewery_id = ?\n" +
-                "ORDER BY rating DESC, r.username;";
+                "ORDER BY review_id DESC;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, breweryId);
         while(results.next()){
             Review review = mapRowToReviewBrewery(results);
