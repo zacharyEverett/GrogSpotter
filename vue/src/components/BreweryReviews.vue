@@ -1,106 +1,135 @@
 <template>
   <div id="reviews">
-      <button class="button-87" v-on:click="show = !show">Leave a Review</button>
-          <form v-if="show == true" v-on:submit.prevent="addBreweryReview">
-          <div>
-              <div>
-            <label for="username"/>
-            <input type="text" name="userId" placeholder="Username"
-            onfocus="placeholder=''"
-            onblur="placeholder='Username'"
-            v-model="newReview.username"/>
-            </div>
-            <div>
-                <label for="selectBrewery"/>
-                <input type="number" placeholder="Brewery Id" disabled
-            
-                onfocus="placeholder=''"
-                onblur="placeholder='Brewery Id'"
-                v-model="newReview.breweryId"/>
-            </div>
-            <label for="review-title"/>
-            <input type="text" id="review-title" placeholder="Review Title"
-            onfocus="placeholder=''"
-            onblur="placeholder='Review Title'"
-            v-model="newReview.title"/>
-            <select name="rating" id="rating" v-model="newReview.rating">
-                <option value="" disabled selected hidden>Choose a Rating</option>
-                <option value=1>1 = Least Satisfied</option>
-                <option value=2>2</option>
-                <option value=3>3</option>
-                <option value=4>4</option>
-                <option value=5>5 = Most Satisfied</option>
-            </select>
-            </div>
-            <div>
-            <textarea name="review-body" id="review-body" rows="8" cols="50" placeholder="Type Review Here"
-            onfocus="placeholder=''"
-            onblur="placeholder='Type Review Here'" v-model="newReview.reviewBody"></textarea>
-            </div>
-            <button type="submit">Submit</button>
-      </form>
-      <h1>Reviews: </h1>
-      <div class="review" v-for="review in reviews" :key="review.reviewId">
-          <h3> {{review.title}} </h3>
-          <h4>Rating: {{ review.rating }}/5</h4>
-          <p> {{ review.reviewBody }} </p>
+    <button class="button-87" v-on:click="show = !show">Leave a Review</button>
+    <form v-if="show" v-on:submit="addBreweryReview">
+      <div>
+        <label for="review-title" />
+        <input
+          type="text"
+          id="review-title"
+          placeholder="Review Title"
+          onfocus="placeholder=''"
+          onblur="placeholder='Review Title'"
+          v-model="newReview.title"
+        />
+        <select
+          name="rating"
+          id="rating"
+          v-model="newReview.rating"
+          placeholder="Rating"
+        >
+          <option value="" disabled selected hidden>Choose a Rating</option>
+          <option value="1">1 = Least Satisfied</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5 = Most Satisfied</option>
+        </select>
       </div>
+      <div>
+        <textarea
+          name="review-body"
+          id="review-body"
+          rows="8"
+          cols="50"
+          placeholder="Type Review Here"
+          onfocus="placeholder=''"
+          onblur="placeholder='Type Review Here'"
+          v-model="newReview.reviewBody"
+        ></textarea>
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+
+    <h1>Reviews:</h1>
+    <div class="review" v-for="review in reviews" :key="review.reviewId">
+        <h1>{{review.title}}</h1>
+      <h3>GrogLover: {{ review.username }}</h3>
+      <h4>Rating: {{ review.rating }}/5</h4>
+      <img
+        class="hop"
+        v-for="rating in review.rating"
+        :key="rating"
+        src="@/../randompicturesofbeer\HopsIcon-removebg-preview.png"
+        alt="hops icon"
+      />
+      <img
+        class="hop"
+        v-for="thing in 5 - review.rating"
+        :key="thing"
+        src="@/../randompicturesofbeer/LightGhost.png"
+        alt="ghost hop"
+      />
+      <p>{{ review.reviewBody }}</p>
+    </div>
   </div>
 </template>
 
 <script>
-// import axios from 'axios'
-import BackendServices from '../services/BackendServices'
+import BackendServices from "../services/BackendServices";
+
 export default {
-data(){
+  data() {
     return {
-        reviews: [],
-        show: false,
-        newReview: {
-            username:'',
-            title:'',
-            breweryId:this.$route.params.id,
-            rating:'',
-            reviewBody:'',
-        }
-    }
-},
-// created(){
-//     axios.get('/reviews/breweries' + this.$route.params.breweryID).then(response => {
-//         response.data.forEach(element => {
-//             this.reviews.push(element)
-//         });
-//     })
-// }
-methods: {
+      show: false,
+      reviews: [],
+      antiReviews: [],
+      newReview: {
+        username: this.$store.state.user.username,
+        title: "",
+        breweryId: this.$route.params.id,
+        rating: "",
+        reviewBody: "",
+      },
+    };
+  },
+  methods: {
     addBreweryReview() {
-        BackendServices.addBreweryReview(this.newReview).then(() =>
-        this.resetForm());
+      BackendServices.addBreweryReview(this.newReview).then(() =>
+        this.resetForm()
+      );
     },
     resetForm() {
-        this.newReview = {};
-        this.show = false;
-    }
-},
-created(){
-    BackendServices.getBreweryReviews(this.$route.params.breweryId).then(response => {
-        response.data.forEach(element => {
-            this.reviews.push(element)
-        });
-    })
-}
+      this.newReview = {};
+      this.show = false;
+    },
+  },
 
-}
+  created() {
+    BackendServices.getBreweryReviews(this.$route.params.id).then(
+      (response) => {
+        response.data.forEach((element) => {
+          this.reviews.push(element);
+        });
+      }
+    );
+  },
+};
 </script>
 
 <style>
+h1,
+h2,
+h3,
+h4,
+p {
+  color: antiquewhite;
+}
 .review {
-    border:1px solid black;
+  border: 8px solid black;
+  background-color: rgb(184, 37, 37);
+  margin: 20px;
 }
-input[disabled]{
-    background-color: rgb(180, 180, 180);
+input[disabled] {
+  background-color: rgb(180, 180, 180);
 }
-textarea{
-    width:295px;
+form {
+  display: flex;
+  border-style: inset;
+  border-width: 10px;
+}
+
+.hop {
+  width: 50px;
 }
 </style>
