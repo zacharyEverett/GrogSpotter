@@ -60,9 +60,15 @@ public class    BeerController {
         }
     }
 
+    /**
+     * This is actually a delete-endpoint, despite the put mapping, but axios is mean
+     * and hates deletes. So I had to make it puts, now it works. I hate it.
+     * - Zach E
+     * @param fav
+     */
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @DeleteMapping("/favorites")
-    public void deleteFavorite(FavoritedBeerDTO fav) {
+    @PutMapping("/favorites")
+    public void deleteFavorite(@RequestBody FavoritedBeerDTO fav) {
         try {
             beerDao.deleteFavorite(fav);
         } catch (ResponseStatusException re){
