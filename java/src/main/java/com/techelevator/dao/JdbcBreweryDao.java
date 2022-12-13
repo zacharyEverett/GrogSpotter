@@ -128,4 +128,6 @@ public class JdbcBreweryDao implements BreweriesDao{
         brewery.setHistory(rs.getString("history"));
         return brewery;
     }
+
+   
 }
