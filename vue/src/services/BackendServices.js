@@ -61,7 +61,6 @@ export default {
     },
 
     addToFavorites(entry){
-        alert("method");
         return axios.post('/addBeer/favorites', entry);
     }
 
