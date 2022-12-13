@@ -103,6 +103,11 @@ export default {
 
 <style>
 
+#register{
+  background-image: url("https://townsquare.media/site/657/files/2022/09/attachment-josh-olalde-Ygu9Qx309s-unsplash.jpg?w=980&q=75");
+  background-size: 100%;
+}
+
 input, select{
   border-radius: 10px;
   height: 35px;

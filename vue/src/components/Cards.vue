@@ -27,7 +27,6 @@ export default {
 .container {
   display: flex;
   justify-content: space-evenly;
-  flex-basis: 5%;
 }
 
 /* CSS */

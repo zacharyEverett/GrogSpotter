@@ -1,9 +1,9 @@
 <template>
-  <div>
+  <div id="addbrew">
     <h1>Add a Brewery</h1>
     <form id="add-brewery" v-on:submit.prevent="addNewBrewery">
       <div>
-        <label for="brewery-Name" />
+        <label for="brewery-Name"/>
         <input
           type="text"
           id="brewery_name"
@@ -90,7 +90,7 @@
           v-model="newBrewery.history"
         ></textarea>
       </div>
-      <button type="submit">Submit</button>
+      <button class="button-78" type="submit">Submit</button>
     </form>
   </div>
 </template>
@@ -127,13 +127,22 @@ export default {
 </script>
 
 <style scoped>
+
+#addbrew{
+  background-image: url("https://townsquare.media/site/657/files/2022/09/attachment-josh-olalde-Ygu9Qx309s-unsplash.jpg?w=980&q=75");
+  background-size: 100%;
+}
+
 template {
   background-image: url("https://bloximages.newyork1.vip.townnews.com/hickoryrecord.com/content/tncms/assets/v3/editorial/a/b5/ab51d6b9-6e46-584e-8b88-4a9bfc33dd1e/621e747be417d.image.jpg?resize=749%2C500");
 }
 textarea{
-    width: 294px;
+    width: 80%;
 }
 form>div{
     width: 294px;
+}
+.button-78{
+  width: 100%;
 }
 </style>
