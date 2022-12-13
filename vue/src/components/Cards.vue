@@ -1,34 +1,32 @@
 <template>
   <div class="container">
     <router-link class="button-78" :to="{ name: 'breweries' }">
-    <div id="discover">
-       <h2>Discover Breweries</h2>
-    </div>
+      <div id="discover">
+        <h2>Discover Breweries</h2>
+      </div>
     </router-link>
     <router-link class="button-78" :to="{ name: 'breweries' }">
-    <div id="yourBeers"><h2>Your Beers</h2></div>
+      <div id="yourBeers">
+        <h2>Your Beers</h2>
+      </div>
     </router-link>
   </div>
 </template>
 
 <script>
-const secrets = require('@/../randompicturesofbeer/justanotherbeer.mp3')
+const secrets = require("@/../randompicturesofbeer/justanotherbeer.mp3");
 export default {
-  created(){
+  created() {
     let secret = new Audio(secrets);
     secret.play();
-  }
-  
-  };
-
-
+  },
+};
 </script>
 
 <style>
-.container{
+.container {
   display: flex;
   justify-content: space-evenly;
-  flex-direction: column;
   flex-basis: 5%;
 }
 
@@ -46,7 +44,7 @@ export default {
   display: inline-block;
   flex-direction: row;
   flex-shrink: 0;
-  font-family: Eina01,sans-serif;
+  font-family: Eina01, sans-serif;
   font-size: 16px;
   font-weight: 800;
   justify-content: center;
@@ -110,7 +108,11 @@ export default {
 }
 
 .button-78:hover:not(:disabled):before {
-  background: linear-gradient(92.83deg, rgb(255, 116, 38) 0%, rgb(249, 58, 19) 100%);
+  background: linear-gradient(
+    92.83deg,
+    rgb(255, 116, 38) 0%,
+    rgb(249, 58, 19) 100%
+  );
 }
 
 .button-78:hover:not(:disabled):after {
@@ -127,7 +129,12 @@ export default {
 }
 
 .button-78:active:not(:disabled):before {
-  background-image: linear-gradient(0deg, rgba(0, 0, 0, .2), rgba(0, 0, 0, .2)), linear-gradient(92.83deg, #ff7426 0, #f93a13 100%);
+  background-image: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.2),
+      rgba(0, 0, 0, 0.2)
+    ),
+    linear-gradient(92.83deg, #ff7426 0, #f93a13 100%);
 }
 
 .button-78:active:not(:disabled):after {
@@ -140,7 +147,6 @@ export default {
 
 .button-78:disabled {
   cursor: default;
-  opacity: .24;
+  opacity: 0.24;
 }
-
 </style>
