@@ -1,5 +1,5 @@
 <template>
-<div>
+<div id="addbeer">
   <h1>Add a Beer</h1>
   <form id="add-beer" v-on:submit.prevent="addNewBeer">
             <div>
@@ -39,7 +39,7 @@
                 onblur="this.placeholder = 'Beer Description'"
                 v-model="newBeer.beerDescription"></textarea>
             </div>
-            <button type="submit">Submit</button>
+            <button class="button-78" type="submit">Submit</button>
       </form>
 </div>
 </template>
@@ -81,6 +81,17 @@ methods: {
 }
 </script>
 
-<style>
+<style scoped>
+#addbeer{
+    background-image: url("https://townsquare.media/site/657/files/2022/09/attachment-josh-olalde-Ygu9Qx309s-unsplash.jpg?w=980&q=75");
+    background-size: 100%;
+}
 
+textarea{
+    width: 100%;
+}
+
+.button-78{
+  width: 100%;
+}
 </style>
