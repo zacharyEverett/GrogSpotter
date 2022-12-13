@@ -40,11 +40,11 @@
       >
       </select>
       <div class="buttons-register">
-      <router-link :to="{ name: 'login' }">
-        <div class="button-87">Have an account?</div></router-link>
-      <button class="button-87" type="submit">
+        <button class="button-87" type="submit">
         Create Account
       </button>
+      <router-link :to="{ name: 'login' }">
+        <div class="button-87">Have an account?</div></router-link>
       </div>
     </form>
     <router-link :to="{name: 'registerBrewery'}">Register As Brewery </router-link>
