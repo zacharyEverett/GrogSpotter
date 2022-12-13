@@ -38,7 +38,7 @@ export default {
         return axios.get('/reviews/beers')
     },
     getBreweryReviews(breweryId) {
-        return axios.get('/reviews/brewery/' + breweryId)
+        return axios.get(`/reviews/brewery/${breweryId}`)
     },
     getAllBreweryReviews() {
         return axios.get('/reviews/brewery')
@@ -61,8 +61,12 @@ export default {
     },
 
     addToFavorites(entry){
-        alert("method");
         return axios.post('/addBeer/favorites', entry);
+    },
+
+    getFavorites(id){
+        return axios.get(`beers/favorites/${id}`);
+       
     }
 
 }

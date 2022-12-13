@@ -5,7 +5,7 @@
         <h2>Discover Breweries</h2>
       </div>
     </router-link>
-    <router-link class="button-78" :to="{ name: 'breweries' }">
+    <router-link class="button-78" :to="{ name: 'favorites' }">
       <div id="yourBeers">
         <h2>Your Beers</h2>
       </div>
