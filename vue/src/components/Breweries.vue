@@ -44,10 +44,8 @@ li {
   border-style: ridge;
   border-width: 10px;
   border-radius: 10px;
-  width: 300px;
   margin: auto;
-  display: flex;
-  flex-direction: column;
+  width: 300px;
   padding: 20px;
   background-image: url("https://cdn.pixabay.com/photo/2018/02/15/14/37/paper-3155438_1280.jpg");
 }

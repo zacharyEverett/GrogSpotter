@@ -160,7 +160,7 @@
 }
 
 #container {
-  height: 370px;
+  height: 200px;
   margin: 0 auto;
   overflow: hidden;
 }
