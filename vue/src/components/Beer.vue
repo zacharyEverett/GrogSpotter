@@ -24,12 +24,14 @@ export default {
       this.beer = response.data;
       this.favorited = {
         user_id: this.$store.state.user.id,
-        beer_id: this.beer.beer_id
+        beer_id: this.beer.beerId
       };
     });
+    
   },
   methods: {
     addFavorited(){
+      
       BackendServices.addToFavorites(this.favorited);
     }
   }
