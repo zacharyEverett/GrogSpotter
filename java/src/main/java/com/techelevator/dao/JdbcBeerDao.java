@@ -2,6 +2,7 @@ package com.techelevator.dao;
 
 
 import com.techelevator.model.dto.BeerDto;
+import com.techelevator.model.dto.FavoritedBeerDTO;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
@@ -91,6 +92,32 @@ public class JdbcBeerDao implements BeerDao{
 //        return jdbcTemplate.update(sql, breweryId, beerName, abv, type, beerDescription) == 1;
     }
 
+    public Beer addFavorite(FavoritedBeerDTO fav){
+        Beer beer;
+        int beerId = 0;
+        String sql = "INSERT INTO user_beers (user_id, beer_id) VALUES (?,?) RETURNING beer_id";
+        beerId = jdbcTemplate.queryForObject(sql, Integer.class, fav.getUser_id(), fav.getBeer_id());
+        beer = getById(beerId);
+        return beer;
+    }
+
+    public List<Beer> getFavorites(int userId){
+        List<Beer> favorites = new ArrayList<>();
+        String sql = "SELECT beer_id, brewery_id, beer_name, abv, beer_type, beer_description " +
+                "FROM beers JOIN user_beers USING (beer_id) where user_id = ?";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
+        while (results.next()) {
+            Beer beer = mapRowToBeer(results);
+            favorites.add(beer);
+        }
+        return favorites;
+    }
+
+    public void deleteFavorite(FavoritedBeerDTO fav){
+        String sql = "DELETE from user_beers where user_id = ? && beer_id = ?";
+        jdbcTemplate.update(sql, fav.getBeer_id(), fav.getBeer_id());
+    }
+
     private Beer mapRowToBeer(SqlRowSet rs) {
         Beer beer = new Beer();
         beer.setBeerId(rs.getInt("beer_id"));
@@ -101,6 +128,10 @@ public class JdbcBeerDao implements BeerDao{
         beer.setBeerDescription(rs.getString("beer_description"));
         return beer;
     }
+
+
+
+
 
 
 }

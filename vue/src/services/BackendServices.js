@@ -58,5 +58,11 @@ export default {
     },
     findBreweriesByBrewerId(id){
         return axios.get(`/breweries/manage/${id}`)
+    },
+
+    addToFavorites(entry){
+        alert("method");
+        return axios.post('/addBeer/favorites', entry);
     }
+
 }
