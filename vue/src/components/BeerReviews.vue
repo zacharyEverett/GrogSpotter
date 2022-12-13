@@ -99,7 +99,7 @@ export default {
     BackendServices.getBeerReviews(this.$route.params.beerID).then(
       (response) => {
         response.data.forEach((element) => {
-          this.reviews.push(element);
+          this.reviews.unshift(element);
         });
       }
     );

@@ -74,8 +74,8 @@ data(){
 // }
 methods: {
     addBreweryReview() {
-        BackendServices.addBreweryReview(this.newReview).then(() =>
-        this.resetForm());
+        BackendServices.addBreweryReview(this.newReview)
+        .then(() => this.resetForm());
     },
     resetForm() {
         this.newReview = {};
@@ -83,12 +83,12 @@ methods: {
     }
 },
 created(){
-    BackendServices.getBreweryReviews(this.$route.params.breweryId).then(response => {
+    BackendServices.getBreweryReviews(this.$route.params.id).then(response => {
         response.data.forEach(element => {
-            this.reviews.push(element)
+            this.reviews.unshift(element)
         });
     })
-}
+},
 
 }
 </script>
