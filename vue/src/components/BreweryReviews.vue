@@ -74,20 +74,23 @@ data(){
 // }
 methods: {
     addBreweryReview() {
-        BackendServices.addBreweryReview(this.newReview).then(() =>
-        this.resetForm());
+        BackendServices.addBreweryReview(this.newReview).then(this.refresh())
+        
     },
     resetForm() {
         this.newReview = {};
         this.show = false;
-    }
-},
-created(){
-    BackendServices.getBreweryReviews(this.$route.params.breweryId).then(response => {
+    },
+    refresh(){
+        BackendServices.getBreweryReviews(this.$route.params.id).then(response => {
         response.data.forEach(element => {
             this.reviews.push(element)
         });
     })
+    }
+},
+created(){
+    this.refresh();
 }
 
 }
