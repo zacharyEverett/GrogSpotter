@@ -67,6 +67,13 @@ export default {
     getFavorites(id){
         return axios.get(`beers/favorites/${id}`);
        
+    },
+    deleteFavorite(dto){
+       console.log(dto.user_id);
+       console.log(dto.beer_id);
+       //This is a delete, but I called it as a put and named it as such in the java.
+       //THis is the only way this works, and I hate it. - Zach E
+        return axios.put('/beers/favorites', dto)
     }
 
 }
