@@ -1,5 +1,92 @@
 <template>
   <div id="app">
+    <nav
+      class="navbar is-warning"
+      role="navigation"
+      aria-label="main navigation"
+    >
+      <div class="navbar-brand">
+        <a class="navbar-item" href="http://localhost:8080/">
+          <img src="..\randompicturesofbeer\output-onlinepngtools.png" />
+        </a>
+
+        <a
+          role="button"
+          class="navbar-burger"
+          aria-label="menu"
+          aria-expanded="false"
+          data-target="navbarBasicExample"
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+
+      <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+          <router-link class="navbar-item" v-bind:to="{ name: 'home' }">
+            Home
+          </router-link>
+
+          <router-link class="navbar-item" :to="{ name: 'search' }">
+            Search Breweries
+          </router-link>
+
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link"> BrewersOnly </a>
+
+            <div class="navbar-dropdown">
+              <router-link
+                class="navbar-item"
+                :to="{ name: 'registerBrewery' }"
+                v-if="this.$store.state.isBrewer == true"
+              >
+                Add a Brewery
+              </router-link>
+              <router-link
+                class="navbar-item"
+                :to="{ name: 'addBeer' }"
+                v-if="this.$store.state.isBrewer == true"
+              >
+                Add a Beer
+              </router-link>
+              <router-link
+                class="navbar-item"
+                :to="{ name: 'update' }"
+                v-if="this.$store.state.isBrewer == true"
+              >
+                Manage Breweries
+              </router-link>
+              <hr class="navbar-divider" />
+              <a class="navbar-item"> Report an issue </a>
+            </div>
+          </div>
+        </div>
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="buttons">
+              <router-link :to="{ name: 'register' }" class="button is-black" v-if="$store.state.token==''">
+                <strong>Sign up</strong>
+              </router-link>
+              <a :href="$router.resolve({ name: 'logout' }).href"
+                class="button is-danger"
+                v-bind:to="{ name: 'logout' }"
+                v-if="$store.state.token != ''"
+                ><div class="log"><h3>Logout</h3></div></a
+              >
+              <router-link
+                class="button is-black"
+                v-bind:to="{ name: 'login' }"
+                v-else
+              >
+                <div class="log"><h3>Login</h3></div></router-link
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
     <div id="nav">
       <header>
         <div id="container">
@@ -22,26 +109,16 @@
               <div class="foam-15"></div>
             </div>
             <div id="liquid">
-              <div id="right">
-                <div class="nav">
-                  <router-link v-bind:to="{ name: 'home' }">
-                    <div class="homes"><h3>Home</h3></div>
-                  </router-link>
-                  <router-link
-                    v-bind:to="{ name: 'logout' }"
-                    v-if="$store.state.token != ''"
-                    ><div class="log"><h3>Logout</h3></div></router-link
-                  >
-                  <router-link v-bind:to="{ name: 'login' }" v-else>
-                    <div class="log"><h3>Login</h3></div></router-link
-                  >
-                </div>
-              </div>
               <div class="bubble bubble1"></div>
               <div class="bubble bubble2"></div>
               <div class="bubble bubble3"></div>
               <div class="bubble bubble4"></div>
               <div class="bubble bubble5"></div>
+              <nav
+                class="navbar"
+                role="navigation"
+                aria-label="dropdown navigation"
+              ></nav>
             </div>
           </div>
           <div id="left">
@@ -60,7 +137,7 @@
 
 
 <style scoped>
-#app{
+#app {
   background-image: url("https://www.thegalleymarietta.com/wp-content/uploads/2021/04/Beer-Dinner-Web-Banner-Image-2-1024x642.jpg");
 }
 
@@ -86,8 +163,6 @@
   height: 370px;
   margin: 0 auto;
   overflow: hidden;
-  position: relative;
-  top: 20px;
 }
 
 #container div {
@@ -100,11 +175,11 @@
   height: 200px;
 }
 
-.homes{
+.homes {
   left: 1150px;
 }
 
-.log{
+.log {
   left: 1150px;
   top: 100px;
 }
@@ -113,7 +188,7 @@
   background-color: #f2c025;
   border: 10px solid #f2c025;
   bottom: 0;
-  height: 170px;
+  height: 200px;
   overflow: hidden;
   width: 2500px;
   display: flex;
@@ -285,7 +360,6 @@
 h1 {
   color: rgb(95, 0, 0);
   font-weight: 800;
-  z-index: 10000;
   position: absolute;
   margin-left: 2em;
   font-family: "Prompt", sans-serif;
@@ -323,5 +397,7 @@ h2 {
   background-color: #fff;
   padding: 20px;
 }
-
+.navbar {
+  z-index: 10000;
+}
 </style>
