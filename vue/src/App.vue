@@ -137,8 +137,11 @@
 
 
 <style scoped>
-#app {
-  background-image: url("https://www.thegalleymarietta.com/wp-content/uploads/2021/04/Beer-Dinner-Web-Banner-Image-2-1024x642.jpg");
+
+#app{
+  background-image: url("https://townsquare.media/site/657/files/2022/09/attachment-josh-olalde-Ygu9Qx309s-unsplash.jpg?w=980&q=75");
+  background-size: 100%;
+  height: 100vh;
 }
 
 #left {
@@ -160,7 +163,7 @@
 }
 
 #container {
-  height: 370px;
+  height: 200px;
   margin: 0 auto;
   overflow: hidden;
 }
