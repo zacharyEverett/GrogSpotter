@@ -62,6 +62,11 @@ export default {
 
     addToFavorites(entry){
         return axios.post('/addBeer/favorites', entry);
+    },
+
+    getFavorites(id){
+        return axios.get(`beers/favorites/${id}`);
+       
     }
 
 }

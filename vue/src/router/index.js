@@ -14,6 +14,7 @@ import AddBreweryView from '../views/AddBreweryView'
 import AddBeerView from '../views/AddBeerView'
 import BreweriesBySearch from '../views/BreweriesBySearch'
 import ManageBreweryView from '../views/ManageBreweryView'
+import FavoriteView from '../views/FavoriteView'
 Vue.use(Router)
 
 /**
@@ -143,6 +144,14 @@ const router = new Router({
       component: ManageBreweryView,
       meta: {
         requiresAuth: false
+      }
+    },
+    {
+      path:"/favorites",
+      name:"favorites",
+      component: FavoriteView,
+      meta: {
+        requiresAuth: true
       }
     }
   ]
