@@ -1,30 +1,7 @@
 <template>
   <div class="home">
-    <div class="route">
-      <div>
-      <router-link
-        :to="{ name: 'registerBrewery' }"
-        v-if="this.$store.state.isBrewer == true"
-      >
-        <h4 class="button-78">Add a Brewery</h4>
-      </router-link>
-      </div>
-      <div>
-      <router-link
-        :to="{ name: 'addBeer' }"
-        v-if="this.$store.state.isBrewer == true"
-      >
-        <h4 class="button-78">Add a Beer</h4>
-      </router-link>
-      </div>
-      <div>
-      <router-link :to="{ name: 'search' }">
-        <h4 class="button-78">Search</h4>
-      </router-link>
-      </div>
-    </div>
-    <div id="description"></div>
     <cards></cards>
+    
   </div>
 </template>
 
