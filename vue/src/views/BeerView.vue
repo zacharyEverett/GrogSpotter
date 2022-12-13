@@ -3,8 +3,11 @@
     <div class="button-87">
       <router-link :to="{name: 'brewery'}"><h3>Back to Brewery</h3> </router-link>
     </div>
+    
+      
       <beer></beer>
-      <beer-reviews></beer-reviews>
+    <beer-reviews></beer-reviews>
+      
   </div>
 </template>
 
