@@ -198,5 +198,8 @@ export default {
 </script>
 
 <style>
+textarea{
+  width: 100%;
+}
 
 </style>
