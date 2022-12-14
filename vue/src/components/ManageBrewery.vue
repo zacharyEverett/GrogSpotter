@@ -6,8 +6,53 @@
       </ul>
       <div>
     <h1>Update Brewery Info</h1>
-    
-    <form id="add-brewery" v-on:submit.prevent="updateBrewery">
+    <button v-on:click="show = !show">Update Brewery Info</button>
+    <button v-on:click="showAddBeer = !showAddBeer">Add a Beer</button>
+    <add-beer v-if="showAddBeer == true">Add a Beer</add-beer>
+    <!-- <div>
+    <form id="add-beer" v-if="showAddBeer == true" v-on:submit.prevent="addNewBeer">
+            <div>
+                <label for="brewery-id"></label>
+                <input type="number" id="brewery-id" placeholder="Brewery Id" 
+                onfocus="this.placeholder = ''"
+                onblur="this.placeholder = 'Brewery Id'"
+                v-model="newBeer.breweryId"/>
+            </div>
+            <div>
+                <label for="beer-Name"></label>
+                <input type="text" id="beer_name" placeholder="Beer Name" 
+                onfocus="this.placeholder = ''"
+                onblur="this.placeholder = 'Beer Name'"
+                v-model="newBeer.beerName"/>
+            </div>
+            
+            <div>
+                <label for="abv"></label>
+                <input type="text" id="abv" placeholder="ABV"
+                onfocus="this.placeholder = ''"
+                onblur="this.placeholder = 'ABV'"
+                v-model="newBeer.abv"/>
+            </div>
+            <div>
+                <label for="beer-type"></label>
+                <input type="text" id="beer-type" placeholder="Beer Type"
+                onfocus="this.placeholder = ''"
+                onblur="this.placeholder = 'Beer Type'"
+                v-model="newBeer.beerType"/>
+            </div>
+            
+            <div>
+                <label for="beer-description"></label>
+                <textarea name="beer-description" id="beer-description" rows="8" cols="50" placeholder="Beer Description" 
+                onfocus="this.placeholder = ''"
+                onblur="this.placeholder = 'Beer Description'"
+                v-model="newBeer.beerDescription"></textarea>
+            </div>
+            <button type="submit">Submit</button>
+      </form>
+      </div> -->
+      <div>
+    <form id="add-brewery" v-if="show == true" v-on:submit.prevent="updateBrewery">
       <div>
         <label for="brewery-Name" />
         <input
@@ -96,18 +141,23 @@
       </div>
       <button type="submit">Submit</button>
     </form>
+    </div>
   </div>
   </div>
 </template>
 
 <script>
 import BackendServices from '../services/BackendServices'
+import AddBeer from './AddBeer.vue';
 export default {
+  components: { AddBeer },
     
     
     
     data(){
         return {
+          show: false,
+          showAddBeer: false,
         updatedBrewery: {
         breweryName: "",
         streetAddress: "",
