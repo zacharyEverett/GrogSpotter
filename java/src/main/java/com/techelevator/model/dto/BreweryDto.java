@@ -1,10 +1,11 @@
 package com.techelevator.model.dto;
 
 import javax.validation.constraints.NotEmpty;
+import java.sql.Time;
 import java.time.LocalTime;
 
 public class BreweryDto {
-    @NotEmpty
+
     private int breweryID;
     @NotEmpty
     private String breweryName;
@@ -16,15 +17,15 @@ public class BreweryDto {
     private String stateAbv;
     @NotEmpty
     private String zip;
-    @NotEmpty
+
     private LocalTime timeOpen;
-    @NotEmpty
+
     private LocalTime timeClosed;
     @NotEmpty
     private String history;
-    @NotEmpty
+
     private boolean isActive = true;
-    @NotEmpty
+
     private int brewer_id;
 
     public int getBrewer_id() {

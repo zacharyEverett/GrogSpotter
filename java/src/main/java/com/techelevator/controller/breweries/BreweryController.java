@@ -83,6 +83,18 @@ public class BreweryController {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
     }
+    @ResponseStatus(HttpStatus.OK)
+    @PutMapping("/update/{breweryId}")
+    public Brewery updateBrewery(@RequestBody BreweryDto brewery, @PathVariable int breweryId){
+        try{
+            Brewery updatedBrewery;
+            updatedBrewery = breweriesDao.updateBrewery(brewery, breweryId);
+            return updatedBrewery;
+        }catch (ResponseStatusException re) {
+            re.getMessage();
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
+    }
 
     //waiting on Danny for rest of methods.
 
