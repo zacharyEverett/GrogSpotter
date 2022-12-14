@@ -32,10 +32,12 @@ export default {
       };
       (this.favorites = []),
         BackendServices.deleteFavorite(this.deleted).then(
-          (this.favorites = [])
+          this.favorites = this.favorites.filter(item => item.beerId !== this.deleted.beer_id),
+          this.$alert("Favorite removed.", "Destroyed.", 'success'),
+          
         );
 
-      this.refresh();
+      
     },
     refresh() {
       BackendServices.getFavorites(this.$store.state.user.id).then(
