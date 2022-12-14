@@ -59,7 +59,7 @@
                 Manage Breweries
               </router-link>
               <hr class="navbar-divider" />
-              <a class="navbar-item"> Report an issue </a>
+              <a class="navbar-item" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"> Report an issue </a>
             </div>
           </div>
         </div>
@@ -107,6 +107,7 @@
               <div class="foam-13"></div>
               <div class="foam-14"></div>
               <div class="foam-15"></div>
+              
             </div>
             <div id="liquid">
               <div class="bubble bubble1"></div>
@@ -137,8 +138,11 @@
 
 
 <style scoped>
-#app {
-  background-image: url("https://www.thegalleymarietta.com/wp-content/uploads/2021/04/Beer-Dinner-Web-Banner-Image-2-1024x642.jpg");
+
+#app{
+  background-image: url("https://townsquare.media/site/657/files/2022/09/attachment-josh-olalde-Ygu9Qx309s-unsplash.jpg?w=980&q=75");
+  background-size: 100%;
+  height: 100vh;
 }
 
 #left {
@@ -160,7 +164,7 @@
 }
 
 #container {
-  height: 370px;
+  height: 200px;
   margin: 0 auto;
   overflow: hidden;
 }
@@ -400,4 +404,5 @@ h2 {
 .navbar {
   z-index: 10000;
 }
+
 </style>

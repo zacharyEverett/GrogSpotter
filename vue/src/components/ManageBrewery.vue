@@ -159,14 +159,12 @@ export default {
     deleteBeer(id){
       BackendServices.deleteBeer(id)
     },
-    updateBrewery() {
-      BackendServices.updateBrewery(
-        this.breweries[0].breweryID,
-        this.breweries[0]
-      ).then(() => {
-        this.resetForm();
-      });
-      this.showBeers = true;
+    methods: {
+        updateBrewery() {
+        BackendServices.updateBrewery(this.breweries[0].breweryID,this.breweries[0]).then(() => {
+                this.resetForm();
+        });
+       this.$alert("Brewery updated successfully!", "Nice!", 'success');
     },
     resetForm() {
       this.updatedBrewery = {};
@@ -197,4 +195,8 @@ export default {
 </script>
 
 <style>
+textarea{
+  width: 100%;
+}
+
 </style>

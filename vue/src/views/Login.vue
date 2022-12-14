@@ -31,9 +31,9 @@
         v-model="user.password"
         required
       />
+      <button type="submit" class="button-87"><h3>Sign in</h3></button>
       <router-link :to="{ name: 'register' }">
         <h3 class="button-87">Need an account?</h3></router-link>
-      <button type="submit" class="button-87">Sign in</button>
     </form>
   </div>
 </template>
@@ -98,6 +98,7 @@ h3{
   color: rgb(252, 216, 216);
   font-size: 16px;
   text-align: center;
+  font-weight: bold;
   text-shadow: 1px 1px 2px red, 0 0 1em blue, 0 0 0.2em blue;
 }
 
@@ -117,9 +118,14 @@ form{
   background-image: url("https://cdn.pixabay.com/photo/2018/02/15/14/37/paper-3155438_1280.jpg");
 }
 
+#login{
+  background-image: url("https://townsquare.media/site/657/files/2022/09/attachment-josh-olalde-Ygu9Qx309s-unsplash.jpg?w=980&q=75");
+  background-attachment: fixed;
+  background-size: 100%;
+}
+
 /*  Button CSS */
 .button-87 {
-  margin: auto;
   padding: 15px 30px;
   text-align: center;
   text-transform: uppercase;

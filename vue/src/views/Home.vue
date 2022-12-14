@@ -1,8 +1,9 @@
 <template>
-  <div class="home">
-    <cards></cards>
+    <div class="home">
+      <br/>
+      <cards></cards>
     
-  </div>
+    </div>
 </template>
 
 <script>
@@ -30,13 +31,6 @@ export default {
   display: flex;
   justify-content: center;
   height: 300px;
-}
-
-.home {
-  background-image: url("https://townsquare.media/site/657/files/2022/09/attachment-josh-olalde-Ygu9Qx309s-unsplash.jpg?w=980&q=75");
-  background-size: 100%;
-  position: relative;
-  background-attachment: fixed;
 }
 
 #description p {

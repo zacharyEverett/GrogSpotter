@@ -38,7 +38,7 @@
           v-model="newReview.reviewBody"
         ></textarea>
       </div>
-      <button type="submit">Submit</button>
+      <button class="button-78" type="submit">Submit</button>
     </form>
 
     <h1>Reviews:</h1>
@@ -107,7 +107,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 h1,
 h2,
 h3,
@@ -117,6 +117,7 @@ p {
 }
 .review {
   border: 8px solid black;
+  border-radius: 9px;
   background-color: rgb(184, 37, 37);
   margin: 20px;
 }
@@ -131,5 +132,13 @@ form {
 
 .hop {
   width: 50px;
+}
+
+.button-87{
+  margin: auto;
+}
+
+.button-78{
+  width: 100%;
 }
 </style>

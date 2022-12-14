@@ -1,21 +1,25 @@
 <template>
   <div>
     <h1>{{ beer.beerName }}</h1>
-    <h2>Type: {{ beer.beerType }}  |  Abv: {{ beer.abv }}%</h2>
+    <h2>Type: {{ beer.beerType }} | Abv: {{ beer.abv }}%</h2>
     <h3>{{ beer.beerDescription }}</h3>
-    <button @click="addFavorited()">Favorite this beer</button>    
+    <div class="buttons">
+      <button class="button-87" @click="addFavorited()">
+        Favorite this beer
+      </button>
+    </div>
   </div>
 </template>
 
 <script>
 import axios from "axios";
-import BackendServices from '../services/BackendServices';
+import BackendServices from "../services/BackendServices";
 
 export default {
   data() {
     return {
       beer: {},
-      favorited: {}
+      favorited: {},
     };
   },
   created() {
@@ -24,22 +28,29 @@ export default {
       this.beer = response.data;
       this.favorited = {
         user_id: this.$store.state.user.id,
-        beer_id: this.beer.beerId
+        beer_id: this.beer.beerId,
       };
     });
-    
   },
   methods: {
-    addFavorited(){
-      
+    addFavorited() {
       BackendServices.addToFavorites(this.favorited);
-    }
-  }
+      this.$alert("We added that to your favorites for ya'.", "Glug-Glug-Yum!", 'success');
+    },
+  },
 };
 </script>
 
 <style scoped>
-div{
+h1,h2,h3{
+  color: white;
+}
+div {
   text-align: center;
+}
+.buttons{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>

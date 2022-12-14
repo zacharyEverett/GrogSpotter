@@ -27,7 +27,6 @@ export default {
 .container {
   display: flex;
   justify-content: space-evenly;
-  flex-basis: 5%;
 }
 
 /* CSS */
@@ -148,5 +147,10 @@ export default {
 .button-78:disabled {
   cursor: default;
   opacity: 0.24;
+}
+
+h2{
+  font-size: 24px;
+  font-weight: bold;
 }
 </style>

@@ -40,11 +40,11 @@
       >
       </select>
       <div class="buttons-register">
-      <router-link :to="{ name: 'login' }">
-        <div class="button-87">Have an account?</div></router-link>
-      <button class="button-87" type="submit">
+        <button class="button-87" type="submit">
         Create Account
       </button>
+      <router-link :to="{ name: 'login' }">
+        <div class="button-87">Have an account?</div></router-link>
       </div>
     </form>
     <router-link :to="{name: 'registerBrewery'}">Register As Brewery </router-link>
@@ -102,6 +102,11 @@ export default {
 </script>
 
 <style>
+
+#register{
+  background-image: url("https://townsquare.media/site/657/files/2022/09/attachment-josh-olalde-Ygu9Qx309s-unsplash.jpg?w=980&q=75");
+  background-size: 100%;
+}
 
 input, select{
   border-radius: 10px;

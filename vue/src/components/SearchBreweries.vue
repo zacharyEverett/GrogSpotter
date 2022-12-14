@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="searchbrew">
     <div class="searchBox">
       <form action="submit">
         <label for="search">Type in a city to discover breweries: </label>
@@ -46,6 +46,7 @@ export default {
 </script>
 
 <style>
+
 .searchBox {
   z-index: 1000;
 }
