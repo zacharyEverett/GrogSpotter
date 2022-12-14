@@ -194,7 +194,8 @@ export default {
     });
     this.breweryID = this.breweries[0].breweryID;
   },
-};
+}
+}
 </script>
 
 <style scoped>
