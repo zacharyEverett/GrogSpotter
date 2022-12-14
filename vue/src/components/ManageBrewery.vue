@@ -122,7 +122,7 @@
           v-model="breweries[0].history"
         ></textarea>
       </div>
-      <button type="submit">Submit</button>
+      <button class="button-78" type="submit">Submit</button>
     </form>
   </div>
 </template>
@@ -194,9 +194,8 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 textarea{
   width: 100%;
 }
-
 </style>
