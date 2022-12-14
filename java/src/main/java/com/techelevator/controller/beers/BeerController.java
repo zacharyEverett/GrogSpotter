@@ -76,6 +76,15 @@ public class    BeerController {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @PutMapping("/{id}")
+    public void deleteBeer(@PathVariable int id) {
+        try {
+            beerDao.deleteBeer(id);
+        } catch (ResponseStatusException re){
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 
 
 
