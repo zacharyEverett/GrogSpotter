@@ -9,6 +9,7 @@
     <beer-list></beer-list>
     <div>
     <brewery-reviews></brewery-reviews>
+    <br/>
     </div>
   </div>
 </template>

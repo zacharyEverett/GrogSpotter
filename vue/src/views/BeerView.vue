@@ -8,7 +8,7 @@
       
       <beer></beer>
     <beer-reviews></beer-reviews>
-      
+      <br/>
   </div>
 </template>
 

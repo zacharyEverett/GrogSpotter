@@ -107,7 +107,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 h1,
 h2,
 h3,
@@ -117,7 +117,8 @@ p {
 }
 .review {
   border: 8px solid black;
-  background-color: rgb(184, 37, 37);
+  border-radius: 9px;
+  background-color: #f2c025;
   margin: 20px;
 }
 input[disabled] {
