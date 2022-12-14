@@ -11,14 +11,16 @@
           onfocus="placeholder=''"
           onblur="placeholder='Review Title'"
           v-model="newReview.title"
+          required
         />
         <select
           name="rating"
           id="rating"
           v-model="newReview.rating"
           placeholder="Rating"
+          required
         >
-          <option value="" disabled selected hidden>Choose a Rating</option>
+          <option value=" " disabled selected hidden>Choose a Rating</option>
           <option value="1">1 = Least Satisfied</option>
           <option value="2">2</option>
           <option value="3">3</option>
