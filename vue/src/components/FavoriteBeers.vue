@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="background">
     <h1>Your Favorites:</h1>
     <br>
     <div v-for="beer in favorites" :key="beer.beerId" class="fav">
@@ -57,5 +57,15 @@ export default {
   border-style: inset;
   border-width: 10px;
   border-radius: 5px;
+  margin-top: 10px;
+  margin-left: 100px;
+  margin-right: 100px;
+}
+h1,h2,h3{
+  color:antiquewhite;
+}
+.background{
+  background-image: url("https://typewriter.imgix.net/u/62c9caaa-96a2-47f0-b0ad-a9c6ba359eb5/p/81009/gonzalo-remy-JCIJnIXv7SE-unsplash.jpg?ixlib=rails-2.1.4&auto=format%2Ccompress&crop=faces&fit=crop&h=800&w=800");
+  width: 100%;
 }
 </style>

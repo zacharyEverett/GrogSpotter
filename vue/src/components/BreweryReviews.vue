@@ -38,7 +38,7 @@
           v-model="newReview.reviewBody"
         ></textarea>
       </div>
-      <button type="submit">Submit</button>
+      <button class="button-78" type="submit">Submit</button>
     </form>
 
     <h1>Reviews:</h1>
@@ -136,5 +136,9 @@ form {
 
 .button-87{
   margin: auto;
+}
+
+.button-78{
+  width: 100%;
 }
 </style>
