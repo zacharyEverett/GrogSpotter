@@ -18,5 +18,5 @@ public interface BreweriesDao {
 
     Brewery addBrewery(BreweryDto brewery);
 
-    Brewery updateBrewery(BreweryDto brewery);
+    Brewery updateBrewery(BreweryDto brewery, int breweryId);
 }
