@@ -107,7 +107,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 h1,
 h2,
 h3,
@@ -115,11 +115,7 @@ h4,
 p {
   color: antiquewhite;
 }
-.review {
-  border: 8px solid black;
-  background-color: rgb(184, 37, 37);
-  margin: 20px;
-}
+
 input[disabled] {
   background-color: rgb(180, 180, 180);
 }
@@ -131,5 +127,9 @@ form {
 
 .hop {
   width: 50px;
+}
+
+.button-87{
+  margin: auto;
 }
 </style>

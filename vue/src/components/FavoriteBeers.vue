@@ -1,11 +1,12 @@
 <template>
   <div>
     <h1>Your Favorites:</h1>
+    <br>
     <div v-for="beer in favorites" :key="beer.beerId" class="fav">
       <h1>{{ beer.beerName }}</h1>
       <h2>Type: {{ beer.beerType }} | Abv: {{ beer.abv }}%</h2>
       <h3>{{ beer.beerDescription }}</h3>
-      <button @click.prevent="deleteFav(beer.beerId)">
+      <button class="button-87" @click.prevent="deleteFav(beer.beerId)">
         Remove from Favorites
       </button>
     </div>
@@ -51,4 +52,10 @@ export default {
 </script>
 
 <style>
+.fav {
+  background-color: rgb(184, 37, 37);
+  border-style: inset;
+  border-width: 10px;
+  border-radius: 5px;
+}
 </style>
