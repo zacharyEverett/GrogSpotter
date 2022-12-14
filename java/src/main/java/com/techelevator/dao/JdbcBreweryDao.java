@@ -33,7 +33,7 @@ public class JdbcBreweryDao implements BreweriesDao{
     @Override
     public List<Brewery> findAll() {
         List<Brewery> breweries = new ArrayList<>();
-        String sql = "SELECT brewery_id, brewery_name, street_address, city, state_abv, zip, history \n"+
+        String sql = "SELECT brewery_id, brewery_name, street_address, city, state_abv, zip, time_open, time_closed, history \n"+
                 "FROM breweries \n" +
                 "ORDER BY brewery_name;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
@@ -106,8 +106,8 @@ public class JdbcBreweryDao implements BreweriesDao{
     }
 
     @Override
-    public Brewery updateBrewery(BreweryDto brewery){
-        String sql = "UPDATE breweries SET brewery_name = ?, street_address = ?, city = ?, stave_abv = ?" +
+    public Brewery updateBrewery(BreweryDto brewery, int breweryID){
+        String sql = "UPDATE breweries SET brewery_name = ?, street_address = ?, city = ?, state_abv = ?, " +
                 "zip = ?, time_open = ?, time_closed = ?, history = ? WHERE brewery_id = ?;";
         Brewery updatedBrewery = new Brewery();
         int breweryId = 0;
@@ -125,6 +125,8 @@ public class JdbcBreweryDao implements BreweriesDao{
         brewery.setCity(rs.getString("city"));
         brewery.setStateAbv(rs.getString("state_abv"));
         brewery.setZip(rs.getString("zip"));
+        brewery.setTimeOpen(rs.getTime("time_open").toLocalTime());
+        brewery.setTimeClosed(rs.getTime("time_closed").toLocalTime());
         brewery.setHistory(rs.getString("history"));
         return brewery;
     }
