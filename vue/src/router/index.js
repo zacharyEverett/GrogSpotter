@@ -139,7 +139,7 @@ const router = new Router({
       }
     },
     {
-      path:"/manage",
+      path:"/manage/",
       name:"update",
       component: ManageBreweryView,
       meta: {

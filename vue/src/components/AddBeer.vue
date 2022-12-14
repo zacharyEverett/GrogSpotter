@@ -4,10 +4,10 @@
   <form id="add-beer" v-on:submit.prevent="addNewBeer">
             <div>
                 <label for="brewery-id"></label>
-                <input type="number" id="brewery-id" placeholder="Brewery Id" 
+                <input type="hidden" id="brewery-id" placeholder="Brewery Id" 
                 onfocus="this.placeholder = ''"
                 onblur="this.placeholder = 'Brewery Id'"
-                v-model="newBeer.breweryId"/>
+                :value="breweryId"/>
             </div>
             <div>
                 <label for="beer-Name"></label>
@@ -47,10 +47,11 @@
 <script>
 import BackendServices from '../services/BackendServices'
 export default {
+    props:['breweryId'],
     data(){
         return{
             newBeer:{
-                breweryId: '',
+                breweryId: this.breweryId,
                 beerName: '',
                 abv: '',
                 beerType: '',
