@@ -148,4 +148,9 @@ export default {
   cursor: default;
   opacity: 0.24;
 }
+
+h2{
+  font-size: 24px;
+  font-weight: bold;
+}
 </style>
