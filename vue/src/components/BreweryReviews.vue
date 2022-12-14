@@ -115,7 +115,12 @@ h4,
 p {
   color: antiquewhite;
 }
-
+.review {
+  border: 8px solid black;
+  background-color: rgb(184, 37, 37);
+  margin: 20px;
+  border-radius: 9px;
+}
 input[disabled] {
   background-color: rgb(180, 180, 180);
 }
