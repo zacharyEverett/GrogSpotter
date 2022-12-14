@@ -178,7 +178,7 @@ export default {
         BackendServices.updateBrewery(this.breweries[0].breweryID,this.breweries[0]).then(() => {
                 this.resetForm();
         });
-       
+       this.$alert("Brewery updated successfully!", "Nice!", 'success');
     },
     resetForm() {
       this.updatedBrewery = {};
