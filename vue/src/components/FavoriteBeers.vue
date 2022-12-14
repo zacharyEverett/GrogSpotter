@@ -31,12 +31,10 @@ export default {
         user_id: this.$store.state.user.id,
         beer_id: id,
       };
-      (this.favorites = []),
+      this.favorites = this.favorites.filter((item) => this.isFavorited(item.beerId)),
         BackendServices.deleteFavorite(this.deleted).then(
-          (this.favorites = [])
+          this.$alert("Favorite removed.", "Destroyed.", "success")
         );
-
-      this.refresh();
     },
     refresh() {
       BackendServices.getFavorites(this.$store.state.user.id).then(
@@ -46,6 +44,9 @@ export default {
           });
         }
       );
+    },
+    isFavorited(id) {
+      return this.deleted.beer_id != id;
     },
   },
 };

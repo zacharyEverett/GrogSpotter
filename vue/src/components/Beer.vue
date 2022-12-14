@@ -35,6 +35,7 @@ export default {
   methods: {
     addFavorited() {
       BackendServices.addToFavorites(this.favorited);
+      this.$alert("We added that to your favorites for ya'.", "Glug-Glug-Yum!", 'success');
     },
   },
 };
