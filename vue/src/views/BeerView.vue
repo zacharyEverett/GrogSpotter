@@ -1,9 +1,9 @@
 <template>
   <div class="body">
     <br/>
-    <div class="button-87">
-      <router-link :to="{name: 'brewery'}"><h3>Back to Brewery</h3> </router-link>
-    </div>
+    
+      <router-link class="button-87" :to="{name: 'brewery'}">Back to Brewery</router-link>
+    
     
       
       <beer></beer>
@@ -29,8 +29,7 @@ export default {
   background-attachment: fixed;
 }
 
-.button87 {
-  margin:0%;
-  padding:0%;
+.button-87{
+  margin: auto;
 }
 </style>
