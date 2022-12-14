@@ -117,6 +117,10 @@ public class JdbcBeerDao implements BeerDao{
         String sql = "DELETE from user_beers where user_id = ? AND beer_id = ?";
         jdbcTemplate.update(sql, fav.getUser_id(), fav.getBeer_id());
     }
+    public void deleteBeer(int beerId) {
+        String sql = "DELETE from beers where beer_id = ?;";
+        jdbcTemplate.update(sql, beerId);
+    }
 
     private Beer mapRowToBeer(SqlRowSet rs) {
         Beer beer = new Beer();

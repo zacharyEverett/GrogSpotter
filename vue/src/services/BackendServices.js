@@ -18,6 +18,9 @@ export default {
     addBeer(beer) {
         return axios.post('/addBeer', beer)
     },
+    deleteBeer(id) {
+        return axios.put(`/beers/${id}`)
+    },
 
     // Breweries
     getAllBreweries() {
