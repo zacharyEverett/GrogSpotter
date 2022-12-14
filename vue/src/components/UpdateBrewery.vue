@@ -1,20 +1,17 @@
 <template>
   <div>
-      <h2>Manage Breweries</h2>
-      <ul >
-          <li class="brewery" v-for="brewery in breweries" :key="brewery.breweryID">{{brewery.breweryName}}</li>
-      </ul>
-      <div>
     <h1>Update Brewery Info</h1>
-    
-    <form id="add-brewery" v-on:submit.prevent="updateBrewery">
+    <button class="button-87" v-on:click="show = !show">Update Brewery Info</button>
+    <form id="add-brewery" v-if="show == true" v-on:submit.prevent="updateBrewery">
       <div>
         <label for="brewery-Name" />
         <input
           type="text"
           id="brewery_name"
-          
-          v-model="breweries[0].breweryName"
+          placeholder="Brewery Name"
+          onfocus="this.placeholder = ''"
+          onblur="this.placeholder = 'Brewery Name'"
+          v-model="updatedBrewery.breweryName"
         />
       </div>
       <div>
@@ -22,7 +19,7 @@
           name="select-state"
           id="select-state"
           aria-placeholder="Select State"
-          v-model="breweries[0].stateAbv"
+          v-model="updatedBrewery.stateAbv"
         >
           <option value="PA">Pennsylvania</option>
         </select>
@@ -35,7 +32,7 @@
           placeholder="Street Address"
           onfocus="this.placeholder = ''"
           onblur="this.placeholder = 'Street Address'"
-          v-model="breweries[0].streetAddress"
+          v-model="updatedBrewery.streetAddress"
         />
       </div>
       <div>
@@ -46,7 +43,7 @@
           placeholder="City"
           onfocus="this.placeholder = ''"
           onblur="this.placeholder = 'City'"
-          v-model="breweries[0].city"
+          v-model="updatedBrewery.city"
         />
       </div>
       <div>
@@ -57,7 +54,7 @@
           placeholder="Zip"
           onfocus="this.placeholder = ''"
           onblur="this.placeholder = 'Zip'"
-          v-model="breweries[0].zip"
+          v-model="updatedBrewery.zip"
         />
       </div>
       <div>
@@ -68,7 +65,7 @@
           placeholder="11:00"
           onfocus="this.placeholder = ''"
           onblur="this.placeholder = '11:00'"
-          v-model="breweries[0].timeOpen"
+          v-model="updatedBrewery.timeOpen"
         />
       </div>
       <div>
@@ -79,7 +76,7 @@
           placeholder="23:00"
           onfocus="this.placeholder = ''"
           onblur="this.placeholder = '23:00'"
-          v-model="breweries[0].timeClosed"
+          v-model="updatedBrewery.timeClosed"
         />
       </div>
       <div>
@@ -91,24 +88,21 @@
           placeholder="Brewery History"
           onfocus="this.placeholder = ''"
           onblur="this.placeholder = 'Brewery History'"
-          v-model="breweries[0].history"
+          v-model="updatedBrewery.history"
         ></textarea>
       </div>
       <button type="submit">Submit</button>
     </form>
   </div>
-  </div>
 </template>
 
 <script>
-import BackendServices from '../services/BackendServices'
+import BackendServices from "../services/BackendServices";
 export default {
-    
-    
-    
-    data(){
-        return {
-        updatedBrewery: {
+  data() {
+    return {
+    show: false,
+      updatedBrewery: {
         breweryName: "",
         streetAddress: "",
         city: "",
@@ -119,34 +113,32 @@ export default {
         history: "",
         brewer_id: this.$store.state.user.id
       },
-
-            breweries: []
-        }
-    },
-    methods: {
-        updateBrewery() {
-        BackendServices.updateBrewery(this.breweries[0].breweryID,this.breweries[0]).then(() => {
-                this.resetForm();
-        });
-       
+    };
+  },
+  methods: {
+    updateBrewery() {
+      BackendServices.updateBrewery(this.updatedBrewery);
+      this.resetForm();
     },
     resetForm() {
       this.updatedBrewery = {};
+      //   this.showForm = false;
     },
-    
-    },
-    created(){
-        this.updatedBrewery = BackendServices.findBreweriesByBrewerId(this.$store.state.user.id).then((response) =>{
-            response.data.forEach(element => {
-                this.breweries.push(element)
-                console.log(this.breweries[0]);
-            });
-        })
-        
-    }
-}
+  },
+  created() {
+     this.updatedBrewery = BackendServices.findBreweriesByBrewerId(this.$store.state.user.id);
+  }
+};
 </script>
 
-<style>
-
+<style scoped>
+template {
+  background-image: url("https://bloximages.newyork1.vip.townnews.com/hickoryrecord.com/content/tncms/assets/v3/editorial/a/b5/ab51d6b9-6e46-584e-8b88-4a9bfc33dd1e/621e747be417d.image.jpg?resize=749%2C500");
+}
+textarea{
+    width: 294px;
+}
+form>div{
+    width: 294px;
+}
 </style>
