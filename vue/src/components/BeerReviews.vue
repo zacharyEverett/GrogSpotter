@@ -118,7 +118,7 @@ p {
 .review {
   border: 8px solid black;
   border-radius: 9px;
-  background-color: #f2c025;
+  background-color: rgb(184, 37, 37);
   margin: 20px;
 }
 input[disabled] {
