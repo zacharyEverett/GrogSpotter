@@ -108,5 +108,8 @@ export default {
 </script>
 
 <style>
+p{
+    font-size: 11px;
+}
 
 </style>
