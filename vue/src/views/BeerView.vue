@@ -32,4 +32,5 @@ export default {
 .button-87{
   margin: auto;
 }
+
 </style>

@@ -12,9 +12,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class JdbcBeerDaoTests extends BaseDaoTests{
-    protected static final User USER_1 = new User(1, "user1", "user1", "ROLE_USER");
-    protected static final User USER_2 = new User(2, "user2", "user2", "ROLE_USER");
-    private static final User USER_3 = new User(3, "user3", "user3", "ROLE_USER");
+    protected static final User USER_1 = new User(1, "user", "user1", "ROLE_USER");
+    protected static final User USER_2 = new User(2, "admin", "user2", "ROLE_USER");
+    private static final User USER_3 = new User(3, "kyle", "user3", "ROLE_USER");
     protected static final Beer BEER_1 = new Beer(1, 1, "88 rabbits", 8, "Adjunct Lager", "Named for the famous route 88 that Mindful resides on");
     protected static final Beer BEER_2 = new Beer(2, 2, "Kyles Blonde Lager", 12.1, "American Lager", "Flagship beer from the flagship brewery in Western PA");
     private static final Beer BEER_3 = new Beer(3, 2, "TomA Porter", 12.5, "Porter", "Dark and strong porter created by the infamous Tom Anderson");
@@ -35,9 +35,9 @@ public class JdbcBeerDaoTests extends BaseDaoTests{
         Assert.assertEquals(expected.getAbv(), actual.getAbv(), .1);
         Assert.assertEquals(expected.getBeerId(), actual.getBeerId());
         Assert.assertEquals(expected.getBeerName(), actual.getBeerName());
-
         Assert.assertEquals(expected.getBeerType(), actual.getBeerType());
-////        Assert.assertEquals(expected.getBeerDescription(), actual.getBeerDescription());
+        Assert.assertEquals(expected.getBeerDescription(), actual.getBeerDescription());
+
 
     }
 
@@ -69,6 +69,7 @@ public class JdbcBeerDaoTests extends BaseDaoTests{
         List<Beer> beers = new ArrayList<>();
         beers = sut.getByBreweryId(2);
         Beer expected = BEER_2;
+        Assert.assertEquals(expected.getBeerName(), beers.get(0).getBeerName());
         assertBeersMatch(expected, beers.get(0));
     }
     @Test
@@ -85,7 +86,6 @@ public class JdbcBeerDaoTests extends BaseDaoTests{
 
     public void assertBeersMatch(Beer expected, Beer actual) {
         Assert.assertEquals(expected.getBeerId(), actual.getBeerId());
-        Assert.assertEquals(expected.getBreweryId(), actual.getBreweryId());
         Assert.assertEquals(expected.getBeerName(), actual.getBeerName());
         Assert.assertEquals(expected.getAbv(), actual.getAbv(), .1);
         Assert.assertEquals(expected.getBeerType(), actual.getBeerType());

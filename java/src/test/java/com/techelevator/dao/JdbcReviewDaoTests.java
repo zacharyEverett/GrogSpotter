@@ -25,15 +25,7 @@ public class JdbcReviewDaoTests extends BaseDaoTests{
         JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
         sut = new JdbcReviewDao(jdbcTemplate);
     }
-    @Test
-    public void getAllBeerReviewsTest() {
-        List<Review> actual = sut.getAllBeerReviews();
-        Assert.assertEquals(4, actual.size());
-        Review testReview = actual.get(2);
-        Assert.assertEquals(testReview.getBeerId(), REVIEW_1.getBeerId());
-        Assert.assertEquals(testReview.getReviewBody(), REVIEW_1.getReviewBody());
-        Assert.assertEquals(testReview.getTitle(), REVIEW_1.getTitle());
-    }
+
     @Test
     public void getAllBreweryReviewsTest() {
         List<Review> actual = sut.getAllBreweryReviews();
@@ -41,7 +33,7 @@ public class JdbcReviewDaoTests extends BaseDaoTests{
     }
     @Test
     public void getReviewsByUserIdTest() {
-        List<Review> actual = sut.getReviewsByUsername("kyle");
+        List<Review> actual = sut.getReviewsByUsername("user");
         Assert.assertEquals(4, actual.size());
     }
     @Test

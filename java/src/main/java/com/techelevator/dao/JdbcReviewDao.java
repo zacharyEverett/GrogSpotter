@@ -29,11 +29,12 @@ Notes: all list methods operate functionally within PGAdmin.
     @Override
     public List<Review> getAllBeerReviews() {
         List<Review> reviews = new ArrayList<>();
-        String sql = "SELECT beer_name, brewery_name, r.username, review_id, u.user_id, rating, review_body FROM reviews AS r\n" +
-                "JOIN beers AS b ON b.beer_id = r.beer_id\n" +
-                "JOIN breweries AS br ON br.brewery_id = b.brewery_id\n" +
-                "JOIN users AS u ON u.username = r.username\n" +
-                "ORDER BY review_id DESC;";
+//        String sql = "SELECT beer_name, brewery_name, r.username, review_id, u.user_id, rating, review_body FROM reviews AS r\n" +
+//                "JOIN beers AS b ON b.beer_id = r.beer_id\n" +
+//                "JOIN breweries AS br ON br.brewery_id = b.brewery_id\n" +
+//                "JOIN users AS u ON u.username = r.username\n" +
+//                "ORDER BY review_id DESC;";
+        String sql = "select review_id, beer_id from reviews where beer_id is not null;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while(results.next()){
             Review review = mapRowToReview(results);
