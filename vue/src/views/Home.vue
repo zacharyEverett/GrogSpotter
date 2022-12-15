@@ -162,4 +162,5 @@ export default {
   cursor: default;
   opacity: 0.24;
 }
+
 </style>
