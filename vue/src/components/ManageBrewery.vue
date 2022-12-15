@@ -155,10 +155,7 @@ export default {
       breweries: [],
     };
   },
-  methods: {
-    deleteBeer(id){
-      BackendServices.deleteBeer(id)
-    },
+
     methods: {
         updateBrewery() {
         BackendServices.updateBrewery(this.breweries[0].breweryID,this.breweries[0]).then(() => {
@@ -178,7 +175,10 @@ export default {
       });
       this.showBeers = true;
 
-    }
+    },
+    deleteBeer(id){
+      BackendServices.deleteBeer(id)
+    },
   },
   created() {
     this.updatedBrewery = BackendServices.findBreweriesByBrewerId(
@@ -191,7 +191,7 @@ export default {
     });
     this.breweryID = this.breweries[0].breweryID
   },
-}
+
 }
 </script>
 
