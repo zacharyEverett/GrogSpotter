@@ -139,6 +139,7 @@
 
 <style scoped>
 
+
 #app{
   background-image: url("https://townsquare.media/site/657/files/2022/09/attachment-josh-olalde-Ygu9Qx309s-unsplash.jpg?w=980&q=75");
   background-size: 100%;
@@ -194,7 +195,7 @@
   bottom: 0;
   height: 200px;
   overflow: hidden;
-  width: 2500px;
+  width: 100vw;
   display: flex;
 }
 
@@ -370,6 +371,42 @@ h1 {
   font-size: 6em;
   padding-top: 30px;
   text-shadow: 1px 1px 2px red, 0 0 1em rgb(255, 0, 0), 0 0 0.2em rgb(95, 35, 0);
+}
+@media(max-width: 800px){
+  h1 {
+    font-size: 3em;
+    
+  }
+  #left {
+    display: flex;
+    flex-direction: row;
+    
+  }
+  #liquid {
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  #navbarBasicExample {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    background-color: gray;
+    justify-content: center;
+    justify-content: middle;
+  }
+  #navbar-start {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  .navbar-brand {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  
 }
 
 h2 {
