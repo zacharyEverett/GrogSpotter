@@ -2,19 +2,22 @@
     <div class="home">
       <br/>
       <cards></cards>
+      <carousel></carousel>
     
     </div>
 </template>
 
 <script>
 import Cards from "../components/Cards.vue";
+import Carousel from '../components/carousel.vue';
+
 
 export default {
   created() {
     this.$store.commit("SET_BREWERIES");
     this.$store.commit("SET_TYPE");
   },
-  components: { Cards },
+  components: { Cards, Carousel },
 
   Cards,
 };
