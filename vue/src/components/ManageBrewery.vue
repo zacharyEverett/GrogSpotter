@@ -17,7 +17,7 @@
     <button @click="grabBeers()">Manage Beers?</button>
     <div v-for="beer in beers" :key="beer.beerId">
       <h2>{{ beer.beerName }}</h2>
-    <button @click="deleteBeer(beer.beerId)">Delete this beer.</button>
+      <button @click="deleteBeer(beer.beerId)">Delete this beer.</button>
     </div>
     <!-- <ul id="beersList" :v-if="showBeers">
       <li v-for="beer in beers" :key="beer.beerId">{{ beer.beerName }}
@@ -155,30 +155,33 @@ export default {
       breweries: [],
     };
   },
+
   methods: {
-    deleteBeer(id){
-      BackendServices.deleteBeer(id)
+    deleteBeer(id) {
+      BackendServices.deleteBeer(id);
     },
-    methods: {
-        updateBrewery() {
-        BackendServices.updateBrewery(this.breweries[0].breweryID,this.breweries[0]).then(() => {
-                this.resetForm();
-        });
-       this.$alert("Brewery updated successfully!", "Nice!", 'success');
+    updateBrewery() {
+      BackendServices.updateBrewery(
+        this.breweries[0].breweryID,
+        this.breweries[0]
+      ).then(() => {
+        this.resetForm();
+      });
+      this.$alert("Brewery updated successfully!", "Nice!", "success");
     },
     resetForm() {
       this.updatedBrewery = {};
     },
-    grabBeers(){
-      BackendServices.getBeerList(this.breweries[0].breweryID)
-      .then((returned) => {
-        returned.data.forEach((element) => {
-          this.beers.push(element);
-        });
-      });
+    grabBeers() {
+      BackendServices.getBeerList(this.breweries[0].breweryID).then(
+        (returned) => {
+          returned.data.forEach((element) => {
+            this.beers.push(element);
+          });
+        }
+      );
       this.showBeers = true;
-
-    }
+    },
   },
   created() {
     this.updatedBrewery = BackendServices.findBreweriesByBrewerId(
@@ -189,13 +192,13 @@ export default {
         console.log(this.breweries[0]);
       });
     });
-    this.breweryID = this.breweries[0].breweryID
+    this.breweryID = this.breweries[0].breweryID;
   },
-};
+}
 </script>
 
 <style scoped>
-textarea{
+textarea {
   width: 100%;
 }
 </style>

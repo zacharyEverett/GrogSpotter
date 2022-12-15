@@ -115,6 +115,10 @@ h4,
 p {
   color: antiquewhite;
 }
+textarea{
+  width: 100%;
+  border-radius: 5%;
+}
 .review {
   border: 8px solid black;
   background-color: rgb(184, 37, 37);
