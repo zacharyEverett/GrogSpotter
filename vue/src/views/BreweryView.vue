@@ -8,8 +8,8 @@
     <single-brewery></single-brewery>
     <beer-list></beer-list>
     <div>
-    <brewery-reviews></brewery-reviews>
-    <br/>
+      <brewery-reviews></brewery-reviews>
+      <br />
     </div>
   </div>
 </template>

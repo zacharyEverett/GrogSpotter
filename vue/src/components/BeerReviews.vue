@@ -1,6 +1,43 @@
 <template>
   <div id="reviews">
-    <button class="button-87" v-show="this.newReview.username" v-on:click="show = !show">Leave a Review</button>
+    <button
+      class="button-87"
+      v-show="this.newReview.username"
+      v-on:click="show = !show"
+    >
+      Leave a Review
+    </button>
+    <p>Average rating: {{ avgRating }}</p>
+
+    <div class="MainRating">
+      <img class="wholeRating"
+        v-for="num in avgFloor" :key="num"
+        src="@/../randompicturesofbeer/HopsIcon-removebg-preview.png"
+        alt=""
+      />
+      <span v-if="!percOfHop"></span>
+      <img class="wholeRating"
+        v-else-if="percOfHop == 1"
+        src="@/../randompicturesofbeer/QuarterHop-removebg-preview.png"
+        alt=""
+      />
+      <img class="wholeRating"
+        v-else-if="percOfHop == 2"
+        src="@/../randompicturesofbeer/HalfHop-removebg-preview.png"
+        alt=""
+      />
+      <img class="wholeRating"
+        v-else
+        src="@/../randompicturesofbeer/ThreeQuarterHop-removebg-preview.png"
+        alt=""
+      />
+      <img class="wholeRating"
+        v-for="num in 5 - avgCeiling" :key="num"
+        src="@/../randompicturesofbeer/GhostHop.png"
+        alt=""
+      />
+    </div>
+
     <form v-if="show == true" v-on:submit="addBeerReview">
       <div>
         <label for="review-title" />
@@ -45,7 +82,7 @@
 
     <h1>Reviews:</h1>
     <div class="review" v-for="review in reviews" :key="review.reviewId">
-        <h1>{{review.title}}</h1>
+      <h1>{{ review.title }}</h1>
       <h3>GrogLover: {{ review.username }}</h3>
       <h4>Rating: {{ review.rating }}/5</h4>
       <img
@@ -96,6 +133,42 @@ export default {
       this.show = false;
     },
   },
+  computed: {
+    avgRating() {
+      if (!this.reviews[0]) {
+        return 0;
+      }
+      let count = 0;
+      let totalRating = 0;
+      this.reviews.forEach((element) => {
+        count++;
+        totalRating += element.rating;
+      });
+      return (totalRating / count).toFixed(2);
+    },
+    avgFloor() {
+      return Math.floor(this.avgRating);
+    },
+    avgCeiling() {
+      return Math.ceil(this.avgRating);
+    },
+    halfOrNot() {
+      return this.avgRating < Math.floor(this.avgRating);
+    },
+    percOfHop() {
+      let dec = this.avgRating - Math.floor(this.avgRating);
+      if (dec < 0.01) {
+        return 0;
+      } else
+      if (dec < .4) {
+        return 1;
+      } else
+      if (dec < .6) {
+        return 2;
+      } 
+      return 3;
+    }
+  },
 
   created() {
     BackendServices.getBeerReviews(this.$route.params.beerID).then(
@@ -136,11 +209,15 @@ form {
   width: 50px;
 }
 
-.button-87{
+.button-87 {
   margin: auto;
 }
 
-.button-78{
+.button-78 {
   width: 100%;
+}
+
+.wholeRating {
+  width: 200px;
 }
 </style>
