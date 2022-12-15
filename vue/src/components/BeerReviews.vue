@@ -10,29 +10,38 @@
     <p>Average rating: {{ avgRating }}</p>
 
     <div class="MainRating">
-      <img class="wholeRating"
-        v-for="num in avgFloor" :key="num"
+      <img
+        class="wholeRating"
+        v-for="num in avgFloor"
+        :key="num"
         src="@/../randompicturesofbeer/HopsIcon-removebg-preview.png"
         alt=""
       />
-      <span v-if="!percOfHop"></span>
-      <img class="wholeRating"
-        v-else-if="percOfHop == 1"
+
+      <img
+        class="wholeRating"
+        v-if="percOfHop == 1"
         src="@/../randompicturesofbeer/QuarterHop-removebg-preview.png"
         alt=""
       />
-      <img class="wholeRating"
+      <img
+        class="wholeRating"
         v-else-if="percOfHop == 2"
         src="@/../randompicturesofbeer/HalfHop-removebg-preview.png"
         alt=""
       />
-      <img class="wholeRating"
-        v-else
+      <img
+        class="wholeRating"
+        v-else-if="percOfHop == 3"
         src="@/../randompicturesofbeer/ThreeQuarterHop-removebg-preview.png"
         alt=""
       />
-      <img class="wholeRating"
-        v-for="num in 5 - avgCeiling" :key="num"
+      <span v-else></span>
+
+      <img
+        class="wholeRating"
+        v-for="num in 5 - avgCeiling"
+        :key="num"
         src="@/../randompicturesofbeer/GhostHop.png"
         alt=""
       />
@@ -120,6 +129,10 @@ export default {
         rating: "",
         reviewBody: "",
       },
+      avgRating: 0,
+      avgFloor: 0,
+      avgCeiling: 0,
+      percOfHop: 0,
     };
   },
   methods: {
@@ -134,50 +147,74 @@ export default {
     },
   },
   computed: {
-    avgRating() {
-      if (!this.reviews[0]) {
-        return 0;
-      }
-      let count = 0;
-      let totalRating = 0;
-      this.reviews.forEach((element) => {
-        count++;
-        totalRating += element.rating;
-      });
-      return (totalRating / count).toFixed(2);
-    },
-    avgFloor() {
-      return Math.floor(this.avgRating);
-    },
-    avgCeiling() {
-      return Math.ceil(this.avgRating);
-    },
-    halfOrNot() {
-      return this.avgRating < Math.floor(this.avgRating);
-    },
-    percOfHop() {
-      let dec = this.avgRating - Math.floor(this.avgRating);
-      if (dec < 0.01) {
-        return 0;
-      } else
-      if (dec < .4) {
-        return 1;
-      } else
-      if (dec < .6) {
-        return 2;
-      } 
-      return 3;
-    }
+    // avgRating() {
+    //   if (!this.reviews[0]) {
+    //     return 0;
+    //   }
+    //   let count = 0;
+    //   let totalRating = 0;
+    //   this.reviews.forEach((element) => {
+    //     count++;
+    //     totalRating += element.rating;
+    //   });
+    //   return (totalRating / count).toFixed(2);
+    // },
+    // avgFloor() {
+    //   return Math.floor(this.avgRating);
+    // },
+    // avgCeiling() {
+    //   return Math.ceil(this.avgRating);
+    // },
+    // halfOrNot() {
+    //   return this.avgRating < Math.floor(this.avgRating);
+    // },
+    // percOfHop() {
+    //   let dec = this.avgRating - Math.floor(this.avgRating);
+    //   if (dec < 0.01) {
+    //     return 0;
+    //   } else if (dec < 0.4) {
+    //     return 1;
+    //   } else if (dec < 0.6) {
+    //     return 2;
+    //   }
+    //   return 3;
+    // },
   },
 
   created() {
-    BackendServices.getBeerReviews(this.$route.params.beerID).then(
-      (response) => {
+    BackendServices.getBeerReviews(this.$route.params.beerID)
+      .then((response) => {
         response.data.forEach((element) => {
           this.reviews.push(element);
         });
-      }
-    );
+      })
+      .then((response) => {
+        if (this.reviews[0]) {
+          let count = 0;
+          let totalRating = 0;
+          this.reviews.forEach((element) => {
+            count++;
+            totalRating += element.rating;
+          });
+          this.avgRating = (totalRating / count).toFixed(2);
+        }
+
+        this.avgFloor = Math.floor(this.avgRating);
+        this.avgCeiling = Math.ceil(this.avgRating);
+
+        let dec = this.avgRating - Math.floor(this.avgRating);
+        if (dec < 0.01) {
+          this.percOfHop = 0;
+        } else if (dec < 0.4) {
+          this.percOfHop = 1;
+        } else if (dec < 0.6) {
+          this.percOfHop = 2;
+        } else {
+          this.percOfHop = 3;
+        }
+
+        response;
+      });
   },
 };
 </script>
