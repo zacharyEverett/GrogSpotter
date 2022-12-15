@@ -1,9 +1,7 @@
 <template>
     <div class="home">
-      <br/>
       <cards></cards>
       <carousel></carousel>
-    
     </div>
 </template>
 
