@@ -33,7 +33,7 @@ public class JdbcBreweriesDaoTests extends BaseDaoTests{
     public void getBreweryByIdTest(){
         Brewery actual = sut.getBreweryById(1);
         Brewery expected = BREWERY_1;
-//        assertBreweriesMatch(actual, expected);
+        assertBreweriesMatch(actual, expected);
         Assert.assertEquals(actual.getBreweryID(), expected.getBreweryID());
         Assert.assertEquals(actual.getBreweryName(), expected.getBreweryName());
         Assert.assertEquals(actual.getStreetAddress(), expected.getStreetAddress());
@@ -42,8 +42,6 @@ public class JdbcBreweriesDaoTests extends BaseDaoTests{
         Assert.assertEquals(actual.getZip(), expected.getZip());
         Assert.assertTrue(actual.isActive());
         Assert.assertEquals(actual.getHistory(), expected.getHistory());
-//        Assert.assertEquals(actual.getHistory(), expected.getHistory()); -------HISTORY NOT MATCHING - EXPECTING NULL?
-//        assertBreweriesMatch(actual, expected); ---------BOTH TEST CLASSES ASSERT OBJECTS MATCH METHODS DON'T PULL ALL DATA CORRECTLY
     }
     @Test
     public void getBreweryByNameTest() {
@@ -61,12 +59,11 @@ public class JdbcBreweriesDaoTests extends BaseDaoTests{
         int expected = 1;
         Assert.assertEquals(breweryId, expected);
     }
-//    @Test
-//    public void addBreweryCreatesBreweryObject() {
-//        Brewery expected = sut.create();
-//        Assert.assertTrue(expected);
-//        //RETURNING BAD SQL GRAMMAR ERROR
-//    }
+    @Test
+    public void addBreweryAddsObject() {
+        Brewery newBrewery = new Brewery(3, "NEW", "111", "PGH", "PA", "15228", LocalTime.of(22, 00), LocalTime.of(11, 00), "My New Brewery Rocks", true);
+
+    }
 
 
     public void assertBreweriesMatch(Brewery expected, Brewery actual) {
