@@ -14,17 +14,17 @@
         <p>
           <strong>Lin Manuel-Miranda</strong> <small>@alexanderHamilton</small> <small>31m</small>
           <br>
-          How does a brewery sound?
-A spot to unwind and relax,
-Where you can sit back, grab a brew,
-And let all your troubles pass.
-We here at Brewery Finder,
-Are here to help you out.
-With our extensive database,
-We'll point you to the best route.
-So why not give us a try?
-And let us help you find
-The perfect brewery nearby,
+          How does a brewery sound? <br>
+A spot to unwind and relax, <br>
+Where you can sit back, grab a brew, <br>
+And let all your troubles pass. <br> <br>
+We here at Brewery Finder,<br>
+Are here to help you out.<br>
+With our extensive database,<br>
+We'll point you to the best route.<br><br>
+So why not give us a try?<br>
+And let us help you find<br>
+The perfect brewery nearby,<br>
 And raise a glass to good times!
         </p>
       </div>
