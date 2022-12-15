@@ -62,9 +62,135 @@ And raise a glass to good times!
     <div class="media-content">
       <div class="content">
         <p>
-          <strong>Tom Anderson</strong> <small>@johnsmith</small> <small>31m</small>
+          <strong>Tom Anderson</strong> <small>@TomAnderson</small> <small>41m</small>
           <br>
           I don't know, looks good.
+        </p>
+      </div>
+      <nav class="level is-mobile">
+        <div class="level-left">
+          <a class="level-item" aria-label="reply">
+            <span class="icon is-small">
+              <i class="fas fa-reply" aria-hidden="true"></i>
+            </span>
+          </a>
+          <a class="level-item" aria-label="retweet">
+            <span class="icon is-small">
+              <i class="fas fa-retweet" aria-hidden="true"></i>
+            </span>
+          </a>
+          <a class="level-item" aria-label="like">
+            <span class="icon is-small">
+              <i class="fas fa-heart" aria-hidden="true"></i>
+            </span>
+          </a>
+        </div>
+      </nav>
+    </div>
+  </article>
+</div>
+  </slide>
+  <slide :index="2">
+    <div class="box">
+  <article class="media">
+    <div class="media-left">
+      <figure class="image is-64x64">
+        <img src="https://yt3.ggpht.com/bFpwiiOB_NLCVsIcVQ9UcwBjb1RzipnMmtNfLSWpeIaHboyGkBCq4KBitmovRbStk9WvIWIZOyo=s900-c-k-c0x00ffffff-no-rj" alt="Image">
+      </figure>
+    </div>
+    <div class="media-content">
+      <div class="content">
+        <p>
+          <strong>Gordon Ramsay</strong> <small>@GordonRamsay</small> <small>58m</small>
+          <br>
+          Just discovered the most amazing website for finding the best breweries in your area - GrogSpotter! Sleek interface, extensive database, and detailed descriptions. 
+          A must-have for all beer lovers. Cheers! #grogspotter #beerlovers #gordonramsay
+        </p>
+      </div>
+      <nav class="level is-mobile">
+        <div class="level-left">
+          <a class="level-item" aria-label="reply">
+            <span class="icon is-small">
+              <i class="fas fa-reply" aria-hidden="true"></i>
+            </span>
+          </a>
+          <a class="level-item" aria-label="retweet">
+            <span class="icon is-small">
+              <i class="fas fa-retweet" aria-hidden="true"></i>
+            </span>
+          </a>
+          <a class="level-item" aria-label="like">
+            <span class="icon is-small">
+              <i class="fas fa-heart" aria-hidden="true"></i>
+            </span>
+          </a>
+        </div>
+      </nav>
+    </div>
+  </article>
+</div>
+  </slide>
+  <slide :index="3">
+    <div class="box">
+  <article class="media">
+    <div class="media-left">
+      <figure class="image is-64x64">
+        <img src="https://www4.pictures.zimbio.com/mp/5CnMSPCK5G4l.jpg" alt="Image">
+      </figure>
+    </div>
+    <div class="media-content">
+      <div class="content">
+        <p>
+          <strong>Idris Elba</strong> <small>@CharlesMiner</small> <small>22m</small>
+          <br>
+         As an actor and lover of fine brews, I am always on the lookout for 
+         new and exciting breweries to visit. And thanks to the Brewery Finder
+         app, I've been able to discover some truly incredible spots.
+         <br>
+         <br>
+         The app is incredibly user-friendly. Simply enter your location and it will 
+         pull up a list of nearby breweries, complete with ratings and reviews from other 
+         users. This allows you to see what's hot in the world of beer and find a spot 
+         that suits your taste.
+        </p>
+      </div>
+      <nav class="level is-mobile">
+        <div class="level-left">
+          <a class="level-item" aria-label="reply">
+            <span class="icon is-small">
+              <i class="fas fa-reply" aria-hidden="true"></i>
+            </span>
+          </a>
+          <a class="level-item" aria-label="retweet">
+            <span class="icon is-small">
+              <i class="fas fa-retweet" aria-hidden="true"></i>
+            </span>
+          </a>
+          <a class="level-item" aria-label="like">
+            <span class="icon is-small">
+              <i class="fas fa-heart" aria-hidden="true"></i>
+            </span>
+          </a>
+        </div>
+      </nav>
+    </div>
+  </article>
+</div>
+  </slide>
+  <slide :index="4">
+    <div class="box">
+  <article class="media">
+    <div class="media-left">
+      <figure class="image is-64x64">
+        <img src="https://cdn.apartmenttherapy.info/image/upload/f_jpg,q_auto:eco,c_fill,g_auto,w_1500,ar_16:9/k%2Farchive%2F75202e2726f5c504131816645b34930d56ce7404" alt="Image">
+      </figure>
+    </div>
+    <div class="media-content">
+      <div class="content">
+        <p>
+          <strong>The Dude</strong> <small>@elDuderino</small> <small>7m</small>
+          <br>
+         GrogSpotter Rocks. Thats just, you know... like my opinion, man.
         </p>
       </div>
       <nav class="level is-mobile">
@@ -108,5 +234,10 @@ export default {
 </script>
 
 <style>
-
+p{
+  font-size: 11px;
+}
+.box{
+  height: 100%;
+}
 </style>
