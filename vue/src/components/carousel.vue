@@ -15,7 +15,7 @@
             <div class="media-content">
               <div class="content">
                 <p>
-                  <strong>Lin Manuel-Miranda</strong
+                  <strong>Lin-Manuel Miranda</strong
                   ><span class="icon is-small">
                     <i class="fa-solid fa-circle-check"></i>
                   </span>

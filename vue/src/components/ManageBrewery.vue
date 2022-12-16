@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>Manage Breweries</h2>
+    <h1>Your Brewery</h1>
     <ul>
       <li class="brewery" v-for="brewery in breweries" :key="brewery.breweryID">
         {{ brewery.breweryName }}
@@ -8,30 +8,23 @@
     </ul>
     <div>
       <h1>Update Brewery Info</h1>
-      <button v-on:click="show = !show">Update Brewery Info</button>
-      <button v-on:click="showAddBeer = !showAddBeer">Add a Beer</button>
+      <button class="button-87" v-on:click="show = !show">
+        Update Brewery Info
+      </button>
+      <button class="button-87" v-on:click="showAddBeer = !showAddBeer">
+        Add a Beer
+      </button>
       <add-beer v-if="showAddBeer == true" :breweryId="breweries[0].breweryID"
         >Add a Beer</add-beer
       >
     </div>
-    <button @click="grabBeers()">Manage Beers?</button>
+    <button class="button-87" @click="grabBeers()">Manage Beers?</button>
     <div v-for="beer in beers" :key="beer.beerId">
       <h2>{{ beer.beerName }}</h2>
-      <button @click="deleteBeer(beer.beerId)">Delete this beer.</button>
+      <button class="button-87" @click="deleteBeer(beer.beerId)">
+        Delete this beer.
+      </button>
     </div>
-    <!-- <ul id="beersList" :v-if="showBeers">
-      <li v-for="beer in beers" :key="beer.beerId">{{ beer.beerName }}
-        <router-link
-          :to="{
-            name: 'beerView',
-            params: { id: beer.breweryId, beerID: beer.beerId },
-          }"
-        >
-          {{ beer.beerName }}
-        </router-link>
-      </li>
-    </ul> -->
-
     <form
       id="add-brewery"
       v-if="show == true"
@@ -122,7 +115,7 @@
           v-model="breweries[0].history"
         ></textarea>
       </div>
-      <button class="button-78" type="submit">Submit</button>
+      <button class="button-78" id="fix" type="submit">Submit</button>
     </form>
   </div>
 </template>
@@ -194,11 +187,25 @@ export default {
     });
     this.breweryID = this.breweries[0].breweryID;
   },
-}
+};
 </script>
 
 <style scoped>
+template {
+  background-image: url("https://media.istockphoto.com/id/488101157/photo/beer-tasting.jpg?s=612x612&w=0&k=20&c=ZZhqEAqKy4g11PxwTNlXUFscphS_ZHmcDS7q8xi2xJg=");
+  height: 100vh;
+}
 textarea {
+  width: 100%;
+}
+.button-87 {
+  margin: auto;
+}
+h2 {
+  text-align: center;
+  color: black;
+}
+#fix {
   width: 100%;
 }
 </style>

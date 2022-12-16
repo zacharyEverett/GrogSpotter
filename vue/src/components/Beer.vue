@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="beer">
     <h1>{{ beer.beerName }}</h1>
     <h2>Type: {{ beer.beerType }} | Abv: {{ beer.abv }}%</h2>
     <h3>{{ beer.beerDescription }}</h3>
@@ -43,7 +43,7 @@ export default {
 
 <style scoped>
 h1,h2,h3{
-  color: white;
+  color: rgb(199, 94, 24);
 }
 div {
   text-align: center;
@@ -53,5 +53,15 @@ div {
   justify-content: center;
   align-items: center;
 }
-
+.beer{
+  background-image: url("https://cdn.pixabay.com/photo/2018/02/15/14/37/paper-3155438_1280.jpg");
+  border-style: inset;
+  border-width: 10px;
+  border-color: black;
+  border-radius: 25px;
+  text-align: center;
+  color: rgb(73, 36, 36);
+  width: 50%;
+  margin: auto;
+}
 </style>
