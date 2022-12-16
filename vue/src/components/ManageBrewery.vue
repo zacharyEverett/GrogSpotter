@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div  style="background-image: url('https://media.istockphoto.com/id/488101157/photo/beer-tasting.jpg?s=612x612&w=0&k=20&c=ZZhqEAqKy4g11PxwTNlXUFscphS_ZHmcDS7q8xi2xJg=');">
     <h1>Your Brewery</h1>
     <ul>
       <li class="brewery" v-for="brewery in breweries" :key="brewery.breweryID">
@@ -27,7 +27,7 @@
     </div>
     <form
       id="add-brewery"
-      v-if="show == true"
+      v-show="show == true"
       v-on:submit.prevent="updateBrewery"
     >
       <div>
@@ -191,9 +191,10 @@ export default {
 </script>
 
 <style scoped>
-template {
+#rootMB {
   background-image: url("https://media.istockphoto.com/id/488101157/photo/beer-tasting.jpg?s=612x612&w=0&k=20&c=ZZhqEAqKy4g11PxwTNlXUFscphS_ZHmcDS7q8xi2xJg=");
   height: 100vh;
+  background-size: auto;
 }
 textarea {
   width: 100%;
@@ -203,7 +204,7 @@ textarea {
 }
 h2 {
   text-align: center;
-  color: black;
+  color:antiquewhite;
 }
 #fix {
   width: 100%;
