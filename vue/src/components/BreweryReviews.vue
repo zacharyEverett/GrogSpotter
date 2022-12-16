@@ -1,6 +1,31 @@
 <template>
   <div id="reviews">
-    <button class="button-87" v-show="this.newReview.username" v-on:click="show = !show">Leave a Review</button>
+    <button
+      class="button-87"
+      v-show="this.newReview.username"
+      v-on:click="show = !show"
+    >
+      Leave a Review
+    </button>
+
+    <h1>Average Rating: {{avgRating}}</h1>
+    <div class="MainRating">
+      <img
+        class="wholeRating"
+        v-for="num in avgFloor"
+        :key="num"
+        src="@/../randompicturesofbeer/HopsIcon-removebg-preview.png"
+        alt=""
+      />
+
+      <img
+        class="wholeRating"
+        v-for="num in 5 - avgFloor"
+        :key="num"
+        src="@/../randompicturesofbeer/GhostHop.png"
+        alt=""
+      />
+    </div>
     <form v-if="show" v-on:submit="addBreweryReview">
       <div>
         <label for="review-title" />
@@ -43,7 +68,7 @@
 
     <h1>Reviews:</h1>
     <div class="review" v-for="review in reviews" :key="review.reviewId">
-        <h1>{{review.title}}</h1>
+      <h1>{{ review.title }}</h1>
       <h3>GrogLover: {{ review.username }}</h3>
       <h4>Rating: {{ review.rating }}/5</h4>
       <img
@@ -94,7 +119,23 @@ export default {
       this.show = false;
     },
   },
-
+  computed: {
+    avgRating() {
+      if (!this.reviews[0]) {
+        return 0;
+      }
+      let count = 0;
+      let totalRating = 0;
+      this.reviews.forEach((element) => {
+        count++;
+        totalRating += element.rating;
+      });
+      return (totalRating / count).toFixed(2);
+    },
+    avgFloor() {
+      return Math.floor(this.avgRating);
+    }
+  },
   created() {
     BackendServices.getBreweryReviews(this.$route.params.id).then(
       (response) => {
@@ -115,7 +156,12 @@ h4,
 p {
   color: antiquewhite;
 }
-textarea{
+.MainRating {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+textarea {
   width: 100%;
   border-radius: 5%;
 }
@@ -138,11 +184,15 @@ form {
   width: 50px;
 }
 
-.button-87{
+.button-87 {
   margin: auto;
 }
 
-.button-78{
+.button-78 {
   width: 100%;
+}
+
+.wholeRating {
+  width: 200px;
 }
 </style>

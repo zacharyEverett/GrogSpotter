@@ -10,7 +10,7 @@
           placeholder="Brewery Name"
           onfocus="this.placeholder = ''"
           onblur="this.placeholder = 'Brewery Name'"
-          v-model="newBrewery.breweryName"
+          v-model="newBrewery.breweryName" required
         />
       </div>
       <div>
@@ -19,6 +19,7 @@
           id="select-state"
           aria-placeholder="Select State"
           v-model="newBrewery.stateAbv"
+          required
         >
           <option value="PA">Pennsylvania</option>
         </select>
@@ -32,6 +33,7 @@
           onfocus="this.placeholder = ''"
           onblur="this.placeholder = 'Street Address'"
           v-model="newBrewery.streetAddress"
+          required
         />
       </div>
       <div>
@@ -43,6 +45,7 @@
           onfocus="this.placeholder = ''"
           onblur="this.placeholder = 'City'"
           v-model="newBrewery.city"
+          required
         />
       </div>
       <div>
@@ -54,6 +57,7 @@
           onfocus="this.placeholder = ''"
           onblur="this.placeholder = 'Zip'"
           v-model="newBrewery.zip"
+          required
         />
       </div>
       <div>
@@ -65,6 +69,7 @@
           onfocus="this.placeholder = ''"
           onblur="this.placeholder = '11:00'"
           v-model="newBrewery.timeOpen"
+          required
         />
       </div>
       <div>
@@ -76,6 +81,7 @@
           onfocus="this.placeholder = ''"
           onblur="this.placeholder = '23:00'"
           v-model="newBrewery.timeClosed"
+          required
         />
       </div>
       <div>
@@ -88,6 +94,7 @@
           onfocus="this.placeholder = ''"
           onblur="this.placeholder = 'Brewery History'"
           v-model="newBrewery.history"
+          required
         ></textarea>
       </div>
       <button class="button-78" type="submit">Submit</button>

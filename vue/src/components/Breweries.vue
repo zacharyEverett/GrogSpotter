@@ -1,6 +1,6 @@
 <template>
   <div id="breweriesList">
-    Breweries Will Go Here
+    BREWERIES
     <ul>
       <li
         v-for="brewery in this.$store.state.breweries"
@@ -40,10 +40,11 @@ li {
   
 
 #breweriesList{
-  font-size: 46px;
+  font-size: 42px;
   border-style: ridge;
   border-width: 10px;
   border-radius: 10px;
+  font-weight: bold;
   margin: auto;
   width: 300px;
   padding: 20px;

@@ -1,5 +1,6 @@
 <template>
   <div class="breweries">
+    <br>
     <breweries></breweries>
   </div>
 </template>
